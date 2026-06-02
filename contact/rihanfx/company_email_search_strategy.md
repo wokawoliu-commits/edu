@@ -2,7 +2,7 @@
 
 更新时间：2026-06-02
 
-## 本次单点验证：Supercent
+## 单点验证案例 1：Supercent
 
 原始名单状态：Supercent 记录为“未公开商务邮箱”。
 
@@ -22,6 +22,33 @@
 - https://en.supercent.io/TermsofService
 
 这说明第一轮只抓“Contact / Business Development”页面会漏掉很多邮箱。很多日韩公司会把邮箱放在页脚、公司概要、隐私政策、服务条款、招聘页、活动条款或本地语言页面里。
+
+## 单点验证案例 2：111Percent
+
+原始名单状态：111Percent 记录为“未公开商务邮箱”。
+
+本次重新检索后，确认可回填公开邮箱：
+
+- 公司：111Percent / 111퍼센트
+- 官网域名：`111percent.net`、`www.111percent.net`
+- 公开邮箱：`business@111percent.net`、`branding@111percent.net`、`marketing@111percent.net`
+- 排除邮箱：`help@111percent.net` 偏客服，`recruit@111percent.net` 偏招聘
+- 邮箱类型：A/B 级，`business@` 可作为商务入口，`branding@` / `marketing@` 可作为合作或市场转接
+- 建议用法：首封邮件优先发 `business@111percent.net`，正文请求转给 publishing / business development / strategic partnership 负责人；`branding@` 和 `marketing@` 可在第二触点或抄送中使用
+
+交叉验证来源：
+
+- https://www.111percent.net/contact/
+- https://111percent.net/contact/
+- 搜索式：`site:111percent.net "사업 문의" "@111percent.net"`、`site:111percent.net "business@111percent.net"`
+
+关键发现：
+
+- 该页面用普通 `fetch` / `curl` 抓不到邮箱；需要用浏览器渲染后读取 `document.body.innerText` 或页面 DOM。
+- 英文路径 `https://111percent.net/en/contact/` 返回 404，但韩文主站 `/contact/` 有完整邮箱。
+- 韩文标签非常有价值：`사업 문의` 对应 business inquiry，`브랜드 협업 문의` 对应 brand collaboration，`마케팅 문의` 对应 marketing inquiry，`고객센터` 对应 customer support，`채용` 对应 recruiting。
+
+这说明批量抓取时不能只扫英文站，也不能只看静态 HTML。对于 React/Vue/Next 等前端渲染站点，需要把 Playwright 渲染抓取作为二次验证步骤。
 
 ## 标准查找流程
 
@@ -60,6 +87,17 @@ site:domain.com "developer"
 site:domain.com "partnership"
 ```
 
+如果静态抓取没有结果，增加“业务标签 + 邮箱域名”的搜索式：
+
+```text
+site:domain.com "business@domain.com"
+site:domain.com "사업 문의" "@domain.com"
+site:domain.com "브랜드 협업 문의" "@domain.com"
+site:domain.com "마케팅 문의" "@domain.com"
+site:domain.com "business inquiry" "@domain.com"
+site:domain.com "brand collaboration" "@domain.com"
+```
+
 日文公司增加：
 
 ```text
@@ -92,6 +130,30 @@ curl -L "https://domain.com/contact" | rg "mailto:|@domain.com"
 ```
 
 如果站点是 JavaScript 渲染，使用 Playwright 打开页面后再抓取 `document.body.innerText` 和所有 `a[href^='mailto:']`。
+
+对普通 `curl` 没结果但搜索引擎片段显示邮箱的页面，必须跑浏览器渲染复核：
+
+```js
+const { chromium } = await import("playwright");
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage();
+await page.goto("https://domain.com/contact/", { waitUntil: "networkidle" });
+await page.waitForTimeout(3000);
+const text = await page.locator("body").innerText();
+const mailtos = await page.locator("a[href^='mailto:']").evaluateAll((nodes) =>
+  nodes.map((a) => a.getAttribute("href"))
+);
+console.log(text, mailtos);
+await browser.close();
+```
+
+优先检查这些前端渲染路径：
+
+- `/contact/`
+- `/contact`
+- `/ko/contact/`
+- `/about/`
+- 主页菜单里点击 Contact 后生成的路由
 
 5. 给邮箱做质量分级
 
@@ -151,4 +213,15 @@ Email Source URL: https://en.supercent.io/about; https://corp.supercent.io/about
 Email Note: 官方多页面公开 help@supercent.io；偏通用/客服邮箱，BD仍建议并行 Submit Your Game / Publishing 入口。
 Recommended Outreach Route: Submit Your Game / Publishing form first, then email help@supercent.io asking to forward to publishing or strategic partnership team.
 Confidence: High for email existence; Medium-Low for BD relevance.
+```
+
+## 111Percent 可直接落表写法
+
+```text
+Public Contact Email: business@111percent.net; branding@111percent.net; marketing@111percent.net
+Email Type: A/B - business / brand collaboration / marketing
+Email Source URL: https://www.111percent.net/contact/; https://111percent.net/contact/
+Email Note: 官网 Contact 页需浏览器渲染后可见邮箱；BD优先 business@，branding@/marketing@ 作为合作或营销转接，help@/recruit@ 不作为商务首选。
+Recommended Outreach Route: Email business@111percent.net first; ask to forward to publishing, BD, or strategic partnership owner. Use branding@/marketing@ only as a secondary route.
+Confidence: High for email existence and official source; Medium for direct M&A/investment relevance.
 ```
