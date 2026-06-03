@@ -471,11 +471,11 @@ Thanks for considering it.</code></pre>
           + '<dl>'
           + '<dt>公司体量</dt><dd>' + escapeHtml(c.scale) + '</dd>'
           + '<dt>代表作品</dt><dd>' + escapeHtml(c.works) + '</dd>'
-	          + '<dt>为什么值得找</dt><dd>' + escapeHtml(c.signal) + '</dd>'
-	          + '<dt>推荐谈法</dt><dd>' + escapeHtml(c.angle) + '</dd>'
-	          + '<dt>入口</dt><dd>' + escapeHtml(c.entry) + ' · ' + linkHtml(c.contactUrl, "打开入口") + '</dd>'
-	          + (c.email && c.email !== noEmail ? '<dt>联系邮箱</dt><dd>' + emailHtml(c) + '</dd>' : '')
-	          + '<dt>下一步</dt><dd>' + escapeHtml(c.next) + '</dd>'
+          + '<dt>为什么值得找</dt><dd>' + escapeHtml(c.signal) + '</dd>'
+          + '<dt>推荐谈法</dt><dd>' + escapeHtml(c.angle) + '</dd>'
+          + '<dt>入口</dt><dd>' + escapeHtml(c.entry) + ' · ' + linkHtml(c.contactUrl, "打开入口") + '</dd>'
+          + (c.email && c.email !== noEmail ? '<dt>联系邮箱</dt><dd>' + emailHtml(c) + '</dd>' : '')
+          + '<dt>下一步</dt><dd>' + escapeHtml(c.next) + '</dd>'
           + '</dl>'
           + '</article>';
       }).join("");
