@@ -1,6 +1,6 @@
 # 公司公开邮箱查找策略
 
-更新时间：2026-06-02
+更新时间：2026-06-03
 
 ## 单点验证案例 1：Supercent
 
@@ -50,6 +50,33 @@
 
 这说明批量抓取时不能只扫英文站，也不能只看静态 HTML。对于 React/Vue/Next 等前端渲染站点，需要把 Playwright 渲染抓取作为二次验证步骤。
 
+## 单点验证案例 3：Gravity
+
+原始名单状态：Gravity 记录为“未公开商务邮箱”。
+
+本次重新检索后，确认可回填公开邮箱：
+
+- 公司：Gravity / GRAVITY Co.,Ltd.
+- 官网域名：`gravity.co.kr`、`www.gravity.co.kr`
+- 公开邮箱：`business@gravity.co.kr`、`gbg@gravity.co.kr`
+- 邮箱类型：A/B 级，`business@` 是韩国总部公开商务邮箱，`gbg@` 是海外业务和支持入口
+- 建议用法：首封邮件优先发 `business@gravity.co.kr`，正文请求转给 global publishing / business development / strategic partnership 负责人；`gbg@gravity.co.kr` 可作为海外业务支持备选
+
+交叉验证来源：
+
+- https://www.gravity.co.kr/en/about/globalnetwork
+- 页面导航路径：About -> Global Network
+- 搜索式：`site:gravity.co.kr "Global Network" "business@gravity.co.kr"`、`site:gravity.co.kr "Overseas business" "gbg@gravity.co.kr"`
+
+关键发现：
+
+- 邮箱不在常规 Contact 页，而在 `Global Network` 页面。
+- 普通 `fetch` 静态抓取没有提取出邮箱，但 Playwright 渲染后 `document.body.innerText` 可见 `business@gravity.co.kr`。
+- 同页 `mailto:` 链接中还出现 `gbg@gravity.co.kr`，文本标注为 overseas business and support。
+- 对有海外子公司、地区发行网络、全球发行体系的公司，必须检查 `Global Network`、`Subsidiaries`、`Branches`、`Overseas offices` 这类页面。
+
+这说明“找邮箱”不能只围绕 Contact / Privacy / Terms。游戏发行商尤其常把总部商务邮箱、海外分支邮箱和地区发行邮箱放在全球网络或子公司页面里。
+
 ## 标准查找流程
 
 1. 先确认官方域名
@@ -64,6 +91,7 @@
 - About / Company / Corporate Profile
 - Contact / Inquiry
 - Publishing / Submit Your Game / Developer
+- Global Network / Overseas Offices / Subsidiaries / Branches
 - Privacy Policy
 - Terms of Service / Terms and Conditions
 - IR / PR / Press / News
@@ -85,6 +113,10 @@ site:domain.com "publishing"
 site:domain.com "submit your game"
 site:domain.com "developer"
 site:domain.com "partnership"
+site:domain.com "global network"
+site:domain.com "overseas business"
+site:domain.com "subsidiaries"
+site:domain.com "branch office"
 ```
 
 如果静态抓取没有结果，增加“业务标签 + 邮箱域名”的搜索式：
@@ -118,6 +150,9 @@ site:domain.kr "이용약관"
 site:domain.kr "개인정보처리방침"
 site:domain.kr "사업제휴"
 site:domain.kr "퍼블리싱"
+site:domain.kr "글로벌 네트워크"
+site:domain.kr "해외사업"
+site:domain.kr "해외 지사"
 ```
 
 4. 检查隐藏在页面源码里的邮箱
@@ -153,6 +188,11 @@ await browser.close();
 - `/contact`
 - `/ko/contact/`
 - `/about/`
+- `/about/globalnetwork`
+- `/globalnetwork`
+- `/global-network`
+- `/subsidiaries`
+- `/branch`
 - 主页菜单里点击 Contact 后生成的路由
 
 5. 给邮箱做质量分级
@@ -173,6 +213,7 @@ await browser.close();
 
 - `privacy@`、`dpo@`、`security@`
 - `recruit@`、`jobs@`、`career@`
+- `syssupport@`、纯系统支持邮箱
 - 新闻媒体、代理商、论坛、社交平台邮箱
 - 示例邮箱，如 `example@example.com`
 - 个人邮箱，除非来自官方高管介绍页、新闻稿或本人 LinkedIn 明确公开
@@ -223,5 +264,16 @@ Email Type: A/B - business / brand collaboration / marketing
 Email Source URL: https://www.111percent.net/contact/; https://111percent.net/contact/
 Email Note: 官网 Contact 页需浏览器渲染后可见邮箱；BD优先 business@，branding@/marketing@ 作为合作或营销转接，help@/recruit@ 不作为商务首选。
 Recommended Outreach Route: Email business@111percent.net first; ask to forward to publishing, BD, or strategic partnership owner. Use branding@/marketing@ only as a secondary route.
+Confidence: High for email existence and official source; Medium for direct M&A/investment relevance.
+```
+
+## Gravity 可直接落表写法
+
+```text
+Public Contact Email: business@gravity.co.kr; gbg@gravity.co.kr
+Email Type: A/B - headquarters business / overseas business support
+Email Source URL: https://www.gravity.co.kr/en/about/globalnetwork
+Email Note: 官网 Global Network 页需浏览器渲染后可见韩国总部 business@；同页 mailto 公开海外业务支持 gbg@，BD优先 business@。
+Recommended Outreach Route: Email business@gravity.co.kr first; ask to forward to global publishing, BD, or strategic partnership owner. Use gbg@gravity.co.kr as a secondary overseas-business route.
 Confidence: High for email existence and official source; Medium for direct M&A/investment relevance.
 ```
