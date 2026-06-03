@@ -1,0 +1,2744 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>东南亚游戏发行/投资买方外联工作包</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #17212f;
+      --muted: #657386;
+      --line: #dbe1e8;
+      --blue: #2f6fbd;
+      --green: #28785f;
+      --amber: #9a6a12;
+      --red: #b54848;
+      --chip: #eef3f8;
+      --shadow: 0 12px 28px rgba(23, 33, 47, 0.07);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1380px; margin: 0 auto; padding: 32px 24px 56px; }
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+      gap: 20px;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+    .hero, .panel, .card, .source-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .hero { padding: 28px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      margin: 12px 0 10px;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+    .subtitle { color: var(--muted); font-size: 16px; max-width: 850px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 112px;
+    }
+    .stat strong { display: block; font-size: 30px; line-height: 1; margin-bottom: 8px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    .panel { padding: 22px; margin: 18px 0; }
+    .panel h2, .section-title {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfcfd;
+    }
+    .mini b { display: block; margin-bottom: 6px; }
+    .mini p, .panel p { margin: 0; color: var(--muted); }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .tier-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fbfcfd;
+    }
+    .tier-box strong { font-size: 28px; display: block; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      background: var(--chip);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .tier-A { color: var(--green); background: #e8f4ef; }
+    .tier-B { color: var(--amber); background: #fff5df; }
+    .tier-C { color: var(--red); background: #fbeeee; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .card { padding: 16px; min-height: 300px; display: flex; flex-direction: column; gap: 10px; }
+    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .card h3 { margin: 0; font-size: 18px; line-height: 1.2; letter-spacing: 0; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .score { font-weight: 800; font-size: 22px; color: var(--blue); }
+    .works, .deals { display: flex; flex-wrap: wrap; gap: 6px; }
+    .contact {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      margin-top: auto;
+      font-size: 13px;
+    }
+    .contact b { display: block; margin-bottom: 4px; }
+    .controls {
+      display: grid;
+      grid-template-columns: 1.7fr repeat(3, minmax(160px, 0.45fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    input, select, button {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 12px;
+      font: inherit;
+      min-height: 42px;
+    }
+    button {
+      cursor: pointer;
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    button.secondary {
+      background: #fff;
+      color: var(--blue);
+    }
+    .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    table { border-collapse: collapse; width: 100%; min-width: 1520px; }
+    th, td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; font-size: 13px; }
+    th { position: sticky; top: 0; background: #f2f5f8; z-index: 1; color: #334155; font-size: 12px; text-transform: uppercase; }
+    tr:hover td { background: #fbfdff; }
+    .muted { color: var(--muted); }
+    .nowrap { white-space: nowrap; }
+    .source-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .source-card { padding: 14px; box-shadow: none; }
+    .source-card h3 { margin: 0 0 6px; font-size: 15px; }
+    .source-card ol { margin: 0; padding-left: 20px; color: var(--muted); }
+    .templates pre {
+      white-space: pre-wrap;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 16px;
+      overflow: auto;
+      font-size: 13px;
+    }
+    .footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 28px; }
+    @media (max-width: 1100px) {
+      header, .cards, .grid-3, .grid-2, .tier-grid, .source-list { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .wrap { padding: 20px 14px 40px; }
+      .stats, .controls { grid-template-columns: 1fr; }
+      .hero { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <section class="hero">
+        <span class="eyebrow">SEA buyer map · 2026-06-03</span>
+        <h1>东南亚游戏发行 / 投资 / 收购外联工作包</h1>
+        <p class="subtitle">面向一款 Family Island 类移动端 farming-adventure/resource-management 游戏。筛选重点是：SEA 区域发行能力、移动 F2P UA/LiveOps、近期投资/收购信号、与美国测试 CPI/留存数据的匹配度，以及是否存在可执行的公开触达入口。</p>
+      </section>
+      <section class="stats">
+        <div class="stat"><strong>46</strong><span>候选公司 / 路径</span></div>
+        <div class="stat"><strong>10</strong><span>A 级优先外联对象</span></div>
+        <div class="stat"><strong>63</strong><span>平均匹配分 / 100</span></div>
+        <div class="stat"><strong>21</strong><span>有明确公开邮箱或官方邮箱入口</span></div>
+      </section>
+    </header>
+
+    <section class="panel">
+      <h2>执行建议</h2>
+      <div class="grid-3">
+        <div class="mini">
+          <b>第一波：战略买方 + 高 fit 发行</b>
+          <p>Century Games、Amanotes、VNGGames、NCSOFT/Indygo/Lihuhu、iCandy/Storms、Potato Play、Falcon/OneSoft、ABI、Asphere/PlayPark、Funtap。</p>
+        </div>
+        <div class="mini">
+          <b>第二波：区域发行 + 投资网络</b>
+          <p>Gamota/Appota、Garena/Sea、Play Ventures、GTR、IGG、4Divinity/GCL、Megaxus、LYTO、Nuon/Dunia Games。</p>
+        </div>
+        <div class="mini">
+          <b>披露节奏</b>
+          <p>NDA 前只给区间：CPI 档位、留存区间、花费档位、玩法视频、团队/现金流背景。NDA 后再给 exact cohort、ROAS、campaign、build/code/data room。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>评分模型</h2>
+      <div class="tier-grid" id="tierGrid"></div>
+      <div class="grid-2" style="margin-top:14px">
+        <div class="mini"><b>100 分构成</b><p>投资/收购信号 30；产品契合 25；发行/UA/LiveOps 20；战略协同 15；触达可行性 10。</p></div>
+        <div class="mini"><b>优先级定义</b><p>A：立刻外联；B：第二波或特定市场；C：低优先级、转介绍、服务/合作备用。</p></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Top Targets</h2>
+      <div class="cards" id="topCards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Longlist</h2>
+      <div class="controls">
+        <input id="search" placeholder="搜索公司、国家、作品、邮箱、外联角度">
+        <select id="tierFilter"><option value="">全部层级</option><option>A</option><option>B</option><option>C</option></select>
+        <select id="countryFilter"><option value="">全部国家/区域</option></select>
+        <select id="dealFilter"><option value="">全部交易路径</option><option>Acquisition</option><option>Strategic investment</option><option>Publishing</option><option>Co-development</option><option>Referral</option></select>
+      </div>
+      <p class="muted" id="countLine" style="margin:12px 0"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Tier</th>
+              <th>Score</th>
+              <th>Company</th>
+              <th>Country / Market</th>
+              <th>Type / Works</th>
+              <th>Signal</th>
+              <th>Contact</th>
+              <th>Deal Path</th>
+              <th>Angle / Next Step</th>
+              <th>Sources</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel templates">
+      <h2>外联模板</h2>
+      <div class="grid-2">
+        <div>
+          <button class="secondary" data-copy="buyer">复制战略买方邮件</button>
+          <pre id="buyerTemplate">Subject: US-tested farming adventure game - publishing or strategic discussion
+
+Hi {{FirstName}},
+
+I am reaching out from {{Studio}}. We have built a mobile farming-adventure/resource-management game in the neighborhood of Family Island / Family Farm Adventure, and we have completed several US paid test rounds with encouraging CPI and early retention.
+
+We are now looking for a Southeast Asia strategic partner who can evaluate one of three paths: regional/global publishing with UA support, minority investment or bridge financing tied to milestones, or acquisition/asset purchase if the fit is strong.
+
+Before NDA, I can share high-level KPI ranges, creative learnings, short gameplay video, and team/runway context. If the category is relevant for {{Company}}, could we schedule a 30-minute call this week?
+
+Best,
+{{Name}}</pre>
+        </div>
+        <div>
+          <button class="secondary" data-copy="investor">复制投资人邮件</button>
+          <pre id="investorTemplate">Subject: KPI-validated mobile game studio seeking bridge or strategic buyer intros
+
+Hi {{FirstName}},
+
+We are a mobile game studio with a farming-adventure title tested in the US. CPI and retention from several paid test rounds are promising, but our current constraint is cash runway rather than product signal.
+
+We are speaking with SEA publishers and strategic buyers, and would value either an investment conversation or targeted introductions to mobile F2P acquirers/publishers who understand resource-management games.
+
+I can share a short deck, KPI ranges, playable build, and transaction options under NDA.
+
+Best,
+{{Name}}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Source Index</h2>
+      <div class="source-list" id="sourceIndex"></div>
+    </section>
+
+    <p class="footer">Generated 2026-06-03. Contact data uses official pages, IR pages, company-owned forms, or clearly marked fallback/support routes. Re-verify contacts before sending exact financials or build access.</p>
+  </div>
+
+  <script>
+    const DATA = [
+  {
+    "rank": 1,
+    "company": "Century Games",
+    "country": "Singapore / China",
+    "market": "Singapore hub, global",
+    "website": "https://www.centurygames.com/",
+    "type": "Global mobile F2P developer / publisher",
+    "works": [
+      "Family Farm Adventure",
+      "Family Farm Seaside",
+      "Whiteout Survival"
+    ],
+    "scale": "Official contact page lists Century Games Pte. Ltd. in Singapore, ACRA registration and company contact email.",
+    "signal": "Owns the closest direct comp, Family Farm Adventure, plus mature global mobile F2P publishing and live-ops muscle.",
+    "scores": {
+      "ma": 22,
+      "fit": 25,
+      "ua": 20,
+      "synergy": 15,
+      "reach": 9
+    },
+    "dealTypes": [
+      "Strategic acquisition",
+      "Publishing + option",
+      "Minority investment"
+    ],
+    "contactEmail": "contact_us@centurygame.com",
+    "contactNote": "Official company contact email; use product/corp-dev subject, not privacy email.",
+    "contactUrl": "https://www.centurygames.com/contact-us/",
+    "angle": "Lead with direct genre adjacency: farming-adventure US test KPIs, content cadence, and why the asset extends their Family Farm audience.",
+    "nextStep": "Wave 1: send teaser + metric ranges; ask for corp-dev/product-publishing review under NDA.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Century Games contact",
+        "https://www.centurygames.com/contact-us/"
+      ],
+      [
+        "Century Games official site",
+        "https://www.centurygames.com/"
+      ],
+      [
+        "Century Games games",
+        "https://www.centurygames.com/games/"
+      ]
+    ],
+    "score": 91,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 22 / 产品契合 25 / 发行/UA/LiveOps 20 / 战略协同 15 / 触达可行性 9"
+  },
+  {
+    "rank": 2,
+    "company": "iCandy Interactive Group",
+    "country": "Australia / Singapore / Malaysia / Indonesia",
+    "market": "ANZ + SEA",
+    "website": "https://www.icandy.io/",
+    "type": "Game and animation studio group / strategic consolidator",
+    "works": [
+      "Appxplore portfolio",
+      "Storms",
+      "Lemon Sky Studios",
+      "Froyo-linked portfolio"
+    ],
+    "scale": "Official site describes one of the largest game and animation studio groups in ANZ and SEA with audience above 500M users globally.",
+    "signal": "Documented acquisition history: Storms, Lemon Sky and other studios; clear investor and general inquiry emails.",
+    "scores": {
+      "ma": 27,
+      "fit": 18,
+      "ua": 18,
+      "synergy": 14,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Acquisition",
+      "Strategic investment",
+      "Publishing partnership"
+    ],
+    "contactEmail": "info@icandy.io; ir@icandy.io",
+    "contactNote": "Use info@ for BD and ir@ for investment/corp-dev angle.",
+    "contactUrl": "https://www.icandy.io/",
+    "angle": "Pitch as a KPI-validated mobile game asset that fits iCandy's mobile lineage and SEA consolidation history.",
+    "nextStep": "Wave 1: email iCandy and also Storms partnership team; attach one-page KPI teaser.",
+    "confidence": "High",
+    "sources": [
+      [
+        "iCandy official site",
+        "https://www.icandy.io/"
+      ],
+      [
+        "iCandy investor center",
+        "https://www.icandy.io/investor-center/"
+      ],
+      [
+        "iCandy completes Storms acquisition",
+        "https://www.icandy.io/project/icandy-completes-storms-acquisition-positions-itself-in-the-centre-of-gaming-metaverse-and-nfts/"
+      ],
+      [
+        "PocketGamer Lemon Sky acquisition",
+        "https://www.pocketgamer.biz/icandy-acquires-lemon-sky-studios-to-make-high-quality-metaverse-games/"
+      ]
+    ],
+    "score": 87,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 27 / 产品契合 18 / 发行/UA/LiveOps 18 / 战略协同 14 / 触达可行性 10"
+  },
+  {
+    "rank": 3,
+    "company": "Amanotes",
+    "country": "Singapore / Vietnam",
+    "market": "SEA-origin, global mobile",
+    "website": "https://www.amanotes.com/",
+    "type": "Mobile casual publisher / studio group",
+    "works": [
+      "Magic Tiles 3",
+      "Tiles Hop",
+      "Duet Cats"
+    ],
+    "scale": "Official site states 3.5B+ downloads, 70M+ MAU and Top 1 publisher from Southeast Asia.",
+    "signal": "Large SEA-origin mobile publisher with casual user acquisition, global hit-making and public company-level contact.",
+    "scores": {
+      "ma": 21,
+      "fit": 20,
+      "ua": 20,
+      "synergy": 15,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Strategic investment",
+      "Publishing",
+      "Acquisition discussion"
+    ],
+    "contactEmail": "hello@amanotes.com",
+    "contactNote": "Official Singapore office email.",
+    "contactUrl": "https://www.amanotes.com/",
+    "angle": "Position as a broader casual-adventure asset with proven US CPI/retention that can diversify beyond music games while using Amanotes UA/data stack.",
+    "nextStep": "Wave 1: send founder note to hello@ and parallel LinkedIn to BD/product leadership.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Amanotes official site",
+        "https://www.amanotes.com/"
+      ],
+      [
+        "Amanotes products",
+        "https://www.amanotes.com/products"
+      ],
+      [
+        "Amanotes careers",
+        "https://www.careers.amanotes.com/"
+      ]
+    ],
+    "score": 86,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 21 / 产品契合 20 / 发行/UA/LiveOps 20 / 战略协同 15 / 触达可行性 10"
+  },
+  {
+    "rank": 4,
+    "company": "NCSOFT / Indygo Group / Lihuhu route",
+    "country": "Singapore / Vietnam / Korea",
+    "market": "Singapore holding, Vietnam casual studio, global",
+    "website": "https://www.ncsoft.com/en-us",
+    "type": "Strategic acquirer with SEA casual-mobile hub",
+    "works": [
+      "Lihuhu casual puzzle portfolio",
+      "Lineage mobile titles",
+      "Guild Wars franchise"
+    ],
+    "scale": "Press reports say NCSOFT agreed to acquire 67% of Singapore-based Indygo Group, owner of Vietnam casual studio Lihuhu.",
+    "signal": "Fresh acquisition signal specifically targeting casual mobile expansion in Vietnam and Asia.",
+    "scores": {
+      "ma": 29,
+      "fit": 17,
+      "ua": 18,
+      "synergy": 14,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Acquisition",
+      "Strategic investment",
+      "Portfolio add-on"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Route through NCSOFT corporate/IR and seek intro to mobile casual center or Indygo/Lihuhu leadership.",
+    "contactUrl": "https://kr.ncsoft.com/en/ir/irArchive/announcement.do",
+    "angle": "Frame as a casual-adventure add-on aligned with their 2025-2026 pivot into mobile casual and Vietnam/Singapore hub strategy.",
+    "nextStep": "Wave 1: target corp-dev/IR plus LinkedIn to NCSOFT casual/mobile leadership; prioritize warm intro.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "PocketGamer.biz acquisition report",
+        "https://www.pocketgamer.biz/ncsoft-acquires-majority-stake-in-singapores-indygo-group-for-1038m/"
+      ],
+      [
+        "Korea Biz Daily acquisition report",
+        "https://www.koreabizdaily.com/en-us/articles/854288"
+      ],
+      [
+        "NCSOFT IR announcements",
+        "https://kr.ncsoft.com/en/ir/irArchive/announcement.do"
+      ]
+    ],
+    "score": 83,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 29 / 产品契合 17 / 发行/UA/LiveOps 18 / 战略协同 14 / 触达可行性 5"
+  },
+  {
+    "rank": 5,
+    "company": "VNGGames / VNG Corporation",
+    "country": "Vietnam",
+    "market": "Vietnam, SEA expansion",
+    "website": "https://vnggames.com/vn/en",
+    "type": "Major game publisher / platform company",
+    "works": [
+      "ZingPlay",
+      "Roblox Vietnam publishing",
+      "Riot titles in Vietnam"
+    ],
+    "scale": "VNGGames describes itself as a leading Vietnam game publisher expanding internationally; LinkedIn shows 1,001-5,000 employees.",
+    "signal": "Vietnam's strongest local publishing platform and a credible acquirer/investor route through VNG Corp.",
+    "scores": {
+      "ma": 20,
+      "fit": 19,
+      "ua": 20,
+      "synergy": 15,
+      "reach": 8
+    },
+    "dealTypes": [
+      "Vietnam/SEA publishing",
+      "Strategic investment",
+      "Acquisition route"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official partner page/contact form; avoid customer support tickets.",
+    "contactUrl": "https://vnggames.com/vn/en/partner",
+    "angle": "Pitch as a Western-tested resource-management adventure that VNG can operate regionally and evaluate as a strategic mobile asset.",
+    "nextStep": "Wave 1: submit via partner page; seek warm intro to VNGGames BD or VNG Corp investment team.",
+    "confidence": "High",
+    "sources": [
+      [
+        "VNGGames partner page",
+        "https://vnggames.com/vn/en/partner"
+      ],
+      [
+        "VNG corporate site",
+        "https://vng.com.vn/index.html?lang=en"
+      ],
+      [
+        "VNGGames LinkedIn",
+        "https://www.linkedin.com/company/vnggames-brand"
+      ]
+    ],
+    "score": 82,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 20 / 产品契合 19 / 发行/UA/LiveOps 20 / 战略协同 15 / 触达可行性 8"
+  },
+  {
+    "rank": 6,
+    "company": "Potato Play",
+    "country": "Singapore / China",
+    "market": "Global mobile casual",
+    "website": "https://www.potatoplay.com/",
+    "type": "Mobile games publisher",
+    "works": [
+      "Merge Restaurant",
+      "Merge Friends",
+      "Cluck Avengers"
+    ],
+    "scale": "Official site says Singapore-based publisher turning mobile games from Asia into worldwide hits and 27M+ downloads.",
+    "signal": "Direct genre fit through merge and rebuild games; hands-on data-driven mobile publishing.",
+    "scores": {
+      "ma": 17,
+      "fit": 24,
+      "ua": 20,
+      "synergy": 15,
+      "reach": 6
+    },
+    "dealTypes": [
+      "Publishing",
+      "Co-development",
+      "Revenue-share with option"
+    ],
+    "contactEmail": "support@potatoplay.com",
+    "contactNote": "Only public email found is support; use official connect route and ask to forward to publishing/BD.",
+    "contactUrl": "https://www.potatoplay.com/",
+    "angle": "Lead with merge/resource-management overlap and US UA/retention proof; ask whether they review broader farm-adventure titles.",
+    "nextStep": "Wave 1: contact via site/email, then LinkedIn founders/publishing team.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Potato Play official site",
+        "https://www.potatoplay.com/"
+      ],
+      [
+        "Potato Play games",
+        "https://www.potatoplay.com/"
+      ],
+      [
+        "Play Ventures portfolio mentioning Potatoplay",
+        "https://www.play.vc/portfolio-2025"
+      ]
+    ],
+    "score": 82,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 17 / 产品契合 24 / 发行/UA/LiveOps 20 / 战略协同 15 / 触达可行性 6"
+  },
+  {
+    "rank": 7,
+    "company": "Falcon Game Studio / OneSoft",
+    "country": "Vietnam",
+    "market": "Global mobile F2P",
+    "website": "https://www.falcongames.com/",
+    "type": "Mobile game developer / publisher",
+    "works": [
+      "1945 Air Force",
+      "Galaxy Attack adjacent OneSoft portfolio",
+      "Hyper-casual and shooter portfolio"
+    ],
+    "scale": "Falcon states 150+ staff, 10+ titles, 3B+ downloads and 500+ games launched.",
+    "signal": "Massive UA/publishing capability in Vietnam's global mobile ecosystem; relevant for KPI-driven deal talks.",
+    "scores": {
+      "ma": 18,
+      "fit": 18,
+      "ua": 20,
+      "synergy": 14,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Publishing",
+      "Strategic investment",
+      "Acquisition discussion"
+    ],
+    "contactEmail": "contact@falcongames.com",
+    "contactNote": "Official contact page email.",
+    "contactUrl": "https://falcongames.com/contact/",
+    "angle": "Position as a Western-tested casual-adventure product that can benefit from OneSoft/Falcon's global UA scale.",
+    "nextStep": "Wave 1: email contact@ with KPI teaser and request publishing/investment owner.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Falcon about",
+        "https://www.falcongames.com/about/"
+      ],
+      [
+        "Falcon contact",
+        "https://falcongames.com/contact/"
+      ],
+      [
+        "OneSoft official site",
+        "https://onesoft.digital/"
+      ]
+    ],
+    "score": 80,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 18 / 产品契合 18 / 发行/UA/LiveOps 20 / 战略协同 14 / 触达可行性 10"
+  },
+  {
+    "rank": 8,
+    "company": "Asphere Innovations / PlayPark",
+    "country": "Thailand / Singapore / SEA",
+    "market": "Thailand, Singapore, Malaysia, Philippines, Vietnam, Indonesia",
+    "website": "https://asphere.co/en/online-games/",
+    "type": "Regional online and mobile game publisher",
+    "works": [
+      "PlayPark portfolio",
+      "MMORPG/casual/SRPG/FPS/MOBA services"
+    ],
+    "scale": "Asphere states 20+ years, 180M+ registered IDs, 160+ games and 350+ SEA staff.",
+    "signal": "One of the clearest SEA regional publishing partners, with public BD and IR email.",
+    "scores": {
+      "ma": 18,
+      "fit": 17,
+      "ua": 20,
+      "synergy": 15,
+      "reach": 10
+    },
+    "dealTypes": [
+      "SEA publishing",
+      "Strategic investment",
+      "Local operating partnership"
+    ],
+    "contactEmail": "business@asphere.co; ir@asphere.co",
+    "contactNote": "Official BD and IR contacts listed for Asphere/PlayPark entities.",
+    "contactUrl": "https://asphere.co/en/contact/",
+    "angle": "Pitch regional publishing/localization plus possible investment after US KPI diligence.",
+    "nextStep": "Wave 1: email business@asphere.co; CC IR only if explicitly proposing investment/acquisition.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Asphere online games",
+        "https://asphere.co/en/online-games/"
+      ],
+      [
+        "Asphere contact",
+        "https://asphere.co/en/contact/"
+      ],
+      [
+        "Asphere company profile",
+        "https://investor.asphere.co/en/company-profile/general-information"
+      ]
+    ],
+    "score": 80,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 18 / 产品契合 17 / 发行/UA/LiveOps 20 / 战略协同 15 / 触达可行性 10"
+  },
+  {
+    "rank": 9,
+    "company": "Funtap",
+    "country": "Vietnam",
+    "market": "Vietnam, global mobile",
+    "website": "https://corp.funtap.vn/en",
+    "type": "Mobile game publisher",
+    "works": [
+      "Vietnam mobile publishing portfolio",
+      "Funverse ecosystem"
+    ],
+    "scale": "Official site says Funtap is one of Vietnam's leading mobile game publishers, reaching 50M+ players worldwide.",
+    "signal": "Reported Series A investment led by Makers Fund; explicit business contact.",
+    "scores": {
+      "ma": 22,
+      "fit": 17,
+      "ua": 18,
+      "synergy": 13,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Publishing",
+      "Strategic investment",
+      "Vietnam market entry"
+    ],
+    "contactEmail": "biz@funtap.vn",
+    "contactNote": "Official business contact.",
+    "contactUrl": "https://corp.funtap.vn/en",
+    "angle": "Lead with Vietnam/SEA operating route plus optional investment; keep US KPIs concise and ask for publishing/investment review.",
+    "nextStep": "Wave 1: email biz@funtap.vn with deck and NDA-ready metrics.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Funtap official site",
+        "https://corp.funtap.vn/en"
+      ],
+      [
+        "Funtap about",
+        "https://corp.funtap.vn/en/about-us"
+      ],
+      [
+        "Dealroom Funtap",
+        "https://app.dealroom.co/companies/funtap"
+      ]
+    ],
+    "score": 80,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 22 / 产品契合 17 / 发行/UA/LiveOps 18 / 战略协同 13 / 触达可行性 10"
+  },
+  {
+    "rank": 10,
+    "company": "ABI Game Studio / Onesoft",
+    "country": "Vietnam",
+    "market": "Global mobile F2P",
+    "website": "https://abigames.com.vn/",
+    "type": "Mobile games publisher / studio",
+    "works": [
+      "Wood Nuts & Bolts Puzzle",
+      "Galaxy Attack",
+      "Satisdom",
+      "Super Ball Adventure"
+    ],
+    "scale": "Official site says 100+ employees, 150+ published titles and multiple games ranked top 1 in the US.",
+    "signal": "Very strong US-market KPI literacy and mobile publishing machinery; less obvious M&A signal than iCandy/NCSOFT.",
+    "scores": {
+      "ma": 16,
+      "fit": 20,
+      "ua": 20,
+      "synergy": 14,
+      "reach": 8
+    },
+    "dealTypes": [
+      "Publishing",
+      "Co-development",
+      "Strategic investment"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official Submit your game / contact flow; avoid third-party lead databases.",
+    "contactUrl": "https://abigames.com.vn/",
+    "angle": "Stress US test performance and retention benchmark; ABI already evaluates charting mobile titles.",
+    "nextStep": "Wave 1: submit build/video and KPI one-pager via official publishing entry.",
+    "confidence": "High",
+    "sources": [
+      [
+        "ABI official site",
+        "https://abigames.com.vn/"
+      ],
+      [
+        "Digital Turbine publisher spotlight",
+        "https://www.digitalturbine.com/blog/publisher-spotlight-abi-game-studio"
+      ],
+      [
+        "OneSoft official site",
+        "https://onesoft.digital/"
+      ]
+    ],
+    "score": 78,
+    "tier": "A",
+    "scoreBreakdown": "投资/收购信号 16 / 产品契合 20 / 发行/UA/LiveOps 20 / 战略协同 14 / 触达可行性 8"
+  },
+  {
+    "rank": 11,
+    "company": "Storms",
+    "country": "Singapore",
+    "market": "SEA mobile/social games",
+    "website": "https://storms.com/about-us/",
+    "type": "Mobile/social games publisher and advisory studio",
+    "works": [
+      "Lightning Storm",
+      "Casual mobile and instant games",
+      "Game advisory"
+    ],
+    "scale": "Official about page lists Singapore base and partnership contact; LinkedIn says invested in by iCandy, AIS and SK Telecom.",
+    "signal": "Clear partnership email and iCandy parent route; practical entry point for SEA social/casual distribution.",
+    "scores": {
+      "ma": 18,
+      "fit": 18,
+      "ua": 17,
+      "synergy": 14,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Publishing",
+      "Partnership",
+      "iCandy acquisition referral"
+    ],
+    "contactEmail": "partnership@storms.com",
+    "contactNote": "Official partnership email.",
+    "contactUrl": "https://storms.com/about-us/",
+    "angle": "Ask whether Storms/iCandy would evaluate a Family Island-like product as a publishing or strategic asset.",
+    "nextStep": "Wave 1: email partnership@storms.com and mirror to iCandy info@.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Storms official about",
+        "https://storms.com/about-us/"
+      ],
+      [
+        "Storms LinkedIn",
+        "https://sg.linkedin.com/company/storms"
+      ],
+      [
+        "iCandy Storms acquisition",
+        "https://www.icandy.io/project/icandy-completes-storms-acquisition-positions-itself-in-the-centre-of-gaming-metaverse-and-nfts/"
+      ]
+    ],
+    "score": 77,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 18 / 产品契合 18 / 发行/UA/LiveOps 17 / 战略协同 14 / 触达可行性 10"
+  },
+  {
+    "rank": 12,
+    "company": "Play Ventures",
+    "country": "Singapore / Finland",
+    "market": "Global gaming VC",
+    "website": "https://www.play.vc/",
+    "type": "Gaming VC / investor",
+    "works": [
+      "Portfolio includes mobile studios and gaming infrastructure",
+      "Fund II $135M"
+    ],
+    "scale": "Official site calls Play Ventures a leading gaming and consumer apps VC investing globally.",
+    "signal": "Best investor route in Singapore for funding bridge or buyer-intro process; not a publisher/acquirer by default.",
+    "scores": {
+      "ma": 20,
+      "fit": 15,
+      "ua": 15,
+      "synergy": 14,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Seed/bridge investment",
+      "Investor intro",
+      "Strategic financing"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official Apply for Funding; women@play.vc is diversity contact, not BD.",
+    "contactUrl": "https://www.play.vc/contact",
+    "angle": "Frame as a distressed but KPI-validated mobile studio asset: small round or structured investment to preserve upside.",
+    "nextStep": "Wave 1 investor lane: submit funding application; request warm intros to portfolio publishers.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Play Ventures official site",
+        "https://www.play.vc/"
+      ],
+      [
+        "Play Ventures contact",
+        "https://www.play.vc/contact"
+      ],
+      [
+        "Play Ventures portfolio",
+        "https://www.play.vc/portfolio-2025"
+      ]
+    ],
+    "score": 74,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 20 / 产品契合 15 / 发行/UA/LiveOps 15 / 战略协同 14 / 触达可行性 10"
+  },
+  {
+    "rank": 13,
+    "company": "Global Top Round (GTR)",
+    "country": "Singapore / global",
+    "market": "Global indie and publisher network",
+    "website": "https://www.globaltopround.com/",
+    "type": "Game accelerator / funding and publisher-network platform",
+    "works": [
+      "Annual accelerator cohorts",
+      "Global publisher exposure",
+      "Fundraising support"
+    ],
+    "scale": "Official site says GTR selects up to 10 games annually and provides funding, publishing expertise, fundraising help and publisher exposure.",
+    "signal": "Strong network path if direct M&A outreach stalls; not a classic acquirer.",
+    "scores": {
+      "ma": 18,
+      "fit": 16,
+      "ua": 14,
+      "synergy": 15,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Funding",
+      "Publisher matching",
+      "Acceleration"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official batch application/contact route.",
+    "contactUrl": "https://www.globaltopround.com/",
+    "angle": "Use US KPI traction to request accelerated publisher/investor matching rather than generic cohort timing.",
+    "nextStep": "Wave 1 investor/network lane: submit pitch and ask for emergency bridge/buyer intros.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Global Top Round official site",
+        "https://www.globaltopround.com/"
+      ],
+      [
+        "GTR application listing",
+        "https://www.sparkxyz.io/applications/1774"
+      ],
+      [
+        "GTR accelerator profile",
+        "https://prodevs.io/accelerators/global-top-round"
+      ]
+    ],
+    "score": 73,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 18 / 产品契合 16 / 发行/UA/LiveOps 14 / 战略协同 15 / 触达可行性 10"
+  },
+  {
+    "rank": 14,
+    "company": "Gamota / Appota Group",
+    "country": "Vietnam",
+    "market": "Vietnam",
+    "website": "https://gamota.com/",
+    "type": "Mobile game publisher ecosystem",
+    "works": [
+      "100+ published mobile titles",
+      "Vietnam mobile publishing services"
+    ],
+    "scale": "LinkedIn page states Gamota is a top-three Vietnam mobile game publisher with 15M+ players and 100+ titles.",
+    "signal": "Strong local publishing and market-entry route; strategic buyer signal is moderate.",
+    "scores": {
+      "ma": 14,
+      "fit": 17,
+      "ua": 19,
+      "synergy": 14,
+      "reach": 8
+    },
+    "dealTypes": [
+      "Vietnam publishing",
+      "Co-publishing",
+      "Strategic investment"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use Appota/Gamota official Contact Us; confirm BD owner before sending sensitive KPIs.",
+    "contactUrl": "https://appota.com/",
+    "angle": "Pitch Vietnam market operation plus broader SEA data-sharing option.",
+    "nextStep": "Wave 2: contact Appota Group, then LinkedIn to Gamota BD/publishing team.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Appota official site",
+        "https://appota.com/"
+      ],
+      [
+        "Gamota LinkedIn",
+        "https://www.linkedin.com/company/gamota"
+      ],
+      [
+        "Gamota website",
+        "https://gamota.com/"
+      ]
+    ],
+    "score": 72,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 14 / 产品契合 17 / 发行/UA/LiveOps 19 / 战略协同 14 / 触达可行性 8"
+  },
+  {
+    "rank": 15,
+    "company": "IGG",
+    "country": "Singapore / global",
+    "market": "Global mobile",
+    "website": "https://www.igg.com/",
+    "type": "Public mobile game developer/operator",
+    "works": [
+      "Lords Mobile",
+      "Castle Clash",
+      "Doomsday: Last Survivors"
+    ],
+    "scale": "IGG IR describes a leading global developer/operator of mobile games with HQ in Singapore and offices across many regions.",
+    "signal": "Large balance sheet and global operations; fit is weaker unless the game has strong monetization and live-ops potential.",
+    "scores": {
+      "ma": 16,
+      "fit": 14,
+      "ua": 20,
+      "synergy": 14,
+      "reach": 7
+    },
+    "dealTypes": [
+      "Publishing",
+      "Strategic investment",
+      "Acquisition inquiry"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use investor/corporate contact routes; verify current BD owner before sending detailed build.",
+    "contactUrl": "https://investor.igg.com/index.php?lang=1",
+    "angle": "Position as a live-ops mobile asset with US-tested retention, not as a casual-only pitch.",
+    "nextStep": "Wave 2: corporate/IR inquiry with one-page metrics and ask for mobile investment/publishing review.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "IGG investor relations",
+        "https://investor.igg.com/index.php?lang=1"
+      ],
+      [
+        "IGG official site",
+        "https://www.igg.com/"
+      ],
+      [
+        "Forbes IGG profile",
+        "https://www.forbes.com/companies/igg/"
+      ]
+    ],
+    "score": 71,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 16 / 产品契合 14 / 发行/UA/LiveOps 20 / 战略协同 14 / 触达可行性 7"
+  },
+  {
+    "rank": 16,
+    "company": "4Divinity / GCL Global Holdings",
+    "country": "Singapore / Hong Kong",
+    "market": "Asia, global",
+    "website": "https://www.4divinity.com/",
+    "type": "Publishing subsidiary / public holding company",
+    "works": [
+      "S.T.A.L.K.E.R. 2 regional publishing",
+      "Asian game publishing and distribution"
+    ],
+    "scale": "GCL says 4Divinity operates from Singapore and Hong Kong and supports PC, console and mobile publishing.",
+    "signal": "Direct publishing enquiry email and 2026 strategic investment news at GCL.",
+    "scores": {
+      "ma": 19,
+      "fit": 12,
+      "ua": 16,
+      "synergy": 14,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Publishing",
+      "Strategic investment",
+      "Asia distribution"
+    ],
+    "contactEmail": "publish@4divinity.asia",
+    "contactNote": "Official publishing enquiries email.",
+    "contactUrl": "https://www.4divinity.com/contact-us",
+    "angle": "Use as secondary publishing/investment route; emphasize mobile is supported, but expect stronger fit for PC/console unless strategic appetite broadens.",
+    "nextStep": "Wave 2: email publish@; ask whether mobile F2P asset is in current mandate.",
+    "confidence": "High",
+    "sources": [
+      [
+        "4Divinity contact",
+        "https://www.4divinity.com/contact-us"
+      ],
+      [
+        "GCL 4Divinity page",
+        "https://www.gclglobalholdings.com/4divinity"
+      ],
+      [
+        "GCL news releases",
+        "https://ir.gclglobalholdings.com/news-events/news-releases"
+      ]
+    ],
+    "score": 71,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 19 / 产品契合 12 / 发行/UA/LiveOps 16 / 战略协同 14 / 触达可行性 10"
+  },
+  {
+    "rank": 17,
+    "company": "Megaxus",
+    "country": "Indonesia",
+    "market": "Indonesia, SEA",
+    "website": "https://corporate.megaxus.com/id/",
+    "type": "Game publisher / developer",
+    "works": [
+      "Audition AyoDance",
+      "Lineage II Indonesia",
+      "Fatal Raid: SEA Invasion"
+    ],
+    "scale": "Official corporate page states 16+ years, 25M users and 27 games published.",
+    "signal": "Clear Indonesian publishing partner with BD and IR emails; acquirer capability uncertain.",
+    "scores": {
+      "ma": 14,
+      "fit": 15,
+      "ua": 17,
+      "synergy": 14,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Indonesia publishing",
+      "SEA co-publishing",
+      "Strategic partnership"
+    ],
+    "contactEmail": "business@megaxus.com; investor@megaxus.com",
+    "contactNote": "Official business and IR contacts.",
+    "contactUrl": "https://corporate.megaxus.com/id/ir-contact",
+    "angle": "Pitch Indonesia and SEA publishing first; keep acquisition ask as optional if they want full asset control.",
+    "nextStep": "Wave 2: email business@; use investor@ only for investment/acquisition path.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Megaxus corporate",
+        "https://corporate.megaxus.com/id/"
+      ],
+      [
+        "Megaxus IR contact",
+        "https://corporate.megaxus.com/id/ir-contact"
+      ],
+      [
+        "Megaxus site pages",
+        "https://corporate.megaxus.com/id/sitePages"
+      ]
+    ],
+    "score": 70,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 14 / 产品契合 15 / 发行/UA/LiveOps 17 / 战略协同 14 / 触达可行性 10"
+  },
+  {
+    "rank": 18,
+    "company": "Garena / Sea Limited",
+    "country": "Singapore",
+    "market": "Global, SEA",
+    "website": "https://www.garena.sg/?lang=en-gb",
+    "type": "Major online/mobile game developer and publisher",
+    "works": [
+      "Free Fire",
+      "Call of Duty Mobile SEA",
+      "Arena of Valor regional publishing"
+    ],
+    "scale": "Garena says it is a leading online games developer and publisher with global footprint across 160+ markets; part of Sea Limited.",
+    "signal": "Huge platform but likely selective; acquisition intent for small casual farming titles is uncertain.",
+    "scores": {
+      "ma": 16,
+      "fit": 12,
+      "ua": 20,
+      "synergy": 15,
+      "reach": 6
+    },
+    "dealTypes": [
+      "Strategic publishing",
+      "Minority investment",
+      "SEA operating partnership"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Route via Sea corporate/IR or warm intro; generic consumer channels are not useful.",
+    "contactUrl": "https://www.sea.com/investor/home",
+    "angle": "Only approach with a sharp business case: tested US retention, scalable UA economics and SEA/social operation potential.",
+    "nextStep": "Wave 2: prioritize warm intro; otherwise send to Sea IR/corporate contact and request Garena BD routing.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Garena official site",
+        "https://www.garena.sg/?lang=en-gb"
+      ],
+      [
+        "Sea investor site",
+        "https://www.sea.com/investor/home"
+      ],
+      [
+        "Sea products: Garena",
+        "https://www.sea.com/products/garena"
+      ]
+    ],
+    "score": 69,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 16 / 产品契合 12 / 发行/UA/LiveOps 20 / 战略协同 15 / 触达可行性 6"
+  },
+  {
+    "rank": 19,
+    "company": "LYTO",
+    "country": "Indonesia",
+    "market": "Indonesia, SEA",
+    "website": "https://www.lyto.net/",
+    "type": "Online game publisher / entertainment group",
+    "works": [
+      "Ragnarok Online Indonesia",
+      "Perfect World",
+      "Atlantica Online",
+      "Pamali film/game ecosystem"
+    ],
+    "scale": "Official site describes LYTO as a pioneer SEA online game publisher with 300+ employees and 50M+ global users under LYTOGAME.",
+    "signal": "Strong local publishing history and explicit game partnership contact, though email is obfuscated on site.",
+    "scores": {
+      "ma": 13,
+      "fit": 14,
+      "ua": 17,
+      "synergy": 14,
+      "reach": 7
+    },
+    "dealTypes": [
+      "Indonesia publishing",
+      "Licensing",
+      "Strategic partnership"
+    ],
+    "contactEmail": "Email shown on official site as protected/obfuscated",
+    "contactNote": "Use LYTO contact page game partnership route; do not rely on scraped email copies.",
+    "contactUrl": "https://www.lyto.net/",
+    "angle": "Pitch Indonesian publishing/localization and community operation; acquisition is a secondary ask.",
+    "nextStep": "Wave 2: contact Game Partnership via official site and follow up by LinkedIn.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "LYTO official site",
+        "https://www.lyto.net/"
+      ],
+      [
+        "LYTO game portal",
+        "https://www.lytogame.com/"
+      ],
+      [
+        "ANTARA Alibaba Cloud partnership",
+        "https://en.antaranews.com/news/136860/lyto-game-team-up-with-alibaba-cloud-indonesia"
+      ]
+    ],
+    "score": 65,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 13 / 产品契合 14 / 发行/UA/LiveOps 17 / 战略协同 14 / 触达可行性 7"
+  },
+  {
+    "rank": 20,
+    "company": "Agate",
+    "country": "Indonesia",
+    "market": "Indonesia, global services",
+    "website": "https://agate.id/",
+    "type": "Game developer, co-dev, UA/live-ops services",
+    "works": [
+      "Valthirian Arc",
+      "Riftstorm",
+      "Code Atma"
+    ],
+    "scale": "Official site says Agate is a leading Indonesian game company with 200+ clients, 250+ games and UA/live-op services.",
+    "signal": "Useful strategic operator/co-dev partner; not primarily a publisher buyer, but has Qeon investment relationship.",
+    "scores": {
+      "ma": 12,
+      "fit": 14,
+      "ua": 16,
+      "synergy": 14,
+      "reach": 9
+    },
+    "dealTypes": [
+      "Co-development",
+      "Indonesia/SEA operation",
+      "Strategic partnership"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Official contact page includes Business Development form.",
+    "contactUrl": "https://agate.id/contact/",
+    "angle": "Ask for co-dev/live-ops support or investor intro if they are not the right buyer.",
+    "nextStep": "Wave 3: contact BD form; route via Qeon if pursuing investment discussion.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Agate official site",
+        "https://agate.id/"
+      ],
+      [
+        "Agate contact",
+        "https://agate.id/contact/"
+      ],
+      [
+        "Agate about",
+        "https://agate.id/about-us/"
+      ],
+      [
+        "Qeon Agate investment page",
+        "https://www.qeon.com/business/agate"
+      ]
+    ],
+    "score": 65,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 12 / 产品契合 14 / 发行/UA/LiveOps 16 / 战略协同 14 / 触达可行性 9"
+  },
+  {
+    "rank": 21,
+    "company": "VTC / VTC Mobile / VTC Intecom",
+    "country": "Vietnam",
+    "market": "Vietnam",
+    "website": "https://vtc.org.vn/",
+    "type": "Vietnam digital content and game publisher group",
+    "works": [
+      "Audition",
+      "Cross Fire Vietnam",
+      "Yulgang Origins",
+      "Football Pro VTC"
+    ],
+    "scale": "VTC corporate site identifies games, esports and digital content as core areas; 2025 release highlights Best Game Publisher award.",
+    "signal": "Major Vietnam publishing group; contact is corporate, not necessarily BD-specific.",
+    "scores": {
+      "ma": 13,
+      "fit": 13,
+      "ua": 17,
+      "synergy": 14,
+      "reach": 8
+    },
+    "dealTypes": [
+      "Vietnam publishing",
+      "Local operation",
+      "Strategic partnership"
+    ],
+    "contactEmail": "vtcfamily@vtc.vn",
+    "contactNote": "Corporate contact email; ask for VTC Mobile/VTC Intecom game publishing team.",
+    "contactUrl": "https://vtc.org.vn/",
+    "angle": "Pitch Vietnam publishing plus regulatory/local operation support; acquisition as optional path.",
+    "nextStep": "Wave 3: send corporate inquiry and seek direct VTC Mobile publishing contact.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "VTC corporate site",
+        "https://vtc.org.vn/"
+      ],
+      [
+        "GlobeNewswire VTC award",
+        "https://www.globenewswire.com/news-release/2025/11/26/3194947/0/en/VTC-Rises-Game-Publisher-Secures-Industry-Icon-with-Major-Awards.html"
+      ],
+      [
+        "VTC corporate profile PDF",
+        "https://vtc.org.vn/media/files/ProfileVTC_2012_2022%20%28E%29_view.pdf"
+      ]
+    ],
+    "score": 65,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 13 / 产品契合 13 / 发行/UA/LiveOps 17 / 战略协同 14 / 触达可行性 8"
+  },
+  {
+    "rank": 22,
+    "company": "GameIndy",
+    "country": "Thailand",
+    "market": "Thailand, SEA ambitions",
+    "website": "https://www.gameindy.com/",
+    "type": "Game publisher / UA / live-ops services",
+    "works": [
+      "ASURA",
+      "LineMaze",
+      "Thai co-publishing services"
+    ],
+    "scale": "Official site states 10M+ downloads, 7M registered IDs and 500K+ MAU.",
+    "signal": "Strong Thai UA/localization/live-ops partner; likely smaller acquisition capacity.",
+    "scores": {
+      "ma": 10,
+      "fit": 15,
+      "ua": 17,
+      "synergy": 14,
+      "reach": 7
+    },
+    "dealTypes": [
+      "Thailand publishing",
+      "Co-publishing",
+      "Live-ops services"
+    ],
+    "contactEmail": "Email shown as image on official site",
+    "contactNote": "Use official contact section; email is not text-extractable.",
+    "contactUrl": "https://www.gameindy.com/",
+    "angle": "Lead with Thailand/SEA co-publishing and local UA, not outright sale.",
+    "nextStep": "Wave 3: contact via official section and executives' LinkedIn if available.",
+    "confidence": "High",
+    "sources": [
+      [
+        "GameIndy official site",
+        "https://www.gameindy.com/"
+      ],
+      [
+        "GameIndy Steam publisher profile",
+        "https://steambase.io/publishers/gameindy"
+      ],
+      [
+        "GameIndy games page",
+        "https://www.gameindy.com/"
+      ]
+    ],
+    "score": 63,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 10 / 产品契合 15 / 发行/UA/LiveOps 17 / 战略协同 14 / 触达可行性 7"
+  },
+  {
+    "rank": 23,
+    "company": "Zitga Studio",
+    "country": "Vietnam",
+    "market": "Global mobile",
+    "website": "https://zitga.com.vn/",
+    "type": "Mobile game developer / publisher",
+    "works": [
+      "Family Adventure",
+      "Epic Garden",
+      "Frontline Hero"
+    ],
+    "scale": "Official about page says Zitga focuses on mobile games and references Family Adventure, Frontline Hero and Epic Garden.",
+    "signal": "Direct product adjacency via Family Adventure; likely smaller strategic capacity.",
+    "scores": {
+      "ma": 9,
+      "fit": 22,
+      "ua": 13,
+      "synergy": 13,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Co-development",
+      "Asset acquisition inquiry",
+      "Publishing referral"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official contact/social; no verified company-level BD email found.",
+    "contactUrl": "https://zitga.com.vn/about-us/",
+    "angle": "Open with genre similarity and ask if they are reviewing external farm/adventure IP or acqui-hire assets.",
+    "nextStep": "Wave 3: targeted founder/BD LinkedIn plus official form.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Zitga about",
+        "https://zitga.com.vn/about-us/"
+      ],
+      [
+        "Zitga official site",
+        "https://zitga.com.vn/"
+      ],
+      [
+        "Google Play publisher reference",
+        "https://play.google.com/store/apps/dev?id=ZITGA"
+      ]
+    ],
+    "score": 62,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 9 / 产品契合 22 / 发行/UA/LiveOps 13 / 战略协同 13 / 触达可行性 5"
+  },
+  {
+    "rank": 24,
+    "company": "Appxplore (iCandy)",
+    "country": "Malaysia",
+    "market": "Global mobile, via iCandy",
+    "website": "https://appxplore.com/",
+    "type": "Mobile game studio under iCandy",
+    "works": [
+      "Claw Stars",
+      "Crab War",
+      "Light A Way",
+      "Masketeers"
+    ],
+    "scale": "Official about page says Appxplore is a Kuala Lumpur mobile studio and part of iCandy Interactive.",
+    "signal": "Relevant mobile studio, but acquisition/investment should route through iCandy parent.",
+    "scores": {
+      "ma": 14,
+      "fit": 15,
+      "ua": 14,
+      "synergy": 13,
+      "reach": 6
+    },
+    "dealTypes": [
+      "Studio referral",
+      "Publishing/co-dev via iCandy",
+      "Acquisition route via iCandy"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use Appxplore contact form, but route strategic talks through iCandy.",
+    "contactUrl": "https://appxplore.com/dev/contact/",
+    "angle": "Ask for iCandy/Appxplore review of mobile casual-adventure asset.",
+    "nextStep": "Wave 2: include Appxplore only in iCandy thread, not as standalone buyer.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Appxplore about",
+        "https://appxplore.com/index.php/about"
+      ],
+      [
+        "Appxplore contact",
+        "https://appxplore.com/dev/contact/"
+      ],
+      [
+        "iCandy official site",
+        "https://www.icandy.io/"
+      ]
+    ],
+    "score": 62,
+    "tier": "B",
+    "scoreBreakdown": "投资/收购信号 14 / 产品契合 15 / 发行/UA/LiveOps 14 / 战略协同 13 / 触达可行性 6"
+  },
+  {
+    "rank": 25,
+    "company": "Bravestars Games",
+    "country": "Vietnam",
+    "market": "Global mobile",
+    "website": "https://bravestars.com/",
+    "type": "Mobile game developer / publisher",
+    "works": [
+      "Shadow of Death",
+      "Stickman action/casual portfolio",
+      "Submitted external games"
+    ],
+    "scale": "Official about page positions Bravestars as a leading game development and publishing company with global ambitions.",
+    "signal": "Has explicit Submit your game form; public emails are HR/support rather than BD.",
+    "scores": {
+      "ma": 10,
+      "fit": 14,
+      "ua": 16,
+      "synergy": 13,
+      "reach": 7
+    },
+    "dealTypes": [
+      "Publishing",
+      "Co-development",
+      "Strategic partnership"
+    ],
+    "contactEmail": "support@bravestars.com",
+    "contactNote": "Support email plus official Submit your game form; do not use HR for BD.",
+    "contactUrl": "https://bravestars.com/about",
+    "angle": "Submit as an external game with validated US metrics and ask for publishing/investment owner.",
+    "nextStep": "Wave 3: submit game form and follow up to support requesting BD routing.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Bravestars about/contact",
+        "https://bravestars.com/about"
+      ],
+      [
+        "Bravestars official site",
+        "https://bravestars.com/"
+      ],
+      [
+        "Google Play publisher reference",
+        "https://play.google.com/store/apps/dev?id=Bravestars+Games"
+      ]
+    ],
+    "score": 60,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 10 / 产品契合 14 / 发行/UA/LiveOps 16 / 战略协同 13 / 触达可行性 7"
+  },
+  {
+    "rank": 26,
+    "company": "Nuon / Dunia Games / Telkomsel",
+    "country": "Indonesia",
+    "market": "Indonesia",
+    "website": "https://nuon.id/",
+    "type": "Digital entertainment and game publishing platform",
+    "works": [
+      "Dunia Games",
+      "AFK Champions",
+      "Lokapala publishing ecosystem"
+    ],
+    "scale": "Telkomsel annual materials reference Dunia Games publishing and marketing programs.",
+    "signal": "Strong local distribution/platform route; direct M&A appetite unclear.",
+    "scores": {
+      "ma": 11,
+      "fit": 13,
+      "ua": 17,
+      "synergy": 14,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Indonesia publishing",
+      "Platform partnership",
+      "Telco distribution"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use Nuon/Telkomsel corporate contact; verify game-publishing BD owner.",
+    "contactUrl": "https://nuon.id/",
+    "angle": "Pitch Indonesia user acquisition and telco distribution; acquisition as optional after publishing traction.",
+    "nextStep": "Wave 3: corporate inquiry plus LinkedIn search for Nuon game publishing team.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Nuon official site",
+        "https://nuon.id/"
+      ],
+      [
+        "Dunia Games",
+        "https://duniagames.co.id/"
+      ],
+      [
+        "Telkomsel annual report reference",
+        "https://www.telkomsel.com/sites/default/files/2022-06/tsel2020-AR-webversion-FINAL.pdf"
+      ]
+    ],
+    "score": 60,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 11 / 产品契合 13 / 发行/UA/LiveOps 17 / 战略协同 14 / 触达可行性 5"
+  },
+  {
+    "rank": 27,
+    "company": "Topebox",
+    "country": "Vietnam",
+    "market": "Global mobile",
+    "website": "https://topebox.com/",
+    "type": "Mobile game developer / publisher",
+    "works": [
+      "Sky Dancer",
+      "Pocket Army",
+      "The Severed Gods"
+    ],
+    "scale": "Official about page positions Topebox as a Vietnam-born studio pushing beyond outsourcing into global games.",
+    "signal": "Strong mobile craft and network; buyer/investment appetite less visible.",
+    "scores": {
+      "ma": 10,
+      "fit": 15,
+      "ua": 15,
+      "synergy": 13,
+      "reach": 6
+    },
+    "dealTypes": [
+      "Publishing referral",
+      "Co-development",
+      "Strategic partnership"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official site/contact/social; verify current business contact before sending financial details.",
+    "contactUrl": "https://topebox.com/about",
+    "angle": "Ask for publishing or co-development review; pitch KPI-first to overcome genre mismatch.",
+    "nextStep": "Wave 3: contact via official channels after A/B targets.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Topebox about",
+        "https://topebox.com/about"
+      ],
+      [
+        "Topebox official site",
+        "https://topebox.com/"
+      ],
+      [
+        "ModDB Topebox profile",
+        "https://www.moddb.com/company/topebox"
+      ]
+    ],
+    "score": 59,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 10 / 产品契合 15 / 发行/UA/LiveOps 15 / 战略协同 13 / 触达可行性 6"
+  },
+  {
+    "rank": 28,
+    "company": "Actieon Interactive",
+    "country": "Thailand",
+    "market": "Global mobile",
+    "website": "https://actieon.com/",
+    "type": "Mobile game developer / publisher",
+    "works": [
+      "Piggy Town",
+      "WZ1"
+    ],
+    "scale": "Official site says founded in Thailand in 2024 and focused on developing/publishing mobile games worldwide; Piggy Town is a farm game.",
+    "signal": "High genre adjacency but new/small company, likely not an acquirer unless looking for complementary assets.",
+    "scores": {
+      "ma": 5,
+      "fit": 21,
+      "ua": 10,
+      "synergy": 12,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Co-development",
+      "Asset discussion",
+      "Referral"
+    ],
+    "contactEmail": "contact@actieon.com",
+    "contactNote": "Official site lists protected email; decoded from Cloudflare-protected address.",
+    "contactUrl": "https://actieon.com/",
+    "angle": "Pitch as peer-to-peer asset/co-dev conversation around farm-game audience and global launch learning.",
+    "nextStep": "Wave 4: contact only after strategic buyer outreach.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Actieon official site",
+        "https://actieon.com/"
+      ],
+      [
+        "Piggy Town site",
+        "https://piggy-town.com/en"
+      ],
+      [
+        "Piggy Town Google Play",
+        "https://play.google.com/store/apps/details?hl=en_US&id=com.actieon.piggytown"
+      ],
+      [
+        "Actieon LinkedIn",
+        "https://www.linkedin.com/company/actieon-interactive"
+      ]
+    ],
+    "score": 58,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 5 / 产品契合 21 / 发行/UA/LiveOps 10 / 战略协同 12 / 触达可行性 10"
+  },
+  {
+    "rank": 29,
+    "company": "SohaGame / VCCorp",
+    "country": "Vietnam",
+    "market": "Vietnam",
+    "website": "https://sohagame.vn/en",
+    "type": "Online/mobile game publisher",
+    "works": [
+      "Vietnam licensed mobile/online portfolio",
+      "SohaCoin ecosystem"
+    ],
+    "scale": "Official support page lists Soha Limited Company and G1 online game service license.",
+    "signal": "Useful Vietnam local publishing route; public contact is customer support/fanpage, so BD reachability is weak.",
+    "scores": {
+      "ma": 10,
+      "fit": 13,
+      "ua": 16,
+      "synergy": 13,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Vietnam publishing",
+      "Localization",
+      "Regulatory operation"
+    ],
+    "contactEmail": "hotro@sohagame.vn",
+    "contactNote": "Customer support email only; use as fallback to request BD forwarding.",
+    "contactUrl": "https://sohagame.vn/en/lien-he/lam-the-nao-de-lien-he-den-sohagame-26170.html",
+    "angle": "Use only for Vietnam local publishing route if higher-fit targets do not move.",
+    "nextStep": "Wave 4: ask support/fanpage to forward to business development.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "SohaGame contact",
+        "https://sohagame.vn/en/lien-he/lam-the-nao-de-lien-he-den-sohagame-26170.html"
+      ],
+      [
+        "SohaGame guide/contact page",
+        "https://sohagame.vn/en/huong-dan-game"
+      ],
+      [
+        "SohaGame official site",
+        "https://sohagame.vn/en"
+      ]
+    ],
+    "score": 57,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 10 / 产品契合 13 / 发行/UA/LiveOps 16 / 战略协同 13 / 触达可行性 5"
+  },
+  {
+    "rank": 30,
+    "company": "Toge Productions",
+    "country": "Indonesia",
+    "market": "Indonesia, global indie",
+    "website": "https://www.togeproductions.com/",
+    "type": "Indie developer / publisher",
+    "works": [
+      "Coffee Talk",
+      "A Space for the Unbound",
+      "When the Past Was Around",
+      "Mojiken portfolio"
+    ],
+    "scale": "Steam profile says Indonesian indie developer/publisher; third-party profiles list publishing expansion and global indie reach.",
+    "signal": "High credibility in Indonesian publishing, but mostly premium indie rather than mobile F2P buyer.",
+    "scores": {
+      "ma": 11,
+      "fit": 10,
+      "ua": 12,
+      "synergy": 13,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Indie publishing",
+      "Referral",
+      "Small strategic partnership"
+    ],
+    "contactEmail": "info@togeproductions.com",
+    "contactNote": "Official contact page email; publishing@ appears in event press-kit context, verify before BD use.",
+    "contactUrl": "https://www.togeproductions.com/contact-us/",
+    "angle": "Use as Indonesia network/referral and possible publishing advisor if the game has stronger narrative/indie positioning.",
+    "nextStep": "Wave 3: ask for buyer/publisher referrals if not a fit.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Toge contact",
+        "https://www.togeproductions.com/contact-us/"
+      ],
+      [
+        "Steam publisher profile",
+        "https://store.steampowered.com/publisher/togeproductions/about/"
+      ],
+      [
+        "Indie Games Plus publisher profile",
+        "https://indiegamesplus.com/publisher-profile-toge-productions/"
+      ],
+      [
+        "Gematsu Toge profile",
+        "https://www.gematsu.com/companies/toge-productions"
+      ]
+    ],
+    "score": 56,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 11 / 产品契合 10 / 发行/UA/LiveOps 12 / 战略协同 13 / 触达可行性 10"
+  },
+  {
+    "rank": 31,
+    "company": "Electronics Extreme",
+    "country": "Thailand / Philippines",
+    "market": "Thailand, Philippines, SEA",
+    "website": "https://extreme.game/",
+    "type": "Regional game publisher",
+    "works": [
+      "Ragnarok Online",
+      "Infestation",
+      "Cabal"
+    ],
+    "scale": "Official site says originated from Thailand as a game publisher and set up a Philippines regional operation base.",
+    "signal": "Regional operating partner; genre fit skewed MMORPG/action.",
+    "scores": {
+      "ma": 11,
+      "fit": 10,
+      "ua": 16,
+      "synergy": 13,
+      "reach": 6
+    },
+    "dealTypes": [
+      "SEA publishing",
+      "Localization",
+      "Regional operations"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official site/contact and LinkedIn; avoid third-party directory contacts.",
+    "contactUrl": "https://extreme.game/",
+    "angle": "Pitch only if they are expanding beyond core MMO/action portfolio.",
+    "nextStep": "Wave 4: contact after Thailand/SEA higher-fit publishers.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Electronics Extreme official",
+        "https://extreme.game/"
+      ],
+      [
+        "Extreme Thailand site",
+        "https://www.extreme.co.th/"
+      ],
+      [
+        "Electronics Extreme directory profile",
+        "https://www.adapt.io/company/electronics-extreme-"
+      ]
+    ],
+    "score": 56,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 11 / 产品契合 10 / 发行/UA/LiveOps 16 / 战略协同 13 / 触达可行性 6"
+  },
+  {
+    "rank": 32,
+    "company": "Yggdrazil Group",
+    "country": "Thailand",
+    "market": "Thailand, global services",
+    "website": "https://ygg-cg.com/",
+    "type": "Listed CG/game studio and developer",
+    "works": [
+      "Home Sweet Home",
+      "Home Sweet Home: Online",
+      "Game & Application unit"
+    ],
+    "scale": "Official site has Investor Relations and Global Business Department; game credits include Home Sweet Home series.",
+    "signal": "Reachable BD emails and public-company route, but product fit is weaker.",
+    "scores": {
+      "ma": 12,
+      "fit": 9,
+      "ua": 12,
+      "synergy": 13,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Strategic partnership",
+      "Co-development",
+      "Investment inquiry"
+    ],
+    "contactEmail": "globalbd@ygg-cg.com; producer@ygg-cg.com; info@ygg-cg.com",
+    "contactNote": "Official global business and producer emails.",
+    "contactUrl": "https://ygg-cg.com/",
+    "angle": "Pitch only if they want mobile casual diversification or co-dev/live visual support.",
+    "nextStep": "Wave 4: send concise inquiry to globalbd@.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Yggdrazil official site",
+        "https://ygg-cg.com/"
+      ],
+      [
+        "Yggdrazil career/contact",
+        "https://ygg-cg.com/cn/career/marketing-game-2-3/"
+      ],
+      [
+        "MobyGames Yggdrazil credits",
+        "https://www.mobygames.com/company/29841/yggdrazil-group-co-ltd/"
+      ]
+    ],
+    "score": 56,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 12 / 产品契合 9 / 发行/UA/LiveOps 12 / 战略协同 13 / 触达可行性 10"
+  },
+  {
+    "rank": 33,
+    "company": "Ini3 Digital",
+    "country": "Thailand",
+    "market": "Thailand",
+    "website": "https://www.ini3.co.th/",
+    "type": "Online game publisher / service provider",
+    "works": [
+      "Pangya Thailand",
+      "Flyff Thailand",
+      "Online game services"
+    ],
+    "scale": "Official site says Ini3 is one of Thailand's leading online publishers and a 360 game services expert.",
+    "signal": "Established Thai publisher; current strategic acquisition capacity unclear.",
+    "scores": {
+      "ma": 9,
+      "fit": 10,
+      "ua": 15,
+      "synergy": 13,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Thailand publishing",
+      "Service partnership"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official contact/social or LinkedIn; no verified BD email surfaced.",
+    "contactUrl": "https://www.ini3.co.th/who_we_are/",
+    "angle": "Use only for Thailand publishing or referral, not as primary investor/acquirer.",
+    "nextStep": "Wave 4: contact if localized Thailand plan becomes priority.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Ini3 who we are",
+        "https://www.ini3.co.th/who_we_are/"
+      ],
+      [
+        "Ini3 Dealroom profile",
+        "https://app.dealroom.co/companies/ini3_digital"
+      ],
+      [
+        "Ini3 Wikipedia profile",
+        "https://en.wikipedia.org/wiki/Ini3_Digital"
+      ]
+    ],
+    "score": 52,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 9 / 产品契合 10 / 发行/UA/LiveOps 15 / 战略协同 13 / 触达可行性 5"
+  },
+  {
+    "rank": 34,
+    "company": "Kepler Interactive",
+    "country": "Singapore / UK",
+    "market": "Global premium games",
+    "website": "https://www.kepler-interactive.com/",
+    "type": "Developer-owned publisher",
+    "works": [
+      "Sifu",
+      "Tchia",
+      "Pacific Drive",
+      "Clair Obscur: Expedition 33"
+    ],
+    "scale": "Profiles describe Kepler as a publisher with London and Singapore hubs and $120M funding from NetEase.",
+    "signal": "Strong investment/publishing platform, but premium PC/console focus makes mobile F2P fit weak.",
+    "scores": {
+      "ma": 18,
+      "fit": 6,
+      "ua": 11,
+      "synergy": 10,
+      "reach": 6
+    },
+    "dealTypes": [
+      "Investor referral",
+      "Publishing if premium pivot",
+      "Strategic intro"
+    ],
+    "contactEmail": "pr@kepler-interactive.com",
+    "contactNote": "Public email found is PR; do not send detailed transaction data without BD routing.",
+    "contactUrl": "https://www.kepler-interactive.com/",
+    "angle": "Low priority unless there is a premium/PC adaptation or buyer-network ask.",
+    "nextStep": "Wave 4: use only for network/referral or if product positioning changes.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Kepler official site",
+        "https://www.kepler-interactive.com/"
+      ],
+      [
+        "VGC Kepler profile",
+        "https://www.videogameschronicle.com/companies/kepler-interactive/"
+      ],
+      [
+        "WholesGame Kepler profile",
+        "https://wholesgame.com/company/kepler-interactive/"
+      ]
+    ],
+    "score": 51,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 18 / 产品契合 6 / 发行/UA/LiveOps 11 / 战略协同 10 / 触达可行性 6"
+  },
+  {
+    "rank": 35,
+    "company": "Qeon Interactive",
+    "country": "Indonesia",
+    "market": "Indonesia",
+    "website": "https://www.qeon.com/",
+    "type": "Interactive investment / partner platform",
+    "works": [
+      "Agate investment relationship",
+      "Esport King collaboration"
+    ],
+    "scale": "Qeon business page showcases Agate as an Indonesian game developer investment/partner and lists contact section.",
+    "signal": "Better as investor/referral route than publisher; could introduce Agate or Indonesian capital.",
+    "scores": {
+      "ma": 14,
+      "fit": 9,
+      "ua": 11,
+      "synergy": 12,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Investment referral",
+      "Strategic partnership",
+      "Indonesia network"
+    ],
+    "contactEmail": "Email shown as protected/obfuscated",
+    "contactNote": "Use official contact section; no plaintext company email surfaced.",
+    "contactUrl": "https://www.qeon.com/business",
+    "angle": "Ask whether Qeon reviews game studio investments or can route to Agate/local strategic partners.",
+    "nextStep": "Wave 3 investor lane: concise investor/referral note.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Qeon business",
+        "https://www.qeon.com/business"
+      ],
+      [
+        "Qeon Agate page",
+        "https://www.qeon.com/business/agate"
+      ],
+      [
+        "Agate official site",
+        "https://agate.id/"
+      ]
+    ],
+    "score": 51,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 14 / 产品契合 9 / 发行/UA/LiveOps 11 / 战略协同 12 / 触达可行性 5"
+  },
+  {
+    "rank": 36,
+    "company": "Altitude Games",
+    "country": "Philippines",
+    "market": "Philippines, global mobile",
+    "website": "https://altitude-games.com/",
+    "type": "Mobile F2P studio",
+    "works": [
+      "Dream Defense",
+      "Zodiac Pop",
+      "Run Run Super V"
+    ],
+    "scale": "Official site describes APAC-based mobile studio with 40+ talent and mobile titles.",
+    "signal": "Relevant mobile craft, but not obvious publisher/acquirer; founder network may help.",
+    "scores": {
+      "ma": 8,
+      "fit": 13,
+      "ua": 12,
+      "synergy": 12,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Referral",
+      "Co-development",
+      "Local network"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official site/social; no verified BD email found.",
+    "contactUrl": "https://altitude-games.com/",
+    "angle": "Use as Philippines mobile network/referral, not primary buyer.",
+    "nextStep": "Wave 4: contact if seeking PH network or co-dev fallback.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Altitude official site",
+        "https://altitude-games.com/"
+      ],
+      [
+        "Altitude directory profile",
+        "https://www.adapt.io/company/altitude-games-com-1"
+      ],
+      [
+        "Philippines game industry reference",
+        "https://en.wikipedia.org/wiki/Video_games_in_the_Philippines"
+      ]
+    ],
+    "score": 50,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 8 / 产品契合 13 / 发行/UA/LiveOps 12 / 战略协同 12 / 触达可行性 5"
+  },
+  {
+    "rank": 37,
+    "company": "Sky Mavis",
+    "country": "Vietnam / Singapore",
+    "market": "Global Web3 games",
+    "website": "https://skymavis.com/",
+    "type": "Game studio and Web3 ecosystem investor/operator",
+    "works": [
+      "Axie Infinity",
+      "Ronin ecosystem",
+      "Web3 game investments"
+    ],
+    "scale": "Market data profiles show fundraising and investments; best known for Axie Infinity and Ronin ecosystem.",
+    "signal": "Investor/network path, but Web3 strategic fit may be low unless your game has community/economy hooks.",
+    "scores": {
+      "ma": 12,
+      "fit": 7,
+      "ua": 14,
+      "synergy": 12,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Strategic investment",
+      "Ecosystem partnership",
+      "Referral"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official contact/social; avoid generic token/community support channels.",
+    "contactUrl": "https://skymavis.com/",
+    "angle": "Only approach if open to Web3-adjacent financing/network, not as primary publisher.",
+    "nextStep": "Wave 4 investor lane: seek warm intro if other funding channels fail.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Sky Mavis official site",
+        "https://skymavis.com/"
+      ],
+      [
+        "Messari Sky Mavis profile",
+        "https://messari.io/organization/sky-mavis"
+      ],
+      [
+        "SEA game industry report reference",
+        "https://www.mdec.my/static/pdf/digitalcontent/SEA-game-industry-report-2021.pdf"
+      ]
+    ],
+    "score": 50,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 12 / 产品契合 7 / 发行/UA/LiveOps 14 / 战略协同 12 / 触达可行性 5"
+  },
+  {
+    "rank": 38,
+    "company": "Gambir Studio",
+    "country": "Indonesia",
+    "market": "Indonesia, global mobile/PC",
+    "website": "https://gambirstudio.com/",
+    "type": "Mobile and PC game developer / publisher",
+    "works": [
+      "Selera Nusantara",
+      "My Minimart Empire",
+      "Knight vs Giant"
+    ],
+    "scale": "Official site says founded in 2016, 13 games and 10M+ worldwide downloads; directory profile lists 20M installs.",
+    "signal": "Good Indonesian mobile F2P peer and referral source; small buyer capacity.",
+    "scores": {
+      "ma": 5,
+      "fit": 14,
+      "ua": 12,
+      "synergy": 11,
+      "reach": 8
+    },
+    "dealTypes": [
+      "Referral",
+      "Co-development",
+      "Local network"
+    ],
+    "contactEmail": "info@gambirstudio.com",
+    "contactNote": "Directory lists info@; official site email is protected/obfuscated.",
+    "contactUrl": "https://gambirstudio.com/",
+    "angle": "Ask for Indonesian F2P publisher/investor referrals; possible co-dev if buyer talks lag.",
+    "nextStep": "Wave 4: short founder-to-founder referral note.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Gambir official site",
+        "https://gambirstudio.com/"
+      ],
+      [
+        "Gematsu Gambir profile",
+        "https://www.gematsu.com/companies/gambir-studio"
+      ],
+      [
+        "GameDev Outsourcing Gambir profile",
+        "https://www.gamedevoutsourcing.com/company/gambir-studio"
+      ]
+    ],
+    "score": 50,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 5 / 产品契合 14 / 发行/UA/LiveOps 12 / 战略协同 11 / 触达可行性 8"
+  },
+  {
+    "rank": 39,
+    "company": "Mighty Bear Games",
+    "country": "Singapore",
+    "market": "Global mobile / Web3",
+    "website": "https://mightybeargames.com/",
+    "type": "Mobile and multiplayer game studio",
+    "works": [
+      "Butter Royale",
+      "Mighty Action Heroes"
+    ],
+    "scale": "Singapore company/profile sources describe a studio building next-gen massively multiplayer online mobile games.",
+    "signal": "Gaming VC-backed studio network value; buyer fit uncertain.",
+    "scores": {
+      "ma": 8,
+      "fit": 11,
+      "ua": 12,
+      "synergy": 12,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Referral",
+      "Strategic partnership",
+      "Investor intro"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official site/social; Play Ventures portfolio route may be better.",
+    "contactUrl": "https://mightybeargames.com/",
+    "angle": "Ask for investor/publisher referral if they are not a fit.",
+    "nextStep": "Wave 4: approach through Play Ventures or founder network.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Mighty Bear official site",
+        "https://mightybeargames.com/"
+      ],
+      [
+        "Singapore company profile",
+        "https://www.sgpbusiness.com/company/Mighty-Bear-Games-Pte-Ltd"
+      ],
+      [
+        "IMDA Pixel fact sheet",
+        "https://www.imda.gov.sg/-/media/imda/files/sg-digital/annex-e---no-embargo-factsheet-for-pixel.pdf"
+      ]
+    ],
+    "score": 48,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 8 / 产品契合 11 / 发行/UA/LiveOps 12 / 战略协同 12 / 触达可行性 5"
+  },
+  {
+    "rank": 40,
+    "company": "Streamline Studios",
+    "country": "Malaysia / global",
+    "market": "Global co-development",
+    "website": "https://www.streamline-studios.com/",
+    "type": "Game co-development / full-cycle development / live-ops partner",
+    "works": [
+      "Upin & Ipin Universe",
+      "Bake 'n Switch",
+      "AAA co-dev credits"
+    ],
+    "scale": "Official site says 25 years in continuous game development, with co-development, full game development and live operations.",
+    "signal": "Operational support rather than buyer; may help preserve product if cash runway requires co-dev or service partnership.",
+    "scores": {
+      "ma": 8,
+      "fit": 8,
+      "ua": 12,
+      "synergy": 11,
+      "reach": 7
+    },
+    "dealTypes": [
+      "Co-development",
+      "Live-ops support",
+      "Referral"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official Contact Us flow.",
+    "contactUrl": "https://www.streamline-studios.com/en/who-we-are",
+    "angle": "Discuss co-dev/live-ops partnership if acquisition talks are slow and product needs continuation support.",
+    "nextStep": "Wave 4: contact only for operational fallback.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Streamline who we are",
+        "https://www.streamline-studios.com/en/who-we-are"
+      ],
+      [
+        "Gematsu Streamline profile",
+        "https://www.gematsu.com/companies/streamline-studios"
+      ],
+      [
+        "GameCompanies Streamline profile",
+        "https://gamecompanies.com/companies/streamline-studios"
+      ]
+    ],
+    "score": 46,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 8 / 产品契合 8 / 发行/UA/LiveOps 12 / 战略协同 11 / 触达可行性 7"
+  },
+  {
+    "rank": 41,
+    "company": "Ranida Games",
+    "country": "Philippines",
+    "market": "Philippines",
+    "website": "https://www.ranidagames.com/",
+    "type": "Indie developer / publisher",
+    "works": [
+      "PBA Basketball Slam",
+      "BAYANI",
+      "Vita Fighters"
+    ],
+    "scale": "GDAP member page lists game production and publishing services, official contact and company address.",
+    "signal": "Reachable Philippines studio, but small and genre fit weak.",
+    "scores": {
+      "ma": 6,
+      "fit": 8,
+      "ua": 10,
+      "synergy": 10,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Referral",
+      "Co-development",
+      "Philippines network"
+    ],
+    "contactEmail": "info@ranidagames.com",
+    "contactNote": "GDAP member profile contact email.",
+    "contactUrl": "https://gdap.org.ph/members/ranida-games/",
+    "angle": "Use for PH publishing/referral only; do not prioritize for acquisition.",
+    "nextStep": "Wave 4: short referral ask after primary targets.",
+    "confidence": "High",
+    "sources": [
+      [
+        "GDAP Ranida profile",
+        "https://gdap.org.ph/members/ranida-games/"
+      ],
+      [
+        "Ranida official site",
+        "https://www.ranidagames.com/"
+      ],
+      [
+        "Steambase Ranida profile",
+        "https://steambase.io/developers/ranida-games"
+      ]
+    ],
+    "score": 44,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 6 / 产品契合 8 / 发行/UA/LiveOps 10 / 战略协同 10 / 触达可行性 10"
+  },
+  {
+    "rank": 42,
+    "company": "BattleBrew Productions",
+    "country": "Singapore",
+    "market": "Singapore, global indie",
+    "website": "https://www.battle-brew.com/",
+    "type": "Game developer / publisher",
+    "works": [
+      "Cuisineer",
+      "Battlesky Brigade",
+      "Love in Tiny Spaces"
+    ],
+    "scale": "Official site describes Singapore-based creators; FAQ says team has 10 full-time members.",
+    "signal": "Reachable but likely too small for acquisition; useful for Singapore network/referral.",
+    "scores": {
+      "ma": 5,
+      "fit": 9,
+      "ua": 10,
+      "synergy": 10,
+      "reach": 10
+    },
+    "dealTypes": [
+      "Referral",
+      "Co-development",
+      "Indie publishing advice"
+    ],
+    "contactEmail": "hello@battle-brew.com",
+    "contactNote": "Official site writes hello <at> battle-brew . com.",
+    "contactUrl": "https://www.battle-brew.com/",
+    "angle": "Use as Singapore network/referral if needing local game-dev intros.",
+    "nextStep": "Wave 4: short referral ask, not KPI-heavy buyer pitch.",
+    "confidence": "High",
+    "sources": [
+      [
+        "BattleBrew official site",
+        "https://www.battle-brew.com/"
+      ],
+      [
+        "BattleBrew FAQ",
+        "https://www.battle-brew.com/battlebrew01"
+      ],
+      [
+        "Gematsu BattleBrew profile",
+        "https://www.gematsu.com/companies/battlebrew-productions"
+      ]
+    ],
+    "score": 44,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 5 / 产品契合 9 / 发行/UA/LiveOps 10 / 战略协同 10 / 触达可行性 10"
+  },
+  {
+    "rank": 43,
+    "company": "Mojiken Studio / Toge route",
+    "country": "Indonesia",
+    "market": "Global indie",
+    "website": "https://mojikenstudio.com/",
+    "type": "Indie developer acquired by Toge",
+    "works": [
+      "A Space for the Unbound",
+      "When the Past Was Around",
+      "Divination"
+    ],
+    "scale": "Gematsu reports Mojiken is a Surabaya studio and subsidiary of Toge Productions; official site lists inquiries contacts.",
+    "signal": "Not a buyer; included as evidence of Toge acquisition/network route in Indonesia.",
+    "scores": {
+      "ma": 9,
+      "fit": 5,
+      "ua": 8,
+      "synergy": 9,
+      "reach": 8
+    },
+    "dealTypes": [
+      "Referral",
+      "Toge network",
+      "Indonesia indie route"
+    ],
+    "contactEmail": "contact@mojikenstudio.com; mojikenstudio@gmail.com",
+    "contactNote": "Official site lists both; for business sale, route through Toge first.",
+    "contactUrl": "https://mojikenstudio.com/",
+    "angle": "Use only if seeking Indonesian studio-referral context; do not pitch as acquirer.",
+    "nextStep": "Wave 4: reference only unless Toge requests studio-level discussion.",
+    "confidence": "High",
+    "sources": [
+      [
+        "Mojiken official site",
+        "https://mojikenstudio.com/"
+      ],
+      [
+        "Gematsu Mojiken profile",
+        "https://www.gematsu.com/companies/toge-productions/mojiken-studio"
+      ],
+      [
+        "KAORI Toge acquisition report",
+        "https://www.kaorinusantara.or.id/newsline/200246/toge-productions-akuisisi-mojiken-studio"
+      ]
+    ],
+    "score": 39,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 9 / 产品契合 5 / 发行/UA/LiveOps 8 / 战略协同 9 / 触达可行性 8"
+  },
+  {
+    "rank": 44,
+    "company": "Ysbryd Games",
+    "country": "Singapore / UK",
+    "market": "Global indie",
+    "website": "https://www.ysbryd.net/",
+    "type": "Indie game publisher",
+    "works": [
+      "VA-11 Hall-A",
+      "World of Horror",
+      "Demonschool"
+    ],
+    "scale": "Singapore company listings and industry coverage identify Ysbryd as an indie publisher based in Singapore/Britain.",
+    "signal": "Publisher credibility but weak mobile F2P fit and uncertain investment capacity.",
+    "scores": {
+      "ma": 8,
+      "fit": 5,
+      "ua": 10,
+      "synergy": 9,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Referral",
+      "Indie publishing",
+      "Network"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official site/social; verify current submissions policy.",
+    "contactUrl": "https://www.ysbryd.net/",
+    "angle": "Low priority unless the game is repositioned as premium narrative/indie.",
+    "nextStep": "Wave 4: referral ask only.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Ysbryd official site",
+        "https://www.ysbryd.net/"
+      ],
+      [
+        "Singapore company listing",
+        "https://www.sgpbusiness.com/company/Ysbryd-Games-Pte-Ltd"
+      ],
+      [
+        "IMDA industry briefing reference",
+        "https://www.imda.gov.sg/-/media/imda/files/industry-development/call-for-proposals/call-for-proposals-for-sg-games/cfp-industry-briefing-deck.pdf"
+      ]
+    ],
+    "score": 37,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 8 / 产品契合 5 / 发行/UA/LiveOps 10 / 战略协同 9 / 触达可行性 5"
+  },
+  {
+    "rank": 45,
+    "company": "Passion Republic Games",
+    "country": "Malaysia",
+    "market": "Global PC/console",
+    "website": "https://www.passionrepublic.com/",
+    "type": "Game developer / publisher",
+    "works": [
+      "GigaBash",
+      "AAA art production credits"
+    ],
+    "scale": "Public game profiles show Passion Republic Games as developer/publisher of GigaBash; Malaysia-based game studio.",
+    "signal": "Low mobile publishing fit; useful Malaysia network only.",
+    "scores": {
+      "ma": 5,
+      "fit": 5,
+      "ua": 9,
+      "synergy": 9,
+      "reach": 5
+    },
+    "dealTypes": [
+      "Referral",
+      "Co-development",
+      "Network"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official contact page/social; verify BD route.",
+    "contactUrl": "https://www.passionrepublic.com/",
+    "angle": "Low priority; ask for Malaysia publisher/investor referral if there is a warm path.",
+    "nextStep": "Wave 4: referral only.",
+    "confidence": "Medium",
+    "sources": [
+      [
+        "Passion Republic official site",
+        "https://www.passionrepublic.com/"
+      ],
+      [
+        "GigaBash profile",
+        "https://en.wikipedia.org/wiki/GigaBash"
+      ],
+      [
+        "Steambase Passion Republic publisher",
+        "https://steambase.io/publishers/passion-republic-games"
+      ]
+    ],
+    "score": 33,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 5 / 产品契合 5 / 发行/UA/LiveOps 9 / 战略协同 9 / 触达可行性 5"
+  },
+  {
+    "rank": 46,
+    "company": "Anantarupa Studios",
+    "country": "Indonesia",
+    "market": "Indonesia",
+    "website": "https://www.anantarupa.com/",
+    "type": "Game developer / IP studio",
+    "works": [
+      "Lokapala",
+      "Indonesian IP-focused games"
+    ],
+    "scale": "LinkedIn says Anantarupa aims to become a foremost developer and publisher of IPs in Southeast Asia.",
+    "signal": "Very low priority due unclear financial/strategic capacity and local controversy risk from public chatter.",
+    "scores": {
+      "ma": 4,
+      "fit": 8,
+      "ua": 9,
+      "synergy": 8,
+      "reach": 4
+    },
+    "dealTypes": [
+      "Referral",
+      "Local network"
+    ],
+    "contactEmail": "未公开公司级邮箱",
+    "contactNote": "Use official site/social only; perform extra diligence before any transaction conversation.",
+    "contactUrl": "https://www.anantarupa.com/",
+    "angle": "Do not lead with sensitive metrics; use only as local network fallback.",
+    "nextStep": "Wave 4: hold unless a trusted intro validates current status.",
+    "confidence": "Low",
+    "sources": [
+      [
+        "Anantarupa LinkedIn",
+        "https://www.linkedin.com/company/anantarupastudios"
+      ],
+      [
+        "Anantarupa official site",
+        "https://www.anantarupa.com/"
+      ],
+      [
+        "Lokapala public reference",
+        "https://play.google.com/store/apps/details?id=com.AnantarupaStudios.Lokapala"
+      ]
+    ],
+    "score": 33,
+    "tier": "C",
+    "scoreBreakdown": "投资/收购信号 4 / 产品契合 8 / 发行/UA/LiveOps 9 / 战略协同 8 / 触达可行性 4"
+  }
+];
+    const TIER_COUNTS = {"A":10,"B":14,"C":22};
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"']/g, function(ch) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[ch];
+      });
+    }
+    function link(label, url) {
+      return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noreferrer">' + escapeHtml(label) + '</a>';
+    }
+    function chip(text, cls) {
+      return '<span class="pill ' + (cls || '') + '">' + escapeHtml(text) + '</span>';
+    }
+    function renderTierGrid() {
+      const tiers = [
+        ['A', '立刻外联', '优先电话/邮件/LinkedIn 三线并行'],
+        ['B', '第二波', '按市场或交易路径分批推进'],
+        ['C', '备用/转介绍', '仅在需要本地网络或服务支持时触达']
+      ];
+      document.getElementById('tierGrid').innerHTML = tiers.map(function(t) {
+        return '<div class="tier-box"><span class="pill tier-' + t[0] + '">Tier ' + t[0] + '</span><strong>' + (TIER_COUNTS[t[0]] || 0) + '</strong><p class="muted">' + escapeHtml(t[1]) + ' · ' + escapeHtml(t[2]) + '</p></div>';
+      }).join('');
+    }
+    function renderCards() {
+      const top = DATA.slice(0, 15);
+      document.getElementById('topCards').innerHTML = top.map(function(c) {
+        return '<article class="card">' +
+          '<div class="card-head"><div><h3>' + escapeHtml(c.rank + '. ' + c.company) + '</h3><div class="meta">' + escapeHtml(c.country + ' · ' + c.type) + '</div></div><div class="score">' + c.score + '</div></div>' +
+          '<div>' + chip('Tier ' + c.tier, 'tier-' + c.tier) + ' ' + chip(c.confidence + ' confidence') + '</div>' +
+          '<div class="works">' + c.works.map(function(w) { return chip(w); }).join('') + '</div>' +
+          '<p class="meta">' + escapeHtml(c.signal) + '</p>' +
+          '<p><b>Angle:</b> ' + escapeHtml(c.angle) + '</p>' +
+          '<div class="contact"><b>入口</b><div>' + escapeHtml(c.contactEmail) + '</div><div class="meta">' + escapeHtml(c.contactNote) + '</div><div>' + link('Official contact', c.contactUrl) + '</div></div>' +
+          '</article>';
+      }).join('');
+    }
+    function populateFilters() {
+      const countries = Array.from(new Set(DATA.map(function(c) { return c.country.split('/')[0].trim(); }))).sort();
+      document.getElementById('countryFilter').innerHTML += countries.map(function(country) {
+        return '<option value="' + escapeHtml(country) + '">' + escapeHtml(country) + '</option>';
+      }).join('');
+    }
+    function rowMatches(c) {
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const tier = document.getElementById('tierFilter').value;
+      const country = document.getElementById('countryFilter').value;
+      const deal = document.getElementById('dealFilter').value;
+      const haystack = [
+        c.company, c.country, c.market, c.website, c.type, c.scale, c.signal,
+        c.contactEmail, c.contactNote, c.angle, c.nextStep,
+        c.works.join(' '), c.dealTypes.join(' ')
+      ].join(' ').toLowerCase();
+      if (q && !haystack.includes(q)) return false;
+      if (tier && c.tier !== tier) return false;
+      if (country && !c.country.includes(country)) return false;
+      if (deal && !c.dealTypes.join(' ').includes(deal)) return false;
+      return true;
+    }
+    function renderRows() {
+      const rows = DATA.filter(rowMatches);
+      document.getElementById('countLine').textContent = '显示 ' + rows.length + ' / ' + DATA.length + ' 条';
+      document.getElementById('rows').innerHTML = rows.map(function(c) {
+        const sourceLinks = c.sources.map(function(s) { return link(s[0], s[1]); }).join('<br>');
+        return '<tr>' +
+          '<td class="nowrap">' + c.rank + '</td>' +
+          '<td>' + chip(c.tier, 'tier-' + c.tier) + '</td>' +
+          '<td><b>' + c.score + '</b><br><span class="muted">' + escapeHtml(c.scoreBreakdown) + '</span></td>' +
+          '<td><b>' + escapeHtml(c.company) + '</b><br>' + link('Website', c.website) + '</td>' +
+          '<td>' + escapeHtml(c.country) + '<br><span class="muted">' + escapeHtml(c.market) + '</span></td>' +
+          '<td>' + escapeHtml(c.type) + '<br><span class="muted">' + escapeHtml(c.works.join(' · ')) + '</span></td>' +
+          '<td>' + escapeHtml(c.signal) + '<br><span class="muted">' + escapeHtml(c.scale) + '</span></td>' +
+          '<td><b>' + escapeHtml(c.contactEmail) + '</b><br><span class="muted">' + escapeHtml(c.contactNote) + '</span><br>' + link('Contact', c.contactUrl) + '</td>' +
+          '<td>' + c.dealTypes.map(function(d) { return chip(d); }).join(' ') + '</td>' +
+          '<td><b>Angle:</b> ' + escapeHtml(c.angle) + '<br><span class="muted"><b>Next:</b> ' + escapeHtml(c.nextStep) + '</span></td>' +
+          '<td>' + sourceLinks + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+    function renderSources() {
+      document.getElementById('sourceIndex').innerHTML = DATA.map(function(c) {
+        return '<div class="source-card"><h3>' + escapeHtml(c.rank + '. ' + c.company) + '</h3><ol>' +
+          c.sources.map(function(s) { return '<li>' + link(s[0], s[1]) + '</li>'; }).join('') +
+          '</ol></div>';
+      }).join('');
+    }
+    document.querySelectorAll('#search, #tierFilter, #countryFilter, #dealFilter').forEach(function(el) {
+      el.addEventListener('input', renderRows);
+      el.addEventListener('change', renderRows);
+    });
+    document.querySelectorAll('[data-copy]').forEach(function(button) {
+      button.addEventListener('click', async function() {
+        const id = button.getAttribute('data-copy') === 'buyer' ? 'buyerTemplate' : 'investorTemplate';
+        await navigator.clipboard.writeText(document.getElementById(id).textContent);
+        const original = button.textContent;
+        button.textContent = '已复制';
+        setTimeout(function() { button.textContent = original; }, 1200);
+      });
+    });
+    renderTierGrid();
+    renderCards();
+    populateFilters();
+    renderRows();
+    renderSources();
+  </script>
+</body>
+</html>
