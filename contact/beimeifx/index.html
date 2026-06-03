@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>北美游戏发行/投资买方外联工作包</title>
+  <style>
+:root {
+  --ink: #172033;
+  --muted: #667085;
+  --line: #d7dee8;
+  --paper: #f7f9fc;
+  --panel: #ffffff;
+  --navy: #163b5c;
+  --green: #24664f;
+  --amber: #9b5d16;
+  --red: #9a2d35;
+  --blue-soft: #e9f1f8;
+  --green-soft: #e8f4ee;
+  --amber-soft: #fff3df;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.52;
+  letter-spacing: 0;
+}
+a { color: var(--navy); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.page { max-width: 1320px; margin: 0 auto; padding: 30px 24px 56px; }
+header { border-bottom: 1px solid var(--line); padding: 8px 0 24px; margin-bottom: 24px; }
+.eyebrow { color: var(--muted); font-size: 13px; font-weight: 800; text-transform: uppercase; }
+h1 { margin: 8px 0 10px; font-size: 34px; line-height: 1.16; }
+.intro { max-width: 980px; color: #344054; font-size: 16px; margin: 0; }
+.download-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.download-row a, .copy-btn {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+.stat span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; }
+.stat strong { display: block; font-size: 28px; margin-top: 3px; }
+section { margin-top: 32px; }
+.section-title { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+h2 { margin: 0; font-size: 22px; }
+h3 { margin: 0; }
+.section-note { margin: 0; color: var(--muted); font-size: 13px; }
+.split { display: grid; grid-template-columns: 1.12fr .88fr; gap: 16px; align-items: start; }
+.panel, .target-card, .template-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 17px; }
+.panel p { color: #344054; margin: 10px 0 0; }
+.tier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.tier-box { border: 1px solid var(--line); border-radius: 8px; padding: 13px; background: #fff; }
+.tier-box strong { display: block; font-size: 24px; }
+.tier-box span { color: var(--muted); font-size: 13px; }
+.tier-A { color: var(--green); }
+.tier-B { color: var(--navy); }
+.tier-C { color: var(--amber); }
+.target-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.target-card h3 { margin-top: 12px; font-size: 18px; }
+.meta { color: var(--muted); font-size: 13px; margin: 2px 0 12px; }
+.card-topline { display: flex; align-items: center; gap: 8px; }
+.rank, .tier, .score {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 850;
+  background: var(--blue-soft);
+  color: var(--navy);
+}
+.score { margin-left: auto; background: var(--green-soft); color: var(--green); }
+dl { margin: 0; }
+dt { margin-top: 10px; color: var(--muted); font-size: 12px; font-weight: 850; }
+dd { margin: 3px 0 0; font-size: 14px; }
+.controls { display: grid; grid-template-columns: 1fr 150px 150px 190px; gap: 10px; margin-bottom: 12px; }
+input, select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 11px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+.table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; max-height: 760px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #edf3f8;
+  color: #17324d;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 10px;
+  white-space: nowrap;
+}
+td { border-bottom: 1px solid #edf2f7; padding: 10px; vertical-align: top; min-width: 90px; }
+td.company-cell { min-width: 220px; font-weight: 850; }
+td.reason-cell { min-width: 340px; }
+td.action-cell { min-width: 270px; }
+.pill { display: inline-flex; padding: 2px 7px; border-radius: 999px; font-size: 12px; font-weight: 850; background: var(--blue-soft); color: var(--navy); }
+.pill-A { background: var(--green-soft); color: var(--green); }
+.pill-B { background: var(--blue-soft); color: var(--navy); }
+.pill-C { background: var(--amber-soft); color: var(--amber); }
+.scorebar { min-width: 120px; }
+.bar { height: 8px; border-radius: 999px; background: #e2e8f0; overflow: hidden; margin-top: 5px; }
+.bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--green), var(--navy)); }
+pre {
+  position: relative;
+  white-space: pre-wrap;
+  overflow: auto;
+  background: #111827;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 42px 16px 16px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+pre .copy-btn { position: absolute; top: 8px; right: 8px; background: #fff; color: #111827; padding: 5px 9px; }
+.source-table td { min-width: 120px; }
+footer { color: var(--muted); font-size: 12px; margin-top: 36px; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 900px) {
+  .page { padding: 22px 14px 40px; }
+  h1 { font-size: 28px; }
+  .stats, .split, .target-grid, .tier-grid, .controls { grid-template-columns: 1fr; }
+  .section-title { display: block; }
+}
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="eyebrow">BD / Publishing / Corp Dev Outreach · 2026-06-03</div>
+      <h1>北美游戏发行/投资买方外联工作包</h1>
+      <p class="intro">面向一款类似 Family Island 的移动端休闲冒险/模拟经营游戏。重点不是找“北美最大公司”，而是找在北美市场里相当于三七互娱、益世界在中国位置的中上游游戏公司、发行公司和可转介资金的游戏投资机构。</p>
+      <div class="download-row">
+        <a href="north_america_game_publishers.xlsx">下载 Excel</a>
+        <a href="north_america_game_publishers.csv">下载 CSV</a>
+        <a href="outreach_templates.md">查看外联话术</a>
+        <a href="sources.jsonl">查看来源 JSONL</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>长名单公司/机构</span><strong>40</strong></div>
+        <div class="stat"><span>A Tier 第一波</span><strong>8</strong></div>
+        <div class="stat"><span>发行/研运型</span><strong>32</strong></div>
+        <div class="stat"><span>投资机构</span><strong>9</strong></div>
+      </div>
+    </header>
+
+    <section class="split">
+      <div class="panel">
+        <h2>执行口径</h2>
+        <p>第一轮建议只发 A Tier 中的 Tilting Point、Jam City、East Side Games Group、Lion/Tripledot、PLAYSTUDIOS、HyperBeard，以及 Griffin/BITKRAFT 两条投资线。它们最接近“非绝对头部、但有发行/资金/并购能力”的对标口径。</p>
+        <p>评分逻辑：品类和商业模式匹配 30 分，北美行业地位相似度 20 分，投资/M&A/发行资金信号 20 分，发行/LiveOps/UA 能力 20 分，可触达性 10 分。Scopely、Zynga、EA 这类巨头被保留为 stretch target，但不是主要对标。</p>
+        <p>冷启动首封不要把“公司没现金流”放在最前面。更好的表达是：美国市场已有 CPI 和留存正信号，现在在寻找能帮助项目 scale 的发行、MG、战略投资或收购路径。</p>
+      </div>
+      <div class="panel">
+        <h2>分层概览</h2>
+        <div class="tier-grid">
+  <div class="tier-box">
+    <strong class="tier-A">A</strong>
+    <span>第一波 · 8 家</span>
+    <p class="meta">最接近三七/益世界行业地位或最可能带来资金/发行结果。</p>
+  </div>
+
+
+  <div class="tier-box">
+    <strong class="tier-B">B</strong>
+    <span>第二波 · 16 家</span>
+    <p class="meta">具备合作可能，但需要更强定制话术或 warm intro。</p>
+  </div>
+
+
+  <div class="tier-box">
+    <strong class="tier-C">C</strong>
+    <span>补充/观察 · 16 家</span>
+    <p class="meta">品类、体量或交易路径存在偏差，适合作为备选。</p>
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Top 8 优先对象</h2>
+        <p class="section-note">优先对象包括发行买方和投资线，适合并行启动。</p>
+      </div>
+      <div class="target-grid">
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#1</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">92</span>
+      </div>
+      <h3>Tilting Point</h3>
+      <p class="meta">US · New York, NY · 益世界式发行/增长伙伴</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>北美移动游戏发行服务商里最接近益世界画像的一类：不是平台巨头，但在外部项目发行、UA、LiveOps、IP合作和资金支持上有明确能力。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>适合把项目包装为已在美国验证 CPI/留存的休闲冒险/模拟经营外部项目，先谈发行、UA funding、MG 或带投资条款的合作。</dd>
+        <dt>可谈交易</dt>
+        <dd>发行/MG；UA funding；战略投资；项目/团队收购讨论</dd>
+        <dt>建议入口</dt>
+        <dd>Publishing / Business Development / Corporate Development · <a href="https://www.tiltingpoint.com/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#2</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">88</span>
+      </div>
+      <h3>Jam City</h3>
+      <p class="meta">US · Culver City, CA · 三七式研运发行公司</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>北美非平台型移动游戏开发发行商的中上游代表，强在休闲、IP、长线运营和移动端发行，不是 Scopely/Zynga 那种绝对巨头。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>其 Cookie Jam、Panda Pop、Disney Emoji Blitz、Harry Potter 等产品线与休闲/轻中度移动用户重合度高。</dd>
+        <dt>可谈交易</dt>
+        <dd>发行合作；联合开发；项目收购；团队收购；少数股权投资可能性</dd>
+        <dt>建议入口</dt>
+        <dd>Corporate Development / Publishing / Studio Leadership · <a href="https://www.jamcity.com/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#3</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">86</span>
+      </div>
+      <h3>East Side Games Group</h3>
+      <p class="meta">Canada · Vancouver, BC · 三七/益世界混合型</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>加拿大上市移动游戏集团，体量低于北美头部巨头，但具备自研、发行、技术平台和并购整合经验，适合作为中上游买方。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>偏长线 F2P、IP/品牌合作和休闲移动运营，对已验证数据的小团队项目有一定战略可读性。</dd>
+        <dt>可谈交易</dt>
+        <dd>发行；联合开发；战略投资；资产/团队收购</dd>
+        <dt>建议入口</dt>
+        <dd>Publishing / Corporate Development / CEO office · <a href="https://www.eastsidegamesgroup.com/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#4</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">85</span>
+      </div>
+      <h3>Lion Studios / Tripledot US portfolio</h3>
+      <p class="meta">US / UK · Palo Alto, CA / London · 益世界式移动发行/买量体系</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>Lion Studios 是北美移动发行和买量体系的重要玩家；Tripledot 2025 年收购 AppLovin 游戏业务后，组合里包含 Lion Studios、Machine Zone、PeopleFun、Magic Tavern 等美国资产。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>适合谈移动休闲/混合休闲发行、买量扩张、项目收购或把团队并入更大的移动发行体系。</dd>
+        <dt>可谈交易</dt>
+        <dd>发行；UA/增长；项目收购；团队收购</dd>
+        <dt>建议入口</dt>
+        <dd>Lion Studios publishing / Tripledot corporate development · <a href="https://lionstudios.cc/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#5</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">84</span>
+      </div>
+      <h3>Griffin Gaming Partners</h3>
+      <p class="meta">US · Santa Monica, CA · 纯游戏投资机构</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>北美最重要的游戏专项投资机构之一，适合在没有现金流但数据验证不错时作为财务投资/战略融资入口。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>不负责发行，但可能投资团队、帮助接触发行商或参与并购/融资结构设计。</dd>
+        <dt>可谈交易</dt>
+        <dd>股权投资；桥接融资；战略投资转介；并购介绍</dd>
+        <dt>建议入口</dt>
+        <dd>Investment team / partner network · <a href="https://griffingp.com/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#6</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">82</span>
+      </div>
+      <h3>PLAYSTUDIOS</h3>
+      <p class="meta">US · Las Vegas, NV · 移动休闲/社交游戏上市公司</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>美国上市移动游戏公司，规模不如 Zynga/Scopely，但在休闲、社交娱乐场景和并购上具备实操能力。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>Family Island 类项目不是其最核心品类，但美国测试数据、休闲用户和长期活动运营可形成可评估机会。</dd>
+        <dt>可谈交易</dt>
+        <dd>战略投资；收购；发行/运营合作；IP/品牌合作</dd>
+        <dt>建议入口</dt>
+        <dd>Corporate Development / Investor Relations / Business Development · <a href="https://www.playstudios.com/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#7</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">81</span>
+      </div>
+      <h3>HyperBeard</h3>
+      <p class="meta">Mexico · Mexico City, Mexico · 北美中腰部休闲移动发行/开发商</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>墨西哥移动游戏公司，强在可爱风格、休闲移动游戏和全球发行；虽不是美国公司，但属于北美且与休闲品类贴近。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>如果项目美术和用户情绪更偏 cozy/cute，HyperBeard 的受众和发行审美可能有匹配。</dd>
+        <dt>可谈交易</dt>
+        <dd>发行；联合开发；项目合作；少数投资可能性</dd>
+        <dt>建议入口</dt>
+        <dd>Publishing / Business Development · <a href="https://hyperbeard.com/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  
+
+    <article class="target-card">
+      <div class="card-topline">
+        <span class="rank">#8</span>
+        <span class="tier tier-A">A Tier</span>
+        <span class="score">80</span>
+      </div>
+      <h3>BITKRAFT Ventures</h3>
+      <p class="meta">US / Germany · Denver, CO / Berlin · 纯游戏投资机构</p>
+      <dl>
+        <dt>北美行业地位</dt>
+        <dd>全球知名游戏与互动娱乐 VC，在北美有强投资触达；适合融资和买方转介。</dd>
+        <dt>为什么适合 Family Island 类项目</dt>
+        <dd>不直接发行，但可评估游戏团队、产品数据和后续融资/并购路径。</dd>
+        <dt>可谈交易</dt>
+        <dd>股权投资；桥接融资；战略介绍</dd>
+        <dt>建议入口</dt>
+        <dd>Investment team · <a href="https://www.bitkraft.vc/" target="_blank" rel="noreferrer">官网</a></dd>
+      </dl>
+    </article>
+  </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>完整长名单</h2>
+        <p class="section-note"><span id="visibleCount">40</span> / 40 家显示中</p>
+      </div>
+      <div class="controls">
+        <input id="search" type="search" placeholder="搜索公司、类型、交易、行业地位或话术" />
+        <select id="tierFilter">
+          <option value="">全部 Tier</option>
+          <option value="A">A Tier</option>
+          <option value="B">B Tier</option>
+          <option value="C">C Tier</option>
+        </select>
+        <select id="typeFilter">
+          <option value="">全部类型</option>
+          <option value="益世界">益世界式</option>
+          <option value="三七">三七式</option>
+          <option value="投资">投资机构</option>
+          <option value="战略上限">战略上限</option>
+        </select>
+        <select id="dealFilter">
+          <option value="">全部交易</option>
+          <option value="发行">发行/MG</option>
+          <option value="投资">投资/融资</option>
+          <option value="收购">收购</option>
+          <option value="联合">联合开发</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Tier</th>
+              <th>公司</th>
+              <th>地区</th>
+              <th>评分</th>
+              <th>对标类型</th>
+              <th>北美行业地位</th>
+              <th>项目匹配逻辑</th>
+              <th>可谈交易</th>
+              <th>入口</th>
+              <th>下一步</th>
+              <th>来源</th>
+            </tr>
+          </thead>
+          <tbody id="companyRows">
+  <tr data-company="tilting point" data-tier="A" data-archetype="益世界式发行/增长伙伴" data-country="US" data-search="{&quot;rank&quot;:1,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;tilting point&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;new york, ny&quot;,&quot;website&quot;:&quot;https://www.tiltingpoint.com/&quot;,&quot;archetype&quot;:&quot;益世界式发行/增长伙伴&quot;,&quot;industryposition&quot;:&quot;北美移动游戏发行服务商里最接近益世界画像的一类：不是平台巨头，但在外部项目发行、ua、liveops、ip合作和资金支持上有明确能力。&quot;,&quot;familyislandfit&quot;:&quot;适合把项目包装为已在美国验证 cpi/留存的休闲冒险/模拟经营外部项目，先谈发行、ua funding、mg 或带投资条款的合作。&quot;,&quot;dealtypes&quot;:&quot;发行/mg；ua funding；战略投资；项目/团队收购讨论&quot;,&quot;bestentry&quot;:&quot;publishing / business development / corporate development&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin 公司页 / bd warm intro&quot;,&quot;score&quot;:92,&quot;nextstep&quot;:&quot;第一波优先触达。邮件标题突出 us-tested、casual adventure/simulation、cpi &amp; retention signals。&quot;,&quot;sources&quot;:[&quot;https://www.tiltingpoint.com/&quot;,&quot;https://www.tiltingpoint.com/services/&quot;,&quot;https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/&quot;]}">
+    <td>1</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">Tilting Point<br><a href="https://www.tiltingpoint.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">New York, NY</span></td>
+    <td class="scorebar"><strong>92</strong><div class="bar"><span style="width:92%"></span></div></td>
+    <td>益世界式发行/增长伙伴</td>
+    <td class="reason-cell">北美移动游戏发行服务商里最接近益世界画像的一类：不是平台巨头，但在外部项目发行、UA、LiveOps、IP合作和资金支持上有明确能力。</td>
+    <td class="reason-cell">适合把项目包装为已在美国验证 CPI/留存的休闲冒险/模拟经营外部项目，先谈发行、UA funding、MG 或带投资条款的合作。</td>
+    <td>发行/MG；UA funding；战略投资；项目/团队收购讨论</td>
+    <td class="action-cell">Publishing / Business Development / Corporate Development<br><span class="meta">官网 contact / LinkedIn 公司页 / BD warm intro</span></td>
+    <td class="action-cell">第一波优先触达。邮件标题突出 US-tested、casual adventure/simulation、CPI &amp; retention signals。</td>
+    <td><a href="https://www.tiltingpoint.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.tiltingpoint.com/services/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="jam city" data-tier="A" data-archetype="三七式研运发行公司" data-country="US" data-search="{&quot;rank&quot;:2,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;jam city&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;culver city, ca&quot;,&quot;website&quot;:&quot;https://www.jamcity.com/&quot;,&quot;archetype&quot;:&quot;三七式研运发行公司&quot;,&quot;industryposition&quot;:&quot;北美非平台型移动游戏开发发行商的中上游代表，强在休闲、ip、长线运营和移动端发行，不是 scopely/zynga 那种绝对巨头。&quot;,&quot;familyislandfit&quot;:&quot;其 cookie jam、panda pop、disney emoji blitz、harry potter 等产品线与休闲/轻中度移动用户重合度高。&quot;,&quot;dealtypes&quot;:&quot;发行合作；联合开发；项目收购；团队收购；少数股权投资可能性&quot;,&quot;bestentry&quot;:&quot;corporate development / publishing / studio leadership&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin / 洛杉矶游戏圈转介绍&quot;,&quot;score&quot;:88,&quot;nextstep&quot;:&quot;作为三七互娱式对标重点触达，强调已验证美国市场和后续内容/liveops路线。&quot;,&quot;sources&quot;:[&quot;https://www.jamcity.com/&quot;,&quot;https://www.jamcity.com/games/&quot;,&quot;https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/&quot;]}">
+    <td>2</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">Jam City<br><a href="https://www.jamcity.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Culver City, CA</span></td>
+    <td class="scorebar"><strong>88</strong><div class="bar"><span style="width:88%"></span></div></td>
+    <td>三七式研运发行公司</td>
+    <td class="reason-cell">北美非平台型移动游戏开发发行商的中上游代表，强在休闲、IP、长线运营和移动端发行，不是 Scopely/Zynga 那种绝对巨头。</td>
+    <td class="reason-cell">其 Cookie Jam、Panda Pop、Disney Emoji Blitz、Harry Potter 等产品线与休闲/轻中度移动用户重合度高。</td>
+    <td>发行合作；联合开发；项目收购；团队收购；少数股权投资可能性</td>
+    <td class="action-cell">Corporate Development / Publishing / Studio Leadership<br><span class="meta">官网 contact / LinkedIn / 洛杉矶游戏圈转介绍</span></td>
+    <td class="action-cell">作为三七互娱式对标重点触达，强调已验证美国市场和后续内容/LiveOps路线。</td>
+    <td><a href="https://www.jamcity.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.jamcity.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="east side games group" data-tier="A" data-archetype="三七/益世界混合型" data-country="Canada" data-search="{&quot;rank&quot;:3,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;east side games group&quot;,&quot;country&quot;:&quot;canada&quot;,&quot;hq&quot;:&quot;vancouver, bc&quot;,&quot;website&quot;:&quot;https://www.eastsidegamesgroup.com/&quot;,&quot;archetype&quot;:&quot;三七/益世界混合型&quot;,&quot;industryposition&quot;:&quot;加拿大上市移动游戏集团，体量低于北美头部巨头，但具备自研、发行、技术平台和并购整合经验，适合作为中上游买方。&quot;,&quot;familyislandfit&quot;:&quot;偏长线 f2p、ip/品牌合作和休闲移动运营，对已验证数据的小团队项目有一定战略可读性。&quot;,&quot;dealtypes&quot;:&quot;发行；联合开发；战略投资；资产/团队收购&quot;,&quot;bestentry&quot;:&quot;publishing / corporate development / ceo office&quot;,&quot;contact&quot;:&quot;官网 inquiry / investor relations / linkedin&quot;,&quot;score&quot;:86,&quot;nextstep&quot;:&quot;第一波优先触达。用“中腰部移动游戏集团需要可运营项目”作为开场逻辑。&quot;,&quot;sources&quot;:[&quot;https://www.eastsidegamesgroup.com/&quot;,&quot;https://www.eastsidegamesgroup.com/games/&quot;,&quot;https://investors.eastsidegamesgroup.com/&quot;]}">
+    <td>3</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">East Side Games Group<br><a href="https://www.eastsidegamesgroup.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>Canada<br><span class="meta">Vancouver, BC</span></td>
+    <td class="scorebar"><strong>86</strong><div class="bar"><span style="width:86%"></span></div></td>
+    <td>三七/益世界混合型</td>
+    <td class="reason-cell">加拿大上市移动游戏集团，体量低于北美头部巨头，但具备自研、发行、技术平台和并购整合经验，适合作为中上游买方。</td>
+    <td class="reason-cell">偏长线 F2P、IP/品牌合作和休闲移动运营，对已验证数据的小团队项目有一定战略可读性。</td>
+    <td>发行；联合开发；战略投资；资产/团队收购</td>
+    <td class="action-cell">Publishing / Corporate Development / CEO office<br><span class="meta">官网 inquiry / investor relations / LinkedIn</span></td>
+    <td class="action-cell">第一波优先触达。用“中腰部移动游戏集团需要可运营项目”作为开场逻辑。</td>
+    <td><a href="https://www.eastsidegamesgroup.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.eastsidegamesgroup.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://investors.eastsidegamesgroup.com/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="lion studios / tripledot us portfolio" data-tier="A" data-archetype="益世界式移动发行/买量体系" data-country="US / UK" data-search="{&quot;rank&quot;:4,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;lion studios / tripledot us portfolio&quot;,&quot;country&quot;:&quot;us / uk&quot;,&quot;hq&quot;:&quot;palo alto, ca / london&quot;,&quot;website&quot;:&quot;https://lionstudios.cc/&quot;,&quot;archetype&quot;:&quot;益世界式移动发行/买量体系&quot;,&quot;industryposition&quot;:&quot;lion studios 是北美移动发行和买量体系的重要玩家；tripledot 2025 年收购 applovin 游戏业务后，组合里包含 lion studios、machine zone、peoplefun、magic tavern 等美国资产。&quot;,&quot;familyislandfit&quot;:&quot;适合谈移动休闲/混合休闲发行、买量扩张、项目收购或把团队并入更大的移动发行体系。&quot;,&quot;dealtypes&quot;:&quot;发行；ua/增长；项目收购；团队收购&quot;,&quot;bestentry&quot;:&quot;lion studios publishing / tripledot corporate development&quot;,&quot;contact&quot;:&quot;lion studios submission / tripledot contact / linkedin&quot;,&quot;score&quot;:85,&quot;nextstep&quot;:&quot;第一波优先触达。注意总部不完全在北美，但北美发行与工作室资产高度相关。&quot;,&quot;sources&quot;:[&quot;https://lionstudios.cc/&quot;,&quot;https://www.applovin.com/blog/applovin-sells-apps-business-to-tripledot-studios/&quot;,&quot;https://www.businesswire.com/news/home/20250219750135/en/tripledot-studios-to-acquire-applovins-games-business&quot;]}">
+    <td>4</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">Lion Studios / Tripledot US portfolio<br><a href="https://lionstudios.cc/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / UK<br><span class="meta">Palo Alto, CA / London</span></td>
+    <td class="scorebar"><strong>85</strong><div class="bar"><span style="width:85%"></span></div></td>
+    <td>益世界式移动发行/买量体系</td>
+    <td class="reason-cell">Lion Studios 是北美移动发行和买量体系的重要玩家；Tripledot 2025 年收购 AppLovin 游戏业务后，组合里包含 Lion Studios、Machine Zone、PeopleFun、Magic Tavern 等美国资产。</td>
+    <td class="reason-cell">适合谈移动休闲/混合休闲发行、买量扩张、项目收购或把团队并入更大的移动发行体系。</td>
+    <td>发行；UA/增长；项目收购；团队收购</td>
+    <td class="action-cell">Lion Studios publishing / Tripledot corporate development<br><span class="meta">Lion Studios submission / Tripledot contact / LinkedIn</span></td>
+    <td class="action-cell">第一波优先触达。注意总部不完全在北美，但北美发行与工作室资产高度相关。</td>
+    <td><a href="https://lionstudios.cc/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.applovin.com/blog/applovin-sells-apps-business-to-tripledot-studios/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.businesswire.com/news/home/20250219750135/en/Tripledot-Studios-to-Acquire-AppLovins-Games-Business" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="griffin gaming partners" data-tier="A" data-archetype="纯游戏投资机构" data-country="US" data-search="{&quot;rank&quot;:5,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;griffin gaming partners&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;santa monica, ca&quot;,&quot;website&quot;:&quot;https://griffingp.com/&quot;,&quot;archetype&quot;:&quot;纯游戏投资机构&quot;,&quot;industryposition&quot;:&quot;北美最重要的游戏专项投资机构之一，适合在没有现金流但数据验证不错时作为财务投资/战略融资入口。&quot;,&quot;familyislandfit&quot;:&quot;不负责发行，但可能投资团队、帮助接触发行商或参与并购/融资结构设计。&quot;,&quot;dealtypes&quot;:&quot;股权投资；桥接融资；战略投资转介；并购介绍&quot;,&quot;bestentry&quot;:&quot;investment team / partner network&quot;,&quot;contact&quot;:&quot;官网 contact / partner linkedin / portfolio warm intro&quot;,&quot;score&quot;:84,&quot;nextstep&quot;:&quot;与发行商并行触达，邮件要更像融资 teaser：团队、验证数据、资金缺口、里程碑和交易结构。&quot;,&quot;sources&quot;:[&quot;https://griffingp.com/&quot;,&quot;https://griffingp.com/portfolio/&quot;,&quot;https://www.gamesindustry.biz/griffin-gaming-partners-raises-750m-for-second-gaming-fund&quot;]}">
+    <td>5</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">Griffin Gaming Partners<br><a href="https://griffingp.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Santa Monica, CA</span></td>
+    <td class="scorebar"><strong>84</strong><div class="bar"><span style="width:84%"></span></div></td>
+    <td>纯游戏投资机构</td>
+    <td class="reason-cell">北美最重要的游戏专项投资机构之一，适合在没有现金流但数据验证不错时作为财务投资/战略融资入口。</td>
+    <td class="reason-cell">不负责发行，但可能投资团队、帮助接触发行商或参与并购/融资结构设计。</td>
+    <td>股权投资；桥接融资；战略投资转介；并购介绍</td>
+    <td class="action-cell">Investment team / partner network<br><span class="meta">官网 contact / partner LinkedIn / portfolio warm intro</span></td>
+    <td class="action-cell">与发行商并行触达，邮件要更像融资 teaser：团队、验证数据、资金缺口、里程碑和交易结构。</td>
+    <td><a href="https://griffingp.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://griffingp.com/portfolio/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.gamesindustry.biz/griffin-gaming-partners-raises-750m-for-second-gaming-fund" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="playstudios" data-tier="A" data-archetype="移动休闲/社交游戏上市公司" data-country="US" data-search="{&quot;rank&quot;:6,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;playstudios&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;las vegas, nv&quot;,&quot;website&quot;:&quot;https://www.playstudios.com/&quot;,&quot;archetype&quot;:&quot;移动休闲/社交游戏上市公司&quot;,&quot;industryposition&quot;:&quot;美国上市移动游戏公司，规模不如 zynga/scopely，但在休闲、社交娱乐场景和并购上具备实操能力。&quot;,&quot;familyislandfit&quot;:&quot;family island 类项目不是其最核心品类，但美国测试数据、休闲用户和长期活动运营可形成可评估机会。&quot;,&quot;dealtypes&quot;:&quot;战略投资；收购；发行/运营合作；ip/品牌合作&quot;,&quot;bestentry&quot;:&quot;corporate development / investor relations / business development&quot;,&quot;contact&quot;:&quot;官网 contact / ir contact / linkedin&quot;,&quot;score&quot;:82,&quot;nextstep&quot;:&quot;第一波末或第二波开头触达。强调移动休闲、美国用户验证和可选交易结构。&quot;,&quot;sources&quot;:[&quot;https://www.playstudios.com/&quot;,&quot;https://ir.playstudios.com/&quot;,&quot;https://www.playstudios.com/games/&quot;]}">
+    <td>6</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">PLAYSTUDIOS<br><a href="https://www.playstudios.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Las Vegas, NV</span></td>
+    <td class="scorebar"><strong>82</strong><div class="bar"><span style="width:82%"></span></div></td>
+    <td>移动休闲/社交游戏上市公司</td>
+    <td class="reason-cell">美国上市移动游戏公司，规模不如 Zynga/Scopely，但在休闲、社交娱乐场景和并购上具备实操能力。</td>
+    <td class="reason-cell">Family Island 类项目不是其最核心品类，但美国测试数据、休闲用户和长期活动运营可形成可评估机会。</td>
+    <td>战略投资；收购；发行/运营合作；IP/品牌合作</td>
+    <td class="action-cell">Corporate Development / Investor Relations / Business Development<br><span class="meta">官网 contact / IR contact / LinkedIn</span></td>
+    <td class="action-cell">第一波末或第二波开头触达。强调移动休闲、美国用户验证和可选交易结构。</td>
+    <td><a href="https://www.playstudios.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://ir.playstudios.com/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.playstudios.com/games/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="hyperbeard" data-tier="A" data-archetype="北美中腰部休闲移动发行/开发商" data-country="Mexico" data-search="{&quot;rank&quot;:7,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;hyperbeard&quot;,&quot;country&quot;:&quot;mexico&quot;,&quot;hq&quot;:&quot;mexico city, mexico&quot;,&quot;website&quot;:&quot;https://hyperbeard.com/&quot;,&quot;archetype&quot;:&quot;北美中腰部休闲移动发行/开发商&quot;,&quot;industryposition&quot;:&quot;墨西哥移动游戏公司，强在可爱风格、休闲移动游戏和全球发行；虽不是美国公司，但属于北美且与休闲品类贴近。&quot;,&quot;familyislandfit&quot;:&quot;如果项目美术和用户情绪更偏 cozy/cute，hyperbeard 的受众和发行审美可能有匹配。&quot;,&quot;dealtypes&quot;:&quot;发行；联合开发；项目合作；少数投资可能性&quot;,&quot;bestentry&quot;:&quot;publishing / business development&quot;,&quot;contact&quot;:&quot;官网 contact / submissions / linkedin&quot;,&quot;score&quot;:81,&quot;nextstep&quot;:&quot;第一波末触达。邮件里多放视觉风格、核心循环和美国测试学习。&quot;,&quot;sources&quot;:[&quot;https://hyperbeard.com/&quot;,&quot;https://hyperbeard.com/games/&quot;,&quot;https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/&quot;]}">
+    <td>7</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">HyperBeard<br><a href="https://hyperbeard.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>Mexico<br><span class="meta">Mexico City, Mexico</span></td>
+    <td class="scorebar"><strong>81</strong><div class="bar"><span style="width:81%"></span></div></td>
+    <td>北美中腰部休闲移动发行/开发商</td>
+    <td class="reason-cell">墨西哥移动游戏公司，强在可爱风格、休闲移动游戏和全球发行；虽不是美国公司，但属于北美且与休闲品类贴近。</td>
+    <td class="reason-cell">如果项目美术和用户情绪更偏 cozy/cute，HyperBeard 的受众和发行审美可能有匹配。</td>
+    <td>发行；联合开发；项目合作；少数投资可能性</td>
+    <td class="action-cell">Publishing / Business Development<br><span class="meta">官网 contact / submissions / LinkedIn</span></td>
+    <td class="action-cell">第一波末触达。邮件里多放视觉风格、核心循环和美国测试学习。</td>
+    <td><a href="https://hyperbeard.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://hyperbeard.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="bitkraft ventures" data-tier="A" data-archetype="纯游戏投资机构" data-country="US / Germany" data-search="{&quot;rank&quot;:8,&quot;tier&quot;:&quot;a&quot;,&quot;company&quot;:&quot;bitkraft ventures&quot;,&quot;country&quot;:&quot;us / germany&quot;,&quot;hq&quot;:&quot;denver, co / berlin&quot;,&quot;website&quot;:&quot;https://www.bitkraft.vc/&quot;,&quot;archetype&quot;:&quot;纯游戏投资机构&quot;,&quot;industryposition&quot;:&quot;全球知名游戏与互动娱乐 vc，在北美有强投资触达；适合融资和买方转介。&quot;,&quot;familyislandfit&quot;:&quot;不直接发行，但可评估游戏团队、产品数据和后续融资/并购路径。&quot;,&quot;dealtypes&quot;:&quot;股权投资；桥接融资；战略介绍&quot;,&quot;bestentry&quot;:&quot;investment team&quot;,&quot;contact&quot;:&quot;官网 contact / partner linkedin / portfolio warm intro&quot;,&quot;score&quot;:80,&quot;nextstep&quot;:&quot;作为融资并行线第一波触达，准备投资人版 kpi teaser。&quot;,&quot;sources&quot;:[&quot;https://www.bitkraft.vc/&quot;,&quot;https://www.bitkraft.vc/portfolio&quot;,&quot;https://www.bitkraft.vc/team&quot;]}">
+    <td>8</td>
+    <td><span class="pill pill-A">A</span></td>
+    <td class="company-cell">BITKRAFT Ventures<br><a href="https://www.bitkraft.vc/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Germany<br><span class="meta">Denver, CO / Berlin</span></td>
+    <td class="scorebar"><strong>80</strong><div class="bar"><span style="width:80%"></span></div></td>
+    <td>纯游戏投资机构</td>
+    <td class="reason-cell">全球知名游戏与互动娱乐 VC，在北美有强投资触达；适合融资和买方转介。</td>
+    <td class="reason-cell">不直接发行，但可评估游戏团队、产品数据和后续融资/并购路径。</td>
+    <td>股权投资；桥接融资；战略介绍</td>
+    <td class="action-cell">Investment team<br><span class="meta">官网 contact / partner LinkedIn / portfolio warm intro</span></td>
+    <td class="action-cell">作为融资并行线第一波触达，准备投资人版 KPI teaser。</td>
+    <td><a href="https://www.bitkraft.vc/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.bitkraft.vc/portfolio" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.bitkraft.vc/team" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="big blue bubble" data-tier="B" data-archetype="移动休闲开发发行商" data-country="Canada" data-search="{&quot;rank&quot;:9,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;big blue bubble&quot;,&quot;country&quot;:&quot;canada&quot;,&quot;hq&quot;:&quot;london, on&quot;,&quot;website&quot;:&quot;https://www.bigbluebubble.com/&quot;,&quot;archetype&quot;:&quot;移动休闲开发发行商&quot;,&quot;industryposition&quot;:&quot;加拿大老牌独立移动/休闲游戏公司，代表作 my singing monsters，行业地位更像中腰部精品型而非大平台。&quot;,&quot;familyislandfit&quot;:&quot;对休闲模拟、收集、养成和长线内容运营有可读性；收购能力未知，但适合询问合作/发行/转介绍。&quot;,&quot;dealtypes&quot;:&quot;发行合作；联合开发；战略合作；小规模投资可能性&quot;,&quot;bestentry&quot;:&quot;business development / studio leadership&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:79,&quot;nextstep&quot;:&quot;第二波触达。突出玩法循环、内容产能和可持续 liveops。&quot;,&quot;sources&quot;:[&quot;https://www.bigbluebubble.com/&quot;,&quot;https://www.bigbluebubble.com/games/&quot;,&quot;https://www.bigbluebubble.com/about/&quot;]}">
+    <td>9</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Big Blue Bubble<br><a href="https://www.bigbluebubble.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>Canada<br><span class="meta">London, ON</span></td>
+    <td class="scorebar"><strong>79</strong><div class="bar"><span style="width:79%"></span></div></td>
+    <td>移动休闲开发发行商</td>
+    <td class="reason-cell">加拿大老牌独立移动/休闲游戏公司，代表作 My Singing Monsters，行业地位更像中腰部精品型而非大平台。</td>
+    <td class="reason-cell">对休闲模拟、收集、养成和长线内容运营有可读性；收购能力未知，但适合询问合作/发行/转介绍。</td>
+    <td>发行合作；联合开发；战略合作；小规模投资可能性</td>
+    <td class="action-cell">Business Development / Studio leadership<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">第二波触达。突出玩法循环、内容产能和可持续 LiveOps。</td>
+    <td><a href="https://www.bigbluebubble.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.bigbluebubble.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.bigbluebubble.com/about/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="mobilityware" data-tier="B" data-archetype="北美休闲移动游戏公司" data-country="US" data-search="{&quot;rank&quot;:10,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;mobilityware&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;irvine, ca&quot;,&quot;website&quot;:&quot;https://www.mobilityware.com/&quot;,&quot;archetype&quot;:&quot;北美休闲移动游戏公司&quot;,&quot;industryposition&quot;:&quot;美国休闲移动游戏老牌公司，强在 evergreen casual 与移动端运营；行业体量大概率低于 jam city，但在休闲用户上有价值。&quot;,&quot;familyislandfit&quot;:&quot;品类不完全相同，但美国休闲用户、低 cpi 和留存验证是共通语言。&quot;,&quot;dealtypes&quot;:&quot;发行合作；联合开发；项目评估；收购可能性低到中&quot;,&quot;bestentry&quot;:&quot;business development / studio leadership&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:78,&quot;nextstep&quot;:&quot;第二波触达。邮件要简洁，不要一开始就只谈收购。&quot;,&quot;sources&quot;:[&quot;https://www.mobilityware.com/&quot;,&quot;https://www.mobilityware.com/games/&quot;,&quot;https://www.mobilityware.com/about-us/&quot;]}">
+    <td>10</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">MobilityWare<br><a href="https://www.mobilityware.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Irvine, CA</span></td>
+    <td class="scorebar"><strong>78</strong><div class="bar"><span style="width:78%"></span></div></td>
+    <td>北美休闲移动游戏公司</td>
+    <td class="reason-cell">美国休闲移动游戏老牌公司，强在 evergreen casual 与移动端运营；行业体量大概率低于 Jam City，但在休闲用户上有价值。</td>
+    <td class="reason-cell">品类不完全相同，但美国休闲用户、低 CPI 和留存验证是共通语言。</td>
+    <td>发行合作；联合开发；项目评估；收购可能性低到中</td>
+    <td class="action-cell">Business Development / Studio leadership<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">第二波触达。邮件要简洁，不要一开始就只谈收购。</td>
+    <td><a href="https://www.mobilityware.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.mobilityware.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.mobilityware.com/about-us/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="big fish games / bfg entertainment" data-tier="B" data-archetype="休闲游戏发行/分发老牌公司" data-country="US" data-search="{&quot;rank&quot;:11,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;big fish games / bfg entertainment&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;seattle, wa&quot;,&quot;website&quot;:&quot;https://www.bigfishgames.com/&quot;,&quot;archetype&quot;:&quot;休闲游戏发行/分发老牌公司&quot;,&quot;industryposition&quot;:&quot;曾是北美休闲游戏发行和分发的重要公司；当前战略状态需谨慎核验，但其休闲用户和发行历史与本项目相关。&quot;,&quot;familyislandfit&quot;:&quot;family island 类项目可从休闲冒险、模拟经营、长期内容和女性/家庭向用户角度切入。&quot;,&quot;dealtypes&quot;:&quot;发行；分发；资产合作；收购可能性不确定&quot;,&quot;bestentry&quot;:&quot;business development / publishing leadership&quot;,&quot;contact&quot;:&quot;官网 support/contact / linkedin / 前员工或集团转介绍&quot;,&quot;score&quot;:76,&quot;nextstep&quot;:&quot;第二波触达。先确认当前是否仍评估外部移动项目。&quot;,&quot;sources&quot;:[&quot;https://www.bigfishgames.com/us/en/company.html&quot;,&quot;https://www.bigfishgames.com/us/en/games.html&quot;,&quot;https://www.gamesindustry.biz/aristocrat-sells-big-fish-games-to-bfg-entertainment&quot;]}">
+    <td>11</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Big Fish Games / BFG Entertainment<br><a href="https://www.bigfishgames.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Seattle, WA</span></td>
+    <td class="scorebar"><strong>76</strong><div class="bar"><span style="width:76%"></span></div></td>
+    <td>休闲游戏发行/分发老牌公司</td>
+    <td class="reason-cell">曾是北美休闲游戏发行和分发的重要公司；当前战略状态需谨慎核验，但其休闲用户和发行历史与本项目相关。</td>
+    <td class="reason-cell">Family Island 类项目可从休闲冒险、模拟经营、长期内容和女性/家庭向用户角度切入。</td>
+    <td>发行；分发；资产合作；收购可能性不确定</td>
+    <td class="action-cell">Business Development / publishing leadership<br><span class="meta">官网 support/contact / LinkedIn / 前员工或集团转介绍</span></td>
+    <td class="action-cell">第二波触达。先确认当前是否仍评估外部移动项目。</td>
+    <td><a href="https://www.bigfishgames.com/us/en/company.html" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.bigfishgames.com/us/en/games.html" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.gamesindustry.biz/aristocrat-sells-big-fish-games-to-bfg-entertainment" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="makers fund" data-tier="B" data-archetype="纯游戏投资机构" data-country="US / Global" data-search="{&quot;rank&quot;:12,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;makers fund&quot;,&quot;country&quot;:&quot;us / global&quot;,&quot;hq&quot;:&quot;san francisco, ca / london&quot;,&quot;website&quot;:&quot;https://makersfund.com/&quot;,&quot;archetype&quot;:&quot;纯游戏投资机构&quot;,&quot;industryposition&quot;:&quot;游戏和互动娱乐专项基金，适合早中期游戏公司融资和并购路径讨论。&quot;,&quot;familyislandfit&quot;:&quot;可评估已验证美国测试数据的移动游戏团队，但不会替代发行商。&quot;,&quot;dealtypes&quot;:&quot;股权投资；桥接融资；战略转介&quot;,&quot;bestentry&quot;:&quot;investment team&quot;,&quot;contact&quot;:&quot;官网 contact / partner linkedin / portfolio intro&quot;,&quot;score&quot;:76,&quot;nextstep&quot;:&quot;第二波投资线触达。准备融资版 teaser 和 12 个月里程碑预算。&quot;,&quot;sources&quot;:[&quot;https://makersfund.com/&quot;,&quot;https://makersfund.com/portfolio/&quot;,&quot;https://makersfund.com/team/&quot;]}">
+    <td>12</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Makers Fund<br><a href="https://makersfund.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Global<br><span class="meta">San Francisco, CA / London</span></td>
+    <td class="scorebar"><strong>76</strong><div class="bar"><span style="width:76%"></span></div></td>
+    <td>纯游戏投资机构</td>
+    <td class="reason-cell">游戏和互动娱乐专项基金，适合早中期游戏公司融资和并购路径讨论。</td>
+    <td class="reason-cell">可评估已验证美国测试数据的移动游戏团队，但不会替代发行商。</td>
+    <td>股权投资；桥接融资；战略转介</td>
+    <td class="action-cell">Investment team<br><span class="meta">官网 contact / partner LinkedIn / portfolio intro</span></td>
+    <td class="action-cell">第二波投资线触达。准备融资版 teaser 和 12 个月里程碑预算。</td>
+    <td><a href="https://makersfund.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://makersfund.com/portfolio/" target="_blank" rel="noreferrer">S2</a> · <a href="https://makersfund.com/team/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="tapblaze" data-tier="B" data-archetype="休闲模拟开发发行商" data-country="US" data-search="{&quot;rank&quot;:13,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;tapblaze&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;los angeles, ca&quot;,&quot;website&quot;:&quot;https://www.tapblaze.com/&quot;,&quot;archetype&quot;:&quot;休闲模拟开发发行商&quot;,&quot;industryposition&quot;:&quot;美国小到中型移动休闲工作室，代表作 good pizza, great pizza；不一定是买方，但品类经验非常贴近。&quot;,&quot;familyislandfit&quot;:&quot;餐厅模拟和 cozy 休闲运营与 family island 类用户存在重合，适合谈合作、发行建议或小规模战略合作。&quot;,&quot;dealtypes&quot;:&quot;联合开发；发行建议；小规模合作；收购可能性低&quot;,&quot;bestentry&quot;:&quot;founder / business development&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:75,&quot;nextstep&quot;:&quot;第二波触达。更像合作伙伴或行业转介绍，不要把收购诉求放得太重。&quot;,&quot;sources&quot;:[&quot;https://www.tapblaze.com/&quot;,&quot;https://www.tapblaze.com/games/&quot;,&quot;https://play.google.com/store/apps/dev?id=5416792938617747564&quot;]}">
+    <td>13</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">TapBlaze<br><a href="https://www.tapblaze.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Los Angeles, CA</span></td>
+    <td class="scorebar"><strong>75</strong><div class="bar"><span style="width:75%"></span></div></td>
+    <td>休闲模拟开发发行商</td>
+    <td class="reason-cell">美国小到中型移动休闲工作室，代表作 Good Pizza, Great Pizza；不一定是买方，但品类经验非常贴近。</td>
+    <td class="reason-cell">餐厅模拟和 cozy 休闲运营与 Family Island 类用户存在重合，适合谈合作、发行建议或小规模战略合作。</td>
+    <td>联合开发；发行建议；小规模合作；收购可能性低</td>
+    <td class="action-cell">Founder / Business Development<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">第二波触达。更像合作伙伴或行业转介绍，不要把收购诉求放得太重。</td>
+    <td><a href="https://www.tapblaze.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.tapblaze.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://play.google.com/store/apps/dev?id=5416792938617747564" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="konvoy" data-tier="B" data-archetype="纯游戏投资机构" data-country="US" data-search="{&quot;rank&quot;:14,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;konvoy&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;denver, co&quot;,&quot;website&quot;:&quot;https://www.konvoy.vc/&quot;,&quot;archetype&quot;:&quot;纯游戏投资机构&quot;,&quot;industryposition&quot;:&quot;美国游戏专项 vc，关注游戏、平台和相关技术，适合作为融资与买方网络入口。&quot;,&quot;familyislandfit&quot;:&quot;对产品 kpi、团队效率和市场验证敏感，能帮助判断项目是否达到融资门槛。&quot;,&quot;dealtypes&quot;:&quot;股权投资；桥接融资；买方/发行商介绍&quot;,&quot;bestentry&quot;:&quot;investment team&quot;,&quot;contact&quot;:&quot;官网 contact / partner linkedin&quot;,&quot;score&quot;:74,&quot;nextstep&quot;:&quot;第二波投资线触达。把现金流缺口表述为明确 runway 与里程碑，而不是危机叙事。&quot;,&quot;sources&quot;:[&quot;https://www.konvoy.vc/&quot;,&quot;https://www.konvoy.vc/portfolio&quot;,&quot;https://www.konvoy.vc/team&quot;]}">
+    <td>14</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Konvoy<br><a href="https://www.konvoy.vc/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Denver, CO</span></td>
+    <td class="scorebar"><strong>74</strong><div class="bar"><span style="width:74%"></span></div></td>
+    <td>纯游戏投资机构</td>
+    <td class="reason-cell">美国游戏专项 VC，关注游戏、平台和相关技术，适合作为融资与买方网络入口。</td>
+    <td class="reason-cell">对产品 KPI、团队效率和市场验证敏感，能帮助判断项目是否达到融资门槛。</td>
+    <td>股权投资；桥接融资；买方/发行商介绍</td>
+    <td class="action-cell">Investment team<br><span class="meta">官网 contact / partner LinkedIn</span></td>
+    <td class="action-cell">第二波投资线触达。把现金流缺口表述为明确 runway 与里程碑，而不是危机叙事。</td>
+    <td><a href="https://www.konvoy.vc/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.konvoy.vc/portfolio" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.konvoy.vc/team" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="storm8 / stillfront" data-tier="B" data-archetype="移动休闲/社交游戏工作室" data-country="US / Sweden" data-search="{&quot;rank&quot;:15,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;storm8 / stillfront&quot;,&quot;country&quot;:&quot;us / sweden&quot;,&quot;hq&quot;:&quot;san mateo, ca&quot;,&quot;website&quot;:&quot;https://www.storm8.com/&quot;,&quot;archetype&quot;:&quot;移动休闲/社交游戏工作室&quot;,&quot;industryposition&quot;:&quot;美国移动游戏老牌工作室，现属 stillfront；曾在休闲、社交和女性向移动用户上有较强经验。&quot;,&quot;familyislandfit&quot;:&quot;品类和用户画像有相关性，但决策链可能在母集团，外部收购/发行意愿需确认。&quot;,&quot;dealtypes&quot;:&quot;发行/运营合作；资产收购；集团层面投资/并购&quot;,&quot;bestentry&quot;:&quot;storm8 leadership / stillfront m&amp;a&quot;,&quot;contact&quot;:&quot;官网 contact / stillfront corporate contact / linkedin&quot;,&quot;score&quot;:73,&quot;nextstep&quot;:&quot;第二波触达，同时抄送或并行找 stillfront 投资并购入口。&quot;,&quot;sources&quot;:[&quot;https://www.storm8.com/&quot;,&quot;https://www.storm8.com/games/&quot;,&quot;https://www.stillfront.com/en/portfolio/storm8/&quot;]}">
+    <td>15</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Storm8 / Stillfront<br><a href="https://www.storm8.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Sweden<br><span class="meta">San Mateo, CA</span></td>
+    <td class="scorebar"><strong>73</strong><div class="bar"><span style="width:73%"></span></div></td>
+    <td>移动休闲/社交游戏工作室</td>
+    <td class="reason-cell">美国移动游戏老牌工作室，现属 Stillfront；曾在休闲、社交和女性向移动用户上有较强经验。</td>
+    <td class="reason-cell">品类和用户画像有相关性，但决策链可能在母集团，外部收购/发行意愿需确认。</td>
+    <td>发行/运营合作；资产收购；集团层面投资/并购</td>
+    <td class="action-cell">Storm8 leadership / Stillfront M&amp;A<br><span class="meta">官网 contact / Stillfront corporate contact / LinkedIn</span></td>
+    <td class="action-cell">第二波触达，同时抄送或并行找 Stillfront 投资并购入口。</td>
+    <td><a href="https://www.storm8.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.storm8.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.stillfront.com/en/portfolio/storm8/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="kabam" data-tier="B" data-archetype="移动 F2P 研运发行公司" data-country="Canada" data-search="{&quot;rank&quot;:16,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;kabam&quot;,&quot;country&quot;:&quot;canada&quot;,&quot;hq&quot;:&quot;vancouver, bc&quot;,&quot;website&quot;:&quot;https://www.kabam.com/&quot;,&quot;archetype&quot;:&quot;移动 f2p 研运发行公司&quot;,&quot;industryposition&quot;:&quot;北美移动 f2p 和 ip 改编强公司，产品集中在中重度和授权 ip，行业地位高于一般中腰部发行商。&quot;,&quot;familyislandfit&quot;:&quot;玩法不完全贴合，但其 f2p 长线运营、ip、买量和集团资源值得作为战略买方备选。&quot;,&quot;dealtypes&quot;:&quot;战略合作；项目/团队收购；发行可能性中低&quot;,&quot;bestentry&quot;:&quot;business development / studio leadership / netmarble group route&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin / netmarble 转介绍&quot;,&quot;score&quot;:72,&quot;nextstep&quot;:&quot;第二波或第三波触达。更强调 f2p 运营和美国测试，而不是 cozy 模拟品类。&quot;,&quot;sources&quot;:[&quot;https://www.kabam.com/&quot;,&quot;https://www.kabam.com/games/&quot;,&quot;https://www.netmarble.com/en/company/about&quot;]}">
+    <td>16</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Kabam<br><a href="https://www.kabam.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>Canada<br><span class="meta">Vancouver, BC</span></td>
+    <td class="scorebar"><strong>72</strong><div class="bar"><span style="width:72%"></span></div></td>
+    <td>移动 F2P 研运发行公司</td>
+    <td class="reason-cell">北美移动 F2P 和 IP 改编强公司，产品集中在中重度和授权 IP，行业地位高于一般中腰部发行商。</td>
+    <td class="reason-cell">玩法不完全贴合，但其 F2P 长线运营、IP、买量和集团资源值得作为战略买方备选。</td>
+    <td>战略合作；项目/团队收购；发行可能性中低</td>
+    <td class="action-cell">Business Development / Studio leadership / Netmarble group route<br><span class="meta">官网 contact / LinkedIn / Netmarble 转介绍</span></td>
+    <td class="action-cell">第二波或第三波触达。更强调 F2P 运营和美国测试，而不是 cozy 模拟品类。</td>
+    <td><a href="https://www.kabam.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.kabam.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.netmarble.com/en/company/about" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="transcend fund" data-tier="B" data-archetype="纯游戏投资机构" data-country="US" data-search="{&quot;rank&quot;:17,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;transcend fund&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;san francisco, ca&quot;,&quot;website&quot;:&quot;https://transcend.fund/&quot;,&quot;archetype&quot;:&quot;纯游戏投资机构&quot;,&quot;industryposition&quot;:&quot;专注游戏和数字娱乐的投资基金，适合对接早期到成长期游戏团队。&quot;,&quot;familyislandfit&quot;:&quot;可作为融资和买方转介入口，尤其当发行合作短期难落地时。&quot;,&quot;dealtypes&quot;:&quot;股权投资；战略转介；桥接融资&quot;,&quot;bestentry&quot;:&quot;investment team&quot;,&quot;contact&quot;:&quot;官网 contact / partner linkedin&quot;,&quot;score&quot;:72,&quot;nextstep&quot;:&quot;第二波投资线触达。强调美国市场测试、低成本验证和资金用途。&quot;,&quot;sources&quot;:[&quot;https://transcend.fund/&quot;,&quot;https://transcend.fund/portfolio/&quot;,&quot;https://transcend.fund/team/&quot;]}">
+    <td>17</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Transcend Fund<br><a href="https://transcend.fund/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">San Francisco, CA</span></td>
+    <td class="scorebar"><strong>72</strong><div class="bar"><span style="width:72%"></span></div></td>
+    <td>纯游戏投资机构</td>
+    <td class="reason-cell">专注游戏和数字娱乐的投资基金，适合对接早期到成长期游戏团队。</td>
+    <td class="reason-cell">可作为融资和买方转介入口，尤其当发行合作短期难落地时。</td>
+    <td>股权投资；战略转介；桥接融资</td>
+    <td class="action-cell">Investment team<br><span class="meta">官网 contact / partner LinkedIn</span></td>
+    <td class="action-cell">第二波投资线触达。强调美国市场测试、低成本验证和资金用途。</td>
+    <td><a href="https://transcend.fund/" target="_blank" rel="noreferrer">S1</a> · <a href="https://transcend.fund/portfolio/" target="_blank" rel="noreferrer">S2</a> · <a href="https://transcend.fund/team/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="fortis games" data-tier="B" data-archetype="新兴全球游戏集团/工作室网络" data-country="US" data-search="{&quot;rank&quot;:18,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;fortis games&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;las vegas, nv&quot;,&quot;website&quot;:&quot;https://www.fortisgames.com/&quot;,&quot;archetype&quot;:&quot;新兴全球游戏集团/工作室网络&quot;,&quot;industryposition&quot;:&quot;savvy games group 旗下全球工作室网络，北美有重心，资金背景强，但不是传统第三方移动发行商。&quot;,&quot;familyislandfit&quot;:&quot;适合尝试团队并入、联合开发或项目收购讨论；是否接受外部项目需要确认。&quot;,&quot;dealtypes&quot;:&quot;团队收购；联合开发；项目合作；战略投资可能性&quot;,&quot;bestentry&quot;:&quot;studio leadership / corporate leadership&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin / savvy network intro&quot;,&quot;score&quot;:70,&quot;nextstep&quot;:&quot;第二波末触达。重点问是否评估外部移动项目或团队并入机会。&quot;,&quot;sources&quot;:[&quot;https://www.fortisgames.com/&quot;,&quot;https://www.savvygames.com/en/our-companies/fortis/&quot;,&quot;https://www.gamesindustry.biz/fortis-appoints-jeremy-gorman-as-ceo&quot;]}">
+    <td>18</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Fortis Games<br><a href="https://www.fortisgames.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Las Vegas, NV</span></td>
+    <td class="scorebar"><strong>70</strong><div class="bar"><span style="width:70%"></span></div></td>
+    <td>新兴全球游戏集团/工作室网络</td>
+    <td class="reason-cell">Savvy Games Group 旗下全球工作室网络，北美有重心，资金背景强，但不是传统第三方移动发行商。</td>
+    <td class="reason-cell">适合尝试团队并入、联合开发或项目收购讨论；是否接受外部项目需要确认。</td>
+    <td>团队收购；联合开发；项目合作；战略投资可能性</td>
+    <td class="action-cell">Studio leadership / corporate leadership<br><span class="meta">官网 contact / LinkedIn / Savvy network intro</span></td>
+    <td class="action-cell">第二波末触达。重点问是否评估外部移动项目或团队并入机会。</td>
+    <td><a href="https://www.fortisgames.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.savvygames.com/en/our-companies/fortis/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.gamesindustry.biz/fortis-appoints-jeremy-gorman-as-ceo" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="a16z games" data-tier="B" data-archetype="大型 VC 游戏基金" data-country="US" data-search="{&quot;rank&quot;:19,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;a16z games&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;menlo park, ca&quot;,&quot;website&quot;:&quot;https://a16z.com/games/&quot;,&quot;archetype&quot;:&quot;大型 vc 游戏基金&quot;,&quot;industryposition&quot;:&quot;美国顶级 vc 的游戏专项平台，投资能力强，但对项目门槛和增长故事要求高。&quot;,&quot;familyislandfit&quot;:&quot;如果 cpi/留存达到可融资阈值，可作为投资线高质量但高门槛对象。&quot;,&quot;dealtypes&quot;:&quot;股权投资；战略转介&quot;,&quot;bestentry&quot;:&quot;games investment team&quot;,&quot;contact&quot;:&quot;官网 / partner linkedin / portfolio warm intro&quot;,&quot;score&quot;:70,&quot;nextstep&quot;:&quot;第二波投资线触达。需要更强的市场规模、团队叙事和数据可信度。&quot;,&quot;sources&quot;:[&quot;https://a16z.com/games/&quot;,&quot;https://a16z.com/introducing-games-fund-one/&quot;,&quot;https://a16z.com/portfolio/&quot;]}">
+    <td>19</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">a16z Games<br><a href="https://a16z.com/games/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Menlo Park, CA</span></td>
+    <td class="scorebar"><strong>70</strong><div class="bar"><span style="width:70%"></span></div></td>
+    <td>大型 VC 游戏基金</td>
+    <td class="reason-cell">美国顶级 VC 的游戏专项平台，投资能力强，但对项目门槛和增长故事要求高。</td>
+    <td class="reason-cell">如果 CPI/留存达到可融资阈值，可作为投资线高质量但高门槛对象。</td>
+    <td>股权投资；战略转介</td>
+    <td class="action-cell">Games investment team<br><span class="meta">官网 / partner LinkedIn / portfolio warm intro</span></td>
+    <td class="action-cell">第二波投资线触达。需要更强的市场规模、团队叙事和数据可信度。</td>
+    <td><a href="https://a16z.com/games/" target="_blank" rel="noreferrer">S1</a> · <a href="https://a16z.com/introducing-games-fund-one/" target="_blank" rel="noreferrer">S2</a> · <a href="https://a16z.com/portfolio/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="applovin" data-tier="B" data-archetype="广告技术/发行生态入口" data-country="US" data-search="{&quot;rank&quot;:20,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;applovin&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;palo alto, ca&quot;,&quot;website&quot;:&quot;https://www.applovin.com/&quot;,&quot;archetype&quot;:&quot;广告技术/发行生态入口&quot;,&quot;industryposition&quot;:&quot;已经不应被当作传统游戏发行商：2025 年出售游戏业务给 tripledot 后，核心是广告技术和平台，但仍可能通过 tripledot 股权与生态转介产生价值。&quot;,&quot;familyislandfit&quot;:&quot;不是首选买方；更适合作为 ua、发行商转介或间接触达 lion/tripledot 的生态入口。&quot;,&quot;dealtypes&quot;:&quot;ua/增长合作；生态转介；间接投资/收购路径&quot;,&quot;bestentry&quot;:&quot;business development / applovin ecosystem contacts&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin / tripledot route&quot;,&quot;score&quot;:67,&quot;nextstep&quot;:&quot;不作为纯发行买方优先触达；如有 applovin 关系，可请其转给 tripledot/lion。&quot;,&quot;sources&quot;:[&quot;https://www.applovin.com/&quot;,&quot;https://www.applovin.com/blog/applovin-sells-apps-business-to-tripledot-studios/&quot;,&quot;https://investors.applovin.com/&quot;]}">
+    <td>20</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">AppLovin<br><a href="https://www.applovin.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Palo Alto, CA</span></td>
+    <td class="scorebar"><strong>67</strong><div class="bar"><span style="width:67%"></span></div></td>
+    <td>广告技术/发行生态入口</td>
+    <td class="reason-cell">已经不应被当作传统游戏发行商：2025 年出售游戏业务给 Tripledot 后，核心是广告技术和平台，但仍可能通过 Tripledot 股权与生态转介产生价值。</td>
+    <td class="reason-cell">不是首选买方；更适合作为 UA、发行商转介或间接触达 Lion/Tripledot 的生态入口。</td>
+    <td>UA/增长合作；生态转介；间接投资/收购路径</td>
+    <td class="action-cell">Business Development / AppLovin ecosystem contacts<br><span class="meta">官网 contact / LinkedIn / Tripledot route</span></td>
+    <td class="action-cell">不作为纯发行买方优先触达；如有 AppLovin 关系，可请其转给 Tripledot/Lion。</td>
+    <td><a href="https://www.applovin.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.applovin.com/blog/applovin-sells-apps-business-to-tripledot-studios/" target="_blank" rel="noreferrer">S2</a> · <a href="https://investors.applovin.com/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="scopely" data-tier="B" data-archetype="战略上限参照" data-country="US" data-search="{&quot;rank&quot;:21,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;scopely&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;culver city, ca&quot;,&quot;website&quot;:&quot;https://www.scopely.com/&quot;,&quot;archetype&quot;:&quot;战略上限参照&quot;,&quot;industryposition&quot;:&quot;北美移动游戏绝对强势公司之一，地位明显高于三七互娱/益世界的类比层级；作为买方可试，但不应作为主要对标。&quot;,&quot;familyislandfit&quot;:&quot;如果数据非常强，休闲冒险/模拟可作为其移动 f2p portfolio 延展；否则冷启动触达难度高。&quot;,&quot;dealtypes&quot;:&quot;收购；战略投资；发行/合作可能性低&quot;,&quot;bestentry&quot;:&quot;corporate development / studio leadership&quot;,&quot;contact&quot;:&quot;官网 / linkedin / 投资并购转介绍&quot;,&quot;score&quot;:66,&quot;nextstep&quot;:&quot;作为 stretch target。不要第一批消耗冷邮件，优先找 warm intro。&quot;,&quot;sources&quot;:[&quot;https://www.scopely.com/&quot;,&quot;https://www.scopely.com/en/news/scopely-to-acquire-niantic-games-business-which-includes-pokemon-go-one-of-the-most-successful-mobile-games-of-all-time&quot;,&quot;https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/&quot;]}">
+    <td>21</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Scopely<br><a href="https://www.scopely.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Culver City, CA</span></td>
+    <td class="scorebar"><strong>66</strong><div class="bar"><span style="width:66%"></span></div></td>
+    <td>战略上限参照</td>
+    <td class="reason-cell">北美移动游戏绝对强势公司之一，地位明显高于三七互娱/益世界的类比层级；作为买方可试，但不应作为主要对标。</td>
+    <td class="reason-cell">如果数据非常强，休闲冒险/模拟可作为其移动 F2P portfolio 延展；否则冷启动触达难度高。</td>
+    <td>收购；战略投资；发行/合作可能性低</td>
+    <td class="action-cell">Corporate Development / studio leadership<br><span class="meta">官网 / LinkedIn / 投资并购转介绍</span></td>
+    <td class="action-cell">作为 stretch target。不要第一批消耗冷邮件，优先找 warm intro。</td>
+    <td><a href="https://www.scopely.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.scopely.com/en/news/scopely-to-acquire-niantic-games-business-which-includes-pokemon-go-one-of-the-most-successful-mobile-games-of-all-time" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="zynga / take-two mobile" data-tier="B" data-archetype="战略上限参照" data-country="US" data-search="{&quot;rank&quot;:22,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;zynga / take-two mobile&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;san mateo, ca / new york, ny&quot;,&quot;website&quot;:&quot;https://www.zynga.com/&quot;,&quot;archetype&quot;:&quot;战略上限参照&quot;,&quot;industryposition&quot;:&quot;北美移动游戏巨头/大集团移动部门，地位高于三七互娱式对标；但有成熟移动发行、并购和 ip 资源。&quot;,&quot;familyislandfit&quot;:&quot;对已验证美国市场的休闲/模拟 f2p 项目理论上相关，但外部项目冷启动门槛高。&quot;,&quot;dealtypes&quot;:&quot;收购；战略合作；发行可能性低&quot;,&quot;bestentry&quot;:&quot;take-two corporate development / zynga leadership&quot;,&quot;contact&quot;:&quot;官网 / linkedin / 投资银行或行业转介绍&quot;,&quot;score&quot;:65,&quot;nextstep&quot;:&quot;作为 stretch target。除非有强引荐或数据很突出，否则排在 tilting point/jam city 后。&quot;,&quot;sources&quot;:[&quot;https://www.zynga.com/&quot;,&quot;https://www.take2games.com/ir/news/take-two-interactive-software-inc-completes-combination-with-zynga-inc&quot;,&quot;https://www.take2games.com/&quot;]}">
+    <td>22</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Zynga / Take-Two Mobile<br><a href="https://www.zynga.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">San Mateo, CA / New York, NY</span></td>
+    <td class="scorebar"><strong>65</strong><div class="bar"><span style="width:65%"></span></div></td>
+    <td>战略上限参照</td>
+    <td class="reason-cell">北美移动游戏巨头/大集团移动部门，地位高于三七互娱式对标；但有成熟移动发行、并购和 IP 资源。</td>
+    <td class="reason-cell">对已验证美国市场的休闲/模拟 F2P 项目理论上相关，但外部项目冷启动门槛高。</td>
+    <td>收购；战略合作；发行可能性低</td>
+    <td class="action-cell">Take-Two corporate development / Zynga leadership<br><span class="meta">官网 / LinkedIn / 投资银行或行业转介绍</span></td>
+    <td class="action-cell">作为 stretch target。除非有强引荐或数据很突出，否则排在 Tilting Point/Jam City 后。</td>
+    <td><a href="https://www.zynga.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.take2games.com/ir/news/take-two-interactive-software-inc-completes-combination-with-zynga-inc" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.take2games.com/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="sciplay / light &amp; wonder" data-tier="B" data-archetype="社交娱乐场/移动游戏公司" data-country="US" data-search="{&quot;rank&quot;:23,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;sciplay / light &amp; wonder&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;las vegas, nv&quot;,&quot;website&quot;:&quot;https://www.sciplay.com/&quot;,&quot;archetype&quot;:&quot;社交娱乐场/移动游戏公司&quot;,&quot;industryposition&quot;:&quot;美国社交 casino 和 casual mobile 上市/集团型玩家，资金和运营能力强，但品类偏社交娱乐场。&quot;,&quot;familyislandfit&quot;:&quot;family island 类游戏与其核心品类有距离，但休闲用户、liveops 和美国市场验证可作为切入点。&quot;,&quot;dealtypes&quot;:&quot;收购；战略投资；发行合作可能性中低&quot;,&quot;bestentry&quot;:&quot;corporate development / light &amp; wonder digital leadership&quot;,&quot;contact&quot;:&quot;官网 contact / investor relations / linkedin&quot;,&quot;score&quot;:64,&quot;nextstep&quot;:&quot;第三波触达。除非游戏变现偏广告/社交 casino，否则优先级低于休闲模拟发行商。&quot;,&quot;sources&quot;:[&quot;https://www.sciplay.com/&quot;,&quot;https://www.sciplay.com/games/&quot;,&quot;https://www.lnw.com/company/sciplay/&quot;]}">
+    <td>23</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">SciPlay / Light &amp; Wonder<br><a href="https://www.sciplay.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Las Vegas, NV</span></td>
+    <td class="scorebar"><strong>64</strong><div class="bar"><span style="width:64%"></span></div></td>
+    <td>社交娱乐场/移动游戏公司</td>
+    <td class="reason-cell">美国社交 casino 和 casual mobile 上市/集团型玩家，资金和运营能力强，但品类偏社交娱乐场。</td>
+    <td class="reason-cell">Family Island 类游戏与其核心品类有距离，但休闲用户、LiveOps 和美国市场验证可作为切入点。</td>
+    <td>收购；战略投资；发行合作可能性中低</td>
+    <td class="action-cell">Corporate Development / Light &amp; Wonder digital leadership<br><span class="meta">官网 contact / investor relations / LinkedIn</span></td>
+    <td class="action-cell">第三波触达。除非游戏变现偏广告/社交 casino，否则优先级低于休闲模拟发行商。</td>
+    <td><a href="https://www.sciplay.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.sciplay.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.lnw.com/company/sciplay/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="lightspeed gaming" data-tier="B" data-archetype="大型 VC 游戏投资线" data-country="US" data-search="{&quot;rank&quot;:24,&quot;tier&quot;:&quot;b&quot;,&quot;company&quot;:&quot;lightspeed gaming&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;menlo park, ca&quot;,&quot;website&quot;:&quot;https://lsvp.com/sectors/gaming/&quot;,&quot;archetype&quot;:&quot;大型 vc 游戏投资线&quot;,&quot;industryposition&quot;:&quot;lightspeed 的游戏投资线在北美有影响力；不是游戏发行商，但能做融资和高质量转介。&quot;,&quot;familyislandfit&quot;:&quot;适合数据达到融资门槛、需要桥接资金和发行商网络时触达。&quot;,&quot;dealtypes&quot;:&quot;股权投资；战略转介&quot;,&quot;bestentry&quot;:&quot;gaming investment partners&quot;,&quot;contact&quot;:&quot;官网 / partner linkedin / portfolio warm intro&quot;,&quot;score&quot;:64,&quot;nextstep&quot;:&quot;第三波投资线。需要把 kpi 和资金用途压缩成 1-page investor memo。&quot;,&quot;sources&quot;:[&quot;https://lsvp.com/sectors/gaming/&quot;,&quot;https://lsvp.com/portfolio/&quot;,&quot;https://lsvp.com/team/&quot;]}">
+    <td>24</td>
+    <td><span class="pill pill-B">B</span></td>
+    <td class="company-cell">Lightspeed Gaming<br><a href="https://lsvp.com/sectors/gaming/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Menlo Park, CA</span></td>
+    <td class="scorebar"><strong>64</strong><div class="bar"><span style="width:64%"></span></div></td>
+    <td>大型 VC 游戏投资线</td>
+    <td class="reason-cell">Lightspeed 的游戏投资线在北美有影响力；不是游戏发行商，但能做融资和高质量转介。</td>
+    <td class="reason-cell">适合数据达到融资门槛、需要桥接资金和发行商网络时触达。</td>
+    <td>股权投资；战略转介</td>
+    <td class="action-cell">Gaming investment partners<br><span class="meta">官网 / partner LinkedIn / portfolio warm intro</span></td>
+    <td class="action-cell">第三波投资线。需要把 KPI 和资金用途压缩成 1-page investor memo。</td>
+    <td><a href="https://lsvp.com/sectors/gaming/" target="_blank" rel="noreferrer">S1</a> · <a href="https://lsvp.com/portfolio/" target="_blank" rel="noreferrer">S2</a> · <a href="https://lsvp.com/team/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="sunblink" data-tier="C" data-archetype="cozy/life-sim 工作室" data-country="US" data-search="{&quot;rank&quot;:25,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;sunblink&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;boulder, co&quot;,&quot;website&quot;:&quot;https://www.sunblink.com/&quot;,&quot;archetype&quot;:&quot;cozy/life-sim 工作室&quot;,&quot;industryposition&quot;:&quot;小到中型工作室，因 hello kitty island adventure 在 cozy/life-sim 方向具备可比经验，但不是典型发行商。&quot;,&quot;familyislandfit&quot;:&quot;玩法情绪和人群接近，适合行业交流、联合开发或转介绍，不适合作为主要收购买方。&quot;,&quot;dealtypes&quot;:&quot;联合开发；行业转介绍；小规模合作&quot;,&quot;bestentry&quot;:&quot;founder / studio leadership&quot;,&quot;contact&quot;:&quot;官网 / linkedin&quot;,&quot;score&quot;:62,&quot;nextstep&quot;:&quot;第三波触达。语气偏合作和交流，少谈急迫融资。&quot;,&quot;sources&quot;:[&quot;https://www.sunblink.com/&quot;,&quot;https://www.sunblink.com/games&quot;,&quot;https://www.apple.com/newsroom/2023/07/hello-kitty-island-adventure-launches-on-apple-arcade/&quot;]}">
+    <td>25</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Sunblink<br><a href="https://www.sunblink.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Boulder, CO</span></td>
+    <td class="scorebar"><strong>62</strong><div class="bar"><span style="width:62%"></span></div></td>
+    <td>cozy/life-sim 工作室</td>
+    <td class="reason-cell">小到中型工作室，因 Hello Kitty Island Adventure 在 cozy/life-sim 方向具备可比经验，但不是典型发行商。</td>
+    <td class="reason-cell">玩法情绪和人群接近，适合行业交流、联合开发或转介绍，不适合作为主要收购买方。</td>
+    <td>联合开发；行业转介绍；小规模合作</td>
+    <td class="action-cell">Founder / studio leadership<br><span class="meta">官网 / LinkedIn</span></td>
+    <td class="action-cell">第三波触达。语气偏合作和交流，少谈急迫融资。</td>
+    <td><a href="https://www.sunblink.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.sunblink.com/games" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.apple.com/newsroom/2023/07/hello-kitty-island-adventure-launches-on-apple-arcade/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="rogue games" data-tier="C" data-archetype="独立游戏发行商" data-country="US" data-search="{&quot;rank&quot;:26,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;rogue games&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;los angeles, ca&quot;,&quot;website&quot;:&quot;https://www.rogueco.com/&quot;,&quot;archetype&quot;:&quot;独立游戏发行商&quot;,&quot;industryposition&quot;:&quot;美国独立发行商，覆盖 pc/console/mobile，但不是移动休闲头部。&quot;,&quot;familyislandfit&quot;:&quot;如果项目可以包装为跨平台 cozy/adventure，可能有讨论空间；纯移动 f2p 买量能力需验证。&quot;,&quot;dealtypes&quot;:&quot;发行；联合开发；平台发行&quot;,&quot;bestentry&quot;:&quot;publishing / business development&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:61,&quot;nextstep&quot;:&quot;第三波触达。若游戏仍是纯移动 f2p，优先级低于 tilting point 和 jam city。&quot;,&quot;sources&quot;:[&quot;https://www.rogueco.com/&quot;,&quot;https://www.rogueco.com/games&quot;,&quot;https://www.rogueco.com/contact&quot;]}">
+    <td>26</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Rogue Games<br><a href="https://www.rogueco.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Los Angeles, CA</span></td>
+    <td class="scorebar"><strong>61</strong><div class="bar"><span style="width:61%"></span></div></td>
+    <td>独立游戏发行商</td>
+    <td class="reason-cell">美国独立发行商，覆盖 PC/console/mobile，但不是移动休闲头部。</td>
+    <td class="reason-cell">如果项目可以包装为跨平台 cozy/adventure，可能有讨论空间；纯移动 F2P 买量能力需验证。</td>
+    <td>发行；联合开发；平台发行</td>
+    <td class="action-cell">Publishing / Business Development<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">第三波触达。若游戏仍是纯移动 F2P，优先级低于 Tilting Point 和 Jam City。</td>
+    <td><a href="https://www.rogueco.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.rogueco.com/games" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.rogueco.com/contact" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="galaxy interactive" data-tier="C" data-archetype="游戏/互动娱乐投资机构" data-country="US" data-search="{&quot;rank&quot;:27,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;galaxy interactive&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;new york, ny&quot;,&quot;website&quot;:&quot;https://www.galaxy.com/interactive/&quot;,&quot;archetype&quot;:&quot;游戏/互动娱乐投资机构&quot;,&quot;industryposition&quot;:&quot;互动娱乐、游戏和数字资产相关投资平台，适合融资线补充。&quot;,&quot;familyislandfit&quot;:&quot;不适合只谈发行；适合把项目作为互动娱乐/游戏团队融资机会递交。&quot;,&quot;dealtypes&quot;:&quot;股权投资；战略转介&quot;,&quot;bestentry&quot;:&quot;investment team&quot;,&quot;contact&quot;:&quot;官网 / linkedin / portfolio warm intro&quot;,&quot;score&quot;:61,&quot;nextstep&quot;:&quot;第三波投资线。若产品指标不错但缺少发行方，作为备选融资入口。&quot;,&quot;sources&quot;:[&quot;https://www.galaxy.com/interactive/&quot;,&quot;https://www.galaxy.com/businesses/galaxy-ventures/&quot;,&quot;https://www.galaxy.com/&quot;]}">
+    <td>27</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Galaxy Interactive<br><a href="https://www.galaxy.com/interactive/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">New York, NY</span></td>
+    <td class="scorebar"><strong>61</strong><div class="bar"><span style="width:61%"></span></div></td>
+    <td>游戏/互动娱乐投资机构</td>
+    <td class="reason-cell">互动娱乐、游戏和数字资产相关投资平台，适合融资线补充。</td>
+    <td class="reason-cell">不适合只谈发行；适合把项目作为互动娱乐/游戏团队融资机会递交。</td>
+    <td>股权投资；战略转介</td>
+    <td class="action-cell">Investment team<br><span class="meta">官网 / LinkedIn / portfolio warm intro</span></td>
+    <td class="action-cell">第三波投资线。若产品指标不错但缺少发行方，作为备选融资入口。</td>
+    <td><a href="https://www.galaxy.com/interactive/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.galaxy.com/businesses/galaxy-ventures/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.galaxy.com/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="product madness / aristocrat" data-tier="C" data-archetype="社交 casino 移动公司" data-country="US / Australia" data-search="{&quot;rank&quot;:28,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;product madness / aristocrat&quot;,&quot;country&quot;:&quot;us / australia&quot;,&quot;hq&quot;:&quot;las vegas, nv / london&quot;,&quot;website&quot;:&quot;https://www.productmadness.com/&quot;,&quot;archetype&quot;:&quot;社交 casino 移动公司&quot;,&quot;industryposition&quot;:&quot;aristocrat 旗下社交 casino 移动游戏公司，资金和运营强，但品类偏差较大。&quot;,&quot;familyislandfit&quot;:&quot;除非项目变现更偏广告/社交娱乐场用户，否则仅作为拓展名单。&quot;,&quot;dealtypes&quot;:&quot;收购；战略合作；发行可能性低&quot;,&quot;bestentry&quot;:&quot;aristocrat digital / product madness leadership&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:60,&quot;nextstep&quot;:&quot;第三波后段触达。话术重点放在美国用户验证和休闲运营，不要强调 farming sim。&quot;,&quot;sources&quot;:[&quot;https://www.productmadness.com/&quot;,&quot;https://www.productmadness.com/games/&quot;,&quot;https://www.aristocrat.com/businesses/product-madness/&quot;]}">
+    <td>28</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Product Madness / Aristocrat<br><a href="https://www.productmadness.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Australia<br><span class="meta">Las Vegas, NV / London</span></td>
+    <td class="scorebar"><strong>60</strong><div class="bar"><span style="width:60%"></span></div></td>
+    <td>社交 casino 移动公司</td>
+    <td class="reason-cell">Aristocrat 旗下社交 casino 移动游戏公司，资金和运营强，但品类偏差较大。</td>
+    <td class="reason-cell">除非项目变现更偏广告/社交娱乐场用户，否则仅作为拓展名单。</td>
+    <td>收购；战略合作；发行可能性低</td>
+    <td class="action-cell">Aristocrat digital / Product Madness leadership<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">第三波后段触达。话术重点放在美国用户验证和休闲运营，不要强调 farming sim。</td>
+    <td><a href="https://www.productmadness.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.productmadness.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.aristocrat.com/businesses/product-madness/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="armor games studios" data-tier="C" data-archetype="独立发行商" data-country="US" data-search="{&quot;rank&quot;:29,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;armor games studios&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;irvine, ca&quot;,&quot;website&quot;:&quot;https://armorgamesstudios.com/&quot;,&quot;archetype&quot;:&quot;独立发行商&quot;,&quot;industryposition&quot;:&quot;美国独立游戏发行商，有 web/pc/console/mobile 历史，但不是移动买量发行商。&quot;,&quot;familyislandfit&quot;:&quot;若游戏可转为 premium/cozy 或多平台体验，可能有发行讨论；纯 f2p 移动项目适配一般。&quot;,&quot;dealtypes&quot;:&quot;发行；平台合作；联合开发&quot;,&quot;bestentry&quot;:&quot;publishing / submissions&quot;,&quot;contact&quot;:&quot;官网 submission / contact&quot;,&quot;score&quot;:59,&quot;nextstep&quot;:&quot;第三波触达。适合拿来拓展，但不是解决现金流的首要对象。&quot;,&quot;sources&quot;:[&quot;https://armorgamesstudios.com/&quot;,&quot;https://armorgamesstudios.com/games/&quot;,&quot;https://armorgamesstudios.com/contact/&quot;]}">
+    <td>29</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Armor Games Studios<br><a href="https://armorgamesstudios.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Irvine, CA</span></td>
+    <td class="scorebar"><strong>59</strong><div class="bar"><span style="width:59%"></span></div></td>
+    <td>独立发行商</td>
+    <td class="reason-cell">美国独立游戏发行商，有 web/PC/console/mobile 历史，但不是移动买量发行商。</td>
+    <td class="reason-cell">若游戏可转为 premium/cozy 或多平台体验，可能有发行讨论；纯 F2P 移动项目适配一般。</td>
+    <td>发行；平台合作；联合开发</td>
+    <td class="action-cell">Publishing / submissions<br><span class="meta">官网 submission / contact</span></td>
+    <td class="action-cell">第三波触达。适合拿来拓展，但不是解决现金流的首要对象。</td>
+    <td><a href="https://armorgamesstudios.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://armorgamesstudios.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://armorgamesstudios.com/contact/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="gamemill entertainment" data-tier="C" data-archetype="授权/IP 游戏发行商" data-country="US" data-search="{&quot;rank&quot;:30,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;gamemill entertainment&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;minneapolis, mn&quot;,&quot;website&quot;:&quot;https://gamemill.com/&quot;,&quot;archetype&quot;:&quot;授权/ip 游戏发行商&quot;,&quot;industryposition&quot;:&quot;美国授权/ip 游戏发行商，更多偏 console/pc/licensed games，不是典型移动休闲发行商。&quot;,&quot;familyislandfit&quot;:&quot;除非项目可以绑定 ip 或多平台化，否则适配度一般。&quot;,&quot;dealtypes&quot;:&quot;发行；ip合作；项目合作&quot;,&quot;bestentry&quot;:&quot;publishing / licensing&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:57,&quot;nextstep&quot;:&quot;第三波后段触达。可以作为 ip/发行资源补充。&quot;,&quot;sources&quot;:[&quot;https://gamemill.com/&quot;,&quot;https://gamemill.com/games/&quot;,&quot;https://gamemill.com/contact/&quot;]}">
+    <td>30</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">GameMill Entertainment<br><a href="https://gamemill.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Minneapolis, MN</span></td>
+    <td class="scorebar"><strong>57</strong><div class="bar"><span style="width:57%"></span></div></td>
+    <td>授权/IP 游戏发行商</td>
+    <td class="reason-cell">美国授权/IP 游戏发行商，更多偏 console/PC/licensed games，不是典型移动休闲发行商。</td>
+    <td class="reason-cell">除非项目可以绑定 IP 或多平台化，否则适配度一般。</td>
+    <td>发行；IP合作；项目合作</td>
+    <td class="action-cell">Publishing / licensing<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">第三波后段触达。可以作为 IP/发行资源补充。</td>
+    <td><a href="https://gamemill.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://gamemill.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://gamemill.com/contact/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="skybound games" data-tier="C" data-archetype="IP/独立游戏发行商" data-country="US" data-search="{&quot;rank&quot;:31,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;skybound games&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;los angeles, ca&quot;,&quot;website&quot;:&quot;https://www.skybound.com/games&quot;,&quot;archetype&quot;:&quot;ip/独立游戏发行商&quot;,&quot;industryposition&quot;:&quot;skybound 具备 ip 和游戏发行能力，但重心不在移动 f2p 发行。&quot;,&quot;familyislandfit&quot;:&quot;若项目能往 ip/cozy adventure 方向包装，可试探；否则不是优先买方。&quot;,&quot;dealtypes&quot;:&quot;发行；ip合作；联合开发&quot;,&quot;bestentry&quot;:&quot;games publishing / business development&quot;,&quot;contact&quot;:&quot;官网 / linkedin&quot;,&quot;score&quot;:56,&quot;nextstep&quot;:&quot;第三波后段。更适合平台发行或 ip 合作口径。&quot;,&quot;sources&quot;:[&quot;https://www.skybound.com/games&quot;,&quot;https://www.skybound.com/about&quot;,&quot;https://www.skybound.com/contact&quot;]}">
+    <td>31</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Skybound Games<br><a href="https://www.skybound.com/games" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Los Angeles, CA</span></td>
+    <td class="scorebar"><strong>56</strong><div class="bar"><span style="width:56%"></span></div></td>
+    <td>IP/独立游戏发行商</td>
+    <td class="reason-cell">Skybound 具备 IP 和游戏发行能力，但重心不在移动 F2P 发行。</td>
+    <td class="reason-cell">若项目能往 IP/cozy adventure 方向包装，可试探；否则不是优先买方。</td>
+    <td>发行；IP合作；联合开发</td>
+    <td class="action-cell">Games publishing / business development<br><span class="meta">官网 / LinkedIn</span></td>
+    <td class="action-cell">第三波后段。更适合平台发行或 IP 合作口径。</td>
+    <td><a href="https://www.skybound.com/games" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.skybound.com/about" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.skybound.com/contact" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="doubledown interactive" data-tier="C" data-archetype="社交 casino 移动公司" data-country="US / Korea" data-search="{&quot;rank&quot;:32,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;doubledown interactive&quot;,&quot;country&quot;:&quot;us / korea&quot;,&quot;hq&quot;:&quot;seattle, wa / seoul&quot;,&quot;website&quot;:&quot;https://www.doubledowninteractive.com/&quot;,&quot;archetype&quot;:&quot;社交 casino 移动公司&quot;,&quot;industryposition&quot;:&quot;社交 casino 发行/运营公司，公开上市，资金能力有但品类偏差较大。&quot;,&quot;familyislandfit&quot;:&quot;只适合作为低优先级拓展；项目需强调休闲用户和美国指标，而不是玩法相似。&quot;,&quot;dealtypes&quot;:&quot;收购；战略合作；投资可能性低&quot;,&quot;bestentry&quot;:&quot;corporate development / ir / leadership&quot;,&quot;contact&quot;:&quot;官网 contact / ir&quot;,&quot;score&quot;:55,&quot;nextstep&quot;:&quot;第三波后段。若没有社交 casino 关系，暂缓。&quot;,&quot;sources&quot;:[&quot;https://www.doubledowninteractive.com/&quot;,&quot;https://ir.doubledowninteractive.com/&quot;,&quot;https://www.doubledowninteractive.com/games/&quot;]}">
+    <td>32</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">DoubleDown Interactive<br><a href="https://www.doubledowninteractive.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Korea<br><span class="meta">Seattle, WA / Seoul</span></td>
+    <td class="scorebar"><strong>55</strong><div class="bar"><span style="width:55%"></span></div></td>
+    <td>社交 casino 移动公司</td>
+    <td class="reason-cell">社交 casino 发行/运营公司，公开上市，资金能力有但品类偏差较大。</td>
+    <td class="reason-cell">只适合作为低优先级拓展；项目需强调休闲用户和美国指标，而不是玩法相似。</td>
+    <td>收购；战略合作；投资可能性低</td>
+    <td class="action-cell">Corporate Development / IR / leadership<br><span class="meta">官网 contact / IR</span></td>
+    <td class="action-cell">第三波后段。若没有社交 casino 关系，暂缓。</td>
+    <td><a href="https://www.doubledowninteractive.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://ir.doubledowninteractive.com/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.doubledowninteractive.com/games/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="maximum entertainment / modus games" data-tier="C" data-archetype="中型多平台发行商" data-country="US / Sweden" data-search="{&quot;rank&quot;:33,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;maximum entertainment / modus games&quot;,&quot;country&quot;:&quot;us / sweden&quot;,&quot;hq&quot;:&quot;walnut creek, ca / stockholm&quot;,&quot;website&quot;:&quot;https://maximument.com/&quot;,&quot;archetype&quot;:&quot;中型多平台发行商&quot;,&quot;industryposition&quot;:&quot;多平台发行商，偏 pc/console 和 indie/aa，不是移动 f2p 发行核心。&quot;,&quot;familyislandfit&quot;:&quot;若项目有多平台化或 premium 版本路径，可进入讨论；纯移动买量合作适配一般。&quot;,&quot;dealtypes&quot;:&quot;发行；联合开发；平台发行&quot;,&quot;bestentry&quot;:&quot;publishing / submissions&quot;,&quot;contact&quot;:&quot;官网 contact / linkedin&quot;,&quot;score&quot;:54,&quot;nextstep&quot;:&quot;低优先级。除非产品策略准备做多平台。&quot;,&quot;sources&quot;:[&quot;https://maximument.com/&quot;,&quot;https://modusgames.com/&quot;,&quot;https://maximument.com/games/&quot;]}">
+    <td>33</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Maximum Entertainment / Modus Games<br><a href="https://maximument.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Sweden<br><span class="meta">Walnut Creek, CA / Stockholm</span></td>
+    <td class="scorebar"><strong>54</strong><div class="bar"><span style="width:54%"></span></div></td>
+    <td>中型多平台发行商</td>
+    <td class="reason-cell">多平台发行商，偏 PC/console 和 indie/AA，不是移动 F2P 发行核心。</td>
+    <td class="reason-cell">若项目有多平台化或 premium 版本路径，可进入讨论；纯移动买量合作适配一般。</td>
+    <td>发行；联合开发；平台发行</td>
+    <td class="action-cell">Publishing / submissions<br><span class="meta">官网 contact / LinkedIn</span></td>
+    <td class="action-cell">低优先级。除非产品策略准备做多平台。</td>
+    <td><a href="https://maximument.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://modusgames.com/" target="_blank" rel="noreferrer">S2</a> · <a href="https://maximument.com/games/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="hi-rez studios" data-tier="C" data-archetype="F2P 在线游戏开发发行商" data-country="US" data-search="{&quot;rank&quot;:34,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;hi-rez studios&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;alpharetta, ga&quot;,&quot;website&quot;:&quot;https://www.hirezstudios.com/&quot;,&quot;archetype&quot;:&quot;f2p 在线游戏开发发行商&quot;,&quot;industryposition&quot;:&quot;美国 f2p 在线游戏公司，强项在多人竞技和 live service，不是休闲模拟。&quot;,&quot;familyislandfit&quot;:&quot;数据优秀也可试探，但品类差异明显。&quot;,&quot;dealtypes&quot;:&quot;联合开发；发行可能性低；团队合作&quot;,&quot;bestentry&quot;:&quot;business development / leadership&quot;,&quot;contact&quot;:&quot;官网 / linkedin&quot;,&quot;score&quot;:53,&quot;nextstep&quot;:&quot;仅作备选名单，不进入第一轮。&quot;,&quot;sources&quot;:[&quot;https://www.hirezstudios.com/&quot;,&quot;https://www.hirezstudios.com/games/&quot;,&quot;https://www.hirezstudios.com/contact/&quot;]}">
+    <td>34</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Hi-Rez Studios<br><a href="https://www.hirezstudios.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Alpharetta, GA</span></td>
+    <td class="scorebar"><strong>53</strong><div class="bar"><span style="width:53%"></span></div></td>
+    <td>F2P 在线游戏开发发行商</td>
+    <td class="reason-cell">美国 F2P 在线游戏公司，强项在多人竞技和 live service，不是休闲模拟。</td>
+    <td class="reason-cell">数据优秀也可试探，但品类差异明显。</td>
+    <td>联合开发；发行可能性低；团队合作</td>
+    <td class="action-cell">Business Development / leadership<br><span class="meta">官网 / LinkedIn</span></td>
+    <td class="action-cell">仅作备选名单，不进入第一轮。</td>
+    <td><a href="https://www.hirezstudios.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.hirezstudios.com/games/" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.hirezstudios.com/contact/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="1up ventures" data-tier="C" data-archetype="游戏投资机构" data-country="US" data-search="{&quot;rank&quot;:35,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;1up ventures&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;kirkland, wa&quot;,&quot;website&quot;:&quot;https://www.1up.vc/&quot;,&quot;archetype&quot;:&quot;游戏投资机构&quot;,&quot;industryposition&quot;:&quot;专注游戏的早期投资基金，规模小于 griffin/bitkraft，但对游戏团队更垂直。&quot;,&quot;familyislandfit&quot;:&quot;适合早期融资或买方转介，尤其在资金缺口较小且数据可验证时。&quot;,&quot;dealtypes&quot;:&quot;早期投资；桥接融资；战略转介&quot;,&quot;bestentry&quot;:&quot;investment team&quot;,&quot;contact&quot;:&quot;官网 / partner linkedin&quot;,&quot;score&quot;:53,&quot;nextstep&quot;:&quot;投资线补充对象。适合短邮件和 1-page teaser。&quot;,&quot;sources&quot;:[&quot;https://www.1up.vc/&quot;,&quot;https://www.1up.vc/portfolio&quot;,&quot;https://www.1up.vc/team&quot;]}">
+    <td>35</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">1Up Ventures<br><a href="https://www.1up.vc/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Kirkland, WA</span></td>
+    <td class="scorebar"><strong>53</strong><div class="bar"><span style="width:53%"></span></div></td>
+    <td>游戏投资机构</td>
+    <td class="reason-cell">专注游戏的早期投资基金，规模小于 Griffin/BITKRAFT，但对游戏团队更垂直。</td>
+    <td class="reason-cell">适合早期融资或买方转介，尤其在资金缺口较小且数据可验证时。</td>
+    <td>早期投资；桥接融资；战略转介</td>
+    <td class="action-cell">Investment team<br><span class="meta">官网 / partner LinkedIn</span></td>
+    <td class="action-cell">投资线补充对象。适合短邮件和 1-page teaser。</td>
+    <td><a href="https://www.1up.vc/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.1up.vc/portfolio" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.1up.vc/team" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="electronic arts mobile" data-tier="C" data-archetype="战略上限参照" data-country="US" data-search="{&quot;rank&quot;:36,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;electronic arts mobile&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;redwood city, ca&quot;,&quot;website&quot;:&quot;https://www.ea.com/games/library/mobile&quot;,&quot;archetype&quot;:&quot;战略上限参照&quot;,&quot;industryposition&quot;:&quot;北美游戏巨头的移动业务，地位远高于本次对标层级；可作为 stretch target，而不是核心对标。&quot;,&quot;familyislandfit&quot;:&quot;除非数据非常好或团队有强引荐，否则冷启动机会低。&quot;,&quot;dealtypes&quot;:&quot;收购；战略合作；发行可能性低&quot;,&quot;bestentry&quot;:&quot;corporate development / ea mobile leadership&quot;,&quot;contact&quot;:&quot;官网 / linkedin / 投行或行业转介绍&quot;,&quot;score&quot;:52,&quot;nextstep&quot;:&quot;低优先级 stretch。先做 warm intro，不建议冷邮件首批发送。&quot;,&quot;sources&quot;:[&quot;https://www.ea.com/games/library/mobile&quot;,&quot;https://www.ea.com/news/electronic-arts-completes-acquisition-of-glu-mobile&quot;,&quot;https://ir.ea.com/&quot;]}">
+    <td>36</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Electronic Arts Mobile<br><a href="https://www.ea.com/games/library/mobile" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Redwood City, CA</span></td>
+    <td class="scorebar"><strong>52</strong><div class="bar"><span style="width:52%"></span></div></td>
+    <td>战略上限参照</td>
+    <td class="reason-cell">北美游戏巨头的移动业务，地位远高于本次对标层级；可作为 stretch target，而不是核心对标。</td>
+    <td class="reason-cell">除非数据非常好或团队有强引荐，否则冷启动机会低。</td>
+    <td>收购；战略合作；发行可能性低</td>
+    <td class="action-cell">Corporate Development / EA Mobile leadership<br><span class="meta">官网 / LinkedIn / 投行或行业转介绍</span></td>
+    <td class="action-cell">低优先级 stretch。先做 warm intro，不建议冷邮件首批发送。</td>
+    <td><a href="https://www.ea.com/games/library/mobile" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.ea.com/news/electronic-arts-completes-acquisition-of-glu-mobile" target="_blank" rel="noreferrer">S2</a> · <a href="https://ir.ea.com/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="annapurna interactive" data-tier="C" data-archetype="精品独立游戏发行商" data-country="US" data-search="{&quot;rank&quot;:37,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;annapurna interactive&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;los angeles, ca&quot;,&quot;website&quot;:&quot;https://annapurnainteractive.com/&quot;,&quot;archetype&quot;:&quot;精品独立游戏发行商&quot;,&quot;industryposition&quot;:&quot;美国精品独立发行商，品牌强但不做典型移动 f2p 买量发行。&quot;,&quot;familyislandfit&quot;:&quot;如果项目能改造成 premium/cozy narrative 体验才有一定适配；当前 family island 类 f2p 适配低。&quot;,&quot;dealtypes&quot;:&quot;平台发行；精品发行；ip/内容合作&quot;,&quot;bestentry&quot;:&quot;publishing submissions&quot;,&quot;contact&quot;:&quot;官网 contact / submissions&quot;,&quot;score&quot;:51,&quot;nextstep&quot;:&quot;仅作低优先级拓展。除非产品策略变化，不建议进入第一二波。&quot;,&quot;sources&quot;:[&quot;https://annapurnainteractive.com/en&quot;,&quot;https://annapurnainteractive.com/en/games&quot;,&quot;https://annapurnainteractive.com/en/contact&quot;]}">
+    <td>37</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Annapurna Interactive<br><a href="https://annapurnainteractive.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Los Angeles, CA</span></td>
+    <td class="scorebar"><strong>51</strong><div class="bar"><span style="width:51%"></span></div></td>
+    <td>精品独立游戏发行商</td>
+    <td class="reason-cell">美国精品独立发行商，品牌强但不做典型移动 F2P 买量发行。</td>
+    <td class="reason-cell">如果项目能改造成 premium/cozy narrative 体验才有一定适配；当前 Family Island 类 F2P 适配低。</td>
+    <td>平台发行；精品发行；IP/内容合作</td>
+    <td class="action-cell">Publishing submissions<br><span class="meta">官网 contact / submissions</span></td>
+    <td class="action-cell">仅作低优先级拓展。除非产品策略变化，不建议进入第一二波。</td>
+    <td><a href="https://annapurnainteractive.com/en" target="_blank" rel="noreferrer">S1</a> · <a href="https://annapurnainteractive.com/en/games" target="_blank" rel="noreferrer">S2</a> · <a href="https://annapurnainteractive.com/en/contact" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="devolver digital" data-tier="C" data-archetype="独立游戏发行商" data-country="US / UK" data-search="{&quot;rank&quot;:38,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;devolver digital&quot;,&quot;country&quot;:&quot;us / uk&quot;,&quot;hq&quot;:&quot;austin, tx / london&quot;,&quot;website&quot;:&quot;https://www.devolverdigital.com/&quot;,&quot;archetype&quot;:&quot;独立游戏发行商&quot;,&quot;industryposition&quot;:&quot;知名独立发行商，更多面向 pc/console premium/indie；不适合当北美移动发行对标。&quot;,&quot;familyislandfit&quot;:&quot;除非项目完全转成 premium indie/cozy，不建议优先。&quot;,&quot;dealtypes&quot;:&quot;平台发行；发行合作&quot;,&quot;bestentry&quot;:&quot;submissions / publishing&quot;,&quot;contact&quot;:&quot;官网 submissions / linkedin&quot;,&quot;score&quot;:49,&quot;nextstep&quot;:&quot;观察名单。当前不建议进入现金流救急外联首批。&quot;,&quot;sources&quot;:[&quot;https://www.devolverdigital.com/&quot;,&quot;https://www.devolverdigital.com/games&quot;,&quot;https://www.devolverdigital.com/contact&quot;]}">
+    <td>38</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Devolver Digital<br><a href="https://www.devolverdigital.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / UK<br><span class="meta">Austin, TX / London</span></td>
+    <td class="scorebar"><strong>49</strong><div class="bar"><span style="width:49%"></span></div></td>
+    <td>独立游戏发行商</td>
+    <td class="reason-cell">知名独立发行商，更多面向 PC/console premium/indie；不适合当北美移动发行对标。</td>
+    <td class="reason-cell">除非项目完全转成 premium indie/cozy，不建议优先。</td>
+    <td>平台发行；发行合作</td>
+    <td class="action-cell">Submissions / publishing<br><span class="meta">官网 submissions / LinkedIn</span></td>
+    <td class="action-cell">观察名单。当前不建议进入现金流救急外联首批。</td>
+    <td><a href="https://www.devolverdigital.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.devolverdigital.com/games" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.devolverdigital.com/contact" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="tinybuild" data-tier="C" data-archetype="中型独立游戏发行/开发集团" data-country="US / Netherlands" data-search="{&quot;rank&quot;:39,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;tinybuild&quot;,&quot;country&quot;:&quot;us / netherlands&quot;,&quot;hq&quot;:&quot;seattle, wa / amsterdam&quot;,&quot;website&quot;:&quot;https://www.tinybuild.com/&quot;,&quot;archetype&quot;:&quot;中型独立游戏发行/开发集团&quot;,&quot;industryposition&quot;:&quot;有美国根基的多平台发行/开发集团，行业地位像中型游戏发行公司，但移动 f2p 不是核心。&quot;,&quot;familyislandfit&quot;:&quot;如果未来做 pc/console cozy sim，可试；当前移动 family island 类适配低。&quot;,&quot;dealtypes&quot;:&quot;发行；ip合作；项目收购可能性低&quot;,&quot;bestentry&quot;:&quot;publishing / submissions&quot;,&quot;contact&quot;:&quot;官网 submissions / linkedin&quot;,&quot;score&quot;:48,&quot;nextstep&quot;:&quot;观察名单。只在产品策略多平台化后触达。&quot;,&quot;sources&quot;:[&quot;https://www.tinybuild.com/&quot;,&quot;https://www.tinybuild.com/games&quot;,&quot;https://www.tinybuildinvestors.com/&quot;]}">
+    <td>39</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">tinyBuild<br><a href="https://www.tinybuild.com/" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US / Netherlands<br><span class="meta">Seattle, WA / Amsterdam</span></td>
+    <td class="scorebar"><strong>48</strong><div class="bar"><span style="width:48%"></span></div></td>
+    <td>中型独立游戏发行/开发集团</td>
+    <td class="reason-cell">有美国根基的多平台发行/开发集团，行业地位像中型游戏发行公司，但移动 F2P 不是核心。</td>
+    <td class="reason-cell">如果未来做 PC/console cozy sim，可试；当前移动 Family Island 类适配低。</td>
+    <td>发行；IP合作；项目收购可能性低</td>
+    <td class="action-cell">Publishing / submissions<br><span class="meta">官网 submissions / LinkedIn</span></td>
+    <td class="action-cell">观察名单。只在产品策略多平台化后触达。</td>
+    <td><a href="https://www.tinybuild.com/" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.tinybuild.com/games" target="_blank" rel="noreferrer">S2</a> · <a href="https://www.tinybuildinvestors.com/" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+
+
+  <tr data-company="netflix games" data-tier="C" data-archetype="平台型内容买方" data-country="US" data-search="{&quot;rank&quot;:40,&quot;tier&quot;:&quot;c&quot;,&quot;company&quot;:&quot;netflix games&quot;,&quot;country&quot;:&quot;us&quot;,&quot;hq&quot;:&quot;los gatos, ca&quot;,&quot;website&quot;:&quot;https://about.netflix.com/en/news/games&quot;,&quot;archetype&quot;:&quot;平台型内容买方&quot;,&quot;industryposition&quot;:&quot;不是传统发行商，但作为平台型内容买方和游戏投资/收购方，可能对 mobile/casual content 有选择性兴趣。&quot;,&quot;familyislandfit&quot;:&quot;若项目能服务 netflix 订阅生态、家庭/cozy 用户或 ip 合作，可作为特殊渠道尝试。&quot;,&quot;dealtypes&quot;:&quot;内容授权；收购；发行/平台合作&quot;,&quot;bestentry&quot;:&quot;games content / business development / corporate development&quot;,&quot;contact&quot;:&quot;linkedin / warm intro / netflix games leadership&quot;,&quot;score&quot;:47,&quot;nextstep&quot;:&quot;非首批。除非有强引荐或项目可绑定订阅平台逻辑。&quot;,&quot;sources&quot;:[&quot;https://about.netflix.com/en/news/games&quot;,&quot;https://www.netflix.com/tudum/articles/netflix-games&quot;,&quot;https://jobs.netflix.com/teams/games&quot;]}">
+    <td>40</td>
+    <td><span class="pill pill-C">C</span></td>
+    <td class="company-cell">Netflix Games<br><a href="https://about.netflix.com/en/news/games" target="_blank" rel="noreferrer">官网</a></td>
+    <td>US<br><span class="meta">Los Gatos, CA</span></td>
+    <td class="scorebar"><strong>47</strong><div class="bar"><span style="width:47%"></span></div></td>
+    <td>平台型内容买方</td>
+    <td class="reason-cell">不是传统发行商，但作为平台型内容买方和游戏投资/收购方，可能对 mobile/casual content 有选择性兴趣。</td>
+    <td class="reason-cell">若项目能服务 Netflix 订阅生态、家庭/cozy 用户或 IP 合作，可作为特殊渠道尝试。</td>
+    <td>内容授权；收购；发行/平台合作</td>
+    <td class="action-cell">Games content / business development / corporate development<br><span class="meta">LinkedIn / warm intro / Netflix games leadership</span></td>
+    <td class="action-cell">非首批。除非有强引荐或项目可绑定订阅平台逻辑。</td>
+    <td><a href="https://about.netflix.com/en/news/games" target="_blank" rel="noreferrer">S1</a> · <a href="https://www.netflix.com/tudum/articles/netflix-games" target="_blank" rel="noreferrer">S2</a> · <a href="https://jobs.netflix.com/teams/games" target="_blank" rel="noreferrer">S3</a></td>
+  </tr>
+</tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>外联模板</h2>
+        <p class="section-note">代码块右上角可复制。</p>
+      </div>
+      <div class="template-panel">
+        <h3>首封英文邮件：发行/投资/收购开放式</h3>
+        <pre><button class="copy-btn" type="button">复制</button><code>Subject: US-tested casual adventure/simulation game - publishing, investment or acquisition fit?
+
+Hi [Name],
+
+I'm [Your Name] from [StudioLegalName]. We are building [GameName], a mobile casual adventure/simulation game in the Family Island neighborhood. We have completed several US market tests and are seeing encouraging CPI and retention signals.
+
+We are now speaking with a focused group of North American mobile game publishers, strategic buyers and games-focused investors who may be able to help us scale the project, structure a publishing/MG partnership, invest, or discuss an acquisition of the project/team.
+
+Given [Company]'s position in [mobile publishing / casual games / live ops / games investment], I thought this could be worth a short conversation.
+
+Happy to share a compact deck, gameplay video and KPI summary covering CPI, D1/D7/D30, test spend, creative learnings, monetization assumptions and roadmap.
+
+Would you be open to a 30-minute intro call next week?
+
+Best,
+[Signature]</code></pre>
+
+        <h3>LinkedIn 短消息</h3>
+        <pre><button class="copy-btn" type="button">复制</button><code>Hi [Name], I'm reaching out from [Studio]. We have a US-tested mobile casual adventure/simulation game similar to Family Island, with encouraging CPI and retention signals. We are exploring publishing/MG, strategic investment or acquisition conversations with selected North American partners. Would it be relevant to send a 1-page teaser?</code></pre>
+
+        <h3>回复后资料清单</h3>
+        <p>1-page teaser、完整 deck、2 分钟 gameplay 视频、CPI/D1/D7/D30 cohort、渠道和素材花费、留存曲线、变现假设、12 个月 roadmap、团队履历、资金缺口和 runway、期望交易结构、NDA、APK/TestFlight/build 链接。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>来源索引</h2>
+        <p class="section-note">每家公司/机构保留 3 条公开来源。付费数据库可用于后续核验排名和联系人。</p>
+      </div>
+      <div class="table-wrap">
+        <table class="source-table">
+          <thead><tr><th>Rank</th><th>公司</th><th>来源 1</th><th>来源 2</th><th>来源 3</th></tr></thead>
+          <tbody>
+  <tr>
+    <td>1</td>
+    <td>Tilting Point</td>
+    <td><a href="https://www.tiltingpoint.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.tiltingpoint.com/services/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>2</td>
+    <td>Jam City</td>
+    <td><a href="https://www.jamcity.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.jamcity.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>3</td>
+    <td>East Side Games Group</td>
+    <td><a href="https://www.eastsidegamesgroup.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.eastsidegamesgroup.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://investors.eastsidegamesgroup.com/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>4</td>
+    <td>Lion Studios / Tripledot US portfolio</td>
+    <td><a href="https://lionstudios.cc/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.applovin.com/blog/applovin-sells-apps-business-to-tripledot-studios/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.businesswire.com/news/home/20250219750135/en/Tripledot-Studios-to-Acquire-AppLovins-Games-Business" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>5</td>
+    <td>Griffin Gaming Partners</td>
+    <td><a href="https://griffingp.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://griffingp.com/portfolio/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.gamesindustry.biz/griffin-gaming-partners-raises-750m-for-second-gaming-fund" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>6</td>
+    <td>PLAYSTUDIOS</td>
+    <td><a href="https://www.playstudios.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://ir.playstudios.com/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.playstudios.com/games/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>7</td>
+    <td>HyperBeard</td>
+    <td><a href="https://hyperbeard.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://hyperbeard.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>8</td>
+    <td>BITKRAFT Ventures</td>
+    <td><a href="https://www.bitkraft.vc/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.bitkraft.vc/portfolio" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.bitkraft.vc/team" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>9</td>
+    <td>Big Blue Bubble</td>
+    <td><a href="https://www.bigbluebubble.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.bigbluebubble.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.bigbluebubble.com/about/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>10</td>
+    <td>MobilityWare</td>
+    <td><a href="https://www.mobilityware.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.mobilityware.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.mobilityware.com/about-us/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>11</td>
+    <td>Big Fish Games / BFG Entertainment</td>
+    <td><a href="https://www.bigfishgames.com/us/en/company.html" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.bigfishgames.com/us/en/games.html" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.gamesindustry.biz/aristocrat-sells-big-fish-games-to-bfg-entertainment" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>12</td>
+    <td>Makers Fund</td>
+    <td><a href="https://makersfund.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://makersfund.com/portfolio/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://makersfund.com/team/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>13</td>
+    <td>TapBlaze</td>
+    <td><a href="https://www.tapblaze.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.tapblaze.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://play.google.com/store/apps/dev?id=5416792938617747564" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>14</td>
+    <td>Konvoy</td>
+    <td><a href="https://www.konvoy.vc/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.konvoy.vc/portfolio" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.konvoy.vc/team" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>15</td>
+    <td>Storm8 / Stillfront</td>
+    <td><a href="https://www.storm8.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.storm8.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.stillfront.com/en/portfolio/storm8/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>16</td>
+    <td>Kabam</td>
+    <td><a href="https://www.kabam.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.kabam.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.netmarble.com/en/company/about" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>17</td>
+    <td>Transcend Fund</td>
+    <td><a href="https://transcend.fund/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://transcend.fund/portfolio/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://transcend.fund/team/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>18</td>
+    <td>Fortis Games</td>
+    <td><a href="https://www.fortisgames.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.savvygames.com/en/our-companies/fortis/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.gamesindustry.biz/fortis-appoints-jeremy-gorman-as-ceo" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>19</td>
+    <td>a16z Games</td>
+    <td><a href="https://a16z.com/games/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://a16z.com/introducing-games-fund-one/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://a16z.com/portfolio/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>20</td>
+    <td>AppLovin</td>
+    <td><a href="https://www.applovin.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.applovin.com/blog/applovin-sells-apps-business-to-tripledot-studios/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://investors.applovin.com/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>21</td>
+    <td>Scopely</td>
+    <td><a href="https://www.scopely.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.scopely.com/en/news/scopely-to-acquire-niantic-games-business-which-includes-pokemon-go-one-of-the-most-successful-mobile-games-of-all-time" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.pocketgamer.biz/the-top-50-mobile-game-makers-of-2024/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>22</td>
+    <td>Zynga / Take-Two Mobile</td>
+    <td><a href="https://www.zynga.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.take2games.com/ir/news/take-two-interactive-software-inc-completes-combination-with-zynga-inc" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.take2games.com/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>23</td>
+    <td>SciPlay / Light &amp; Wonder</td>
+    <td><a href="https://www.sciplay.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.sciplay.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.lnw.com/company/sciplay/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>24</td>
+    <td>Lightspeed Gaming</td>
+    <td><a href="https://lsvp.com/sectors/gaming/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://lsvp.com/portfolio/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://lsvp.com/team/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>25</td>
+    <td>Sunblink</td>
+    <td><a href="https://www.sunblink.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.sunblink.com/games" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.apple.com/newsroom/2023/07/hello-kitty-island-adventure-launches-on-apple-arcade/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>26</td>
+    <td>Rogue Games</td>
+    <td><a href="https://www.rogueco.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.rogueco.com/games" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.rogueco.com/contact" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>27</td>
+    <td>Galaxy Interactive</td>
+    <td><a href="https://www.galaxy.com/interactive/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.galaxy.com/businesses/galaxy-ventures/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.galaxy.com/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>28</td>
+    <td>Product Madness / Aristocrat</td>
+    <td><a href="https://www.productmadness.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.productmadness.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.aristocrat.com/businesses/product-madness/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>29</td>
+    <td>Armor Games Studios</td>
+    <td><a href="https://armorgamesstudios.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://armorgamesstudios.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://armorgamesstudios.com/contact/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>30</td>
+    <td>GameMill Entertainment</td>
+    <td><a href="https://gamemill.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://gamemill.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://gamemill.com/contact/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>31</td>
+    <td>Skybound Games</td>
+    <td><a href="https://www.skybound.com/games" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.skybound.com/about" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.skybound.com/contact" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>32</td>
+    <td>DoubleDown Interactive</td>
+    <td><a href="https://www.doubledowninteractive.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://ir.doubledowninteractive.com/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.doubledowninteractive.com/games/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>33</td>
+    <td>Maximum Entertainment / Modus Games</td>
+    <td><a href="https://maximument.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://modusgames.com/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://maximument.com/games/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>34</td>
+    <td>Hi-Rez Studios</td>
+    <td><a href="https://www.hirezstudios.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.hirezstudios.com/games/" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.hirezstudios.com/contact/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>35</td>
+    <td>1Up Ventures</td>
+    <td><a href="https://www.1up.vc/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.1up.vc/portfolio" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.1up.vc/team" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>36</td>
+    <td>Electronic Arts Mobile</td>
+    <td><a href="https://www.ea.com/games/library/mobile" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.ea.com/news/electronic-arts-completes-acquisition-of-glu-mobile" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://ir.ea.com/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>37</td>
+    <td>Annapurna Interactive</td>
+    <td><a href="https://annapurnainteractive.com/en" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://annapurnainteractive.com/en/games" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://annapurnainteractive.com/en/contact" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>38</td>
+    <td>Devolver Digital</td>
+    <td><a href="https://www.devolverdigital.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.devolverdigital.com/games" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.devolverdigital.com/contact" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>39</td>
+    <td>tinyBuild</td>
+    <td><a href="https://www.tinybuild.com/" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.tinybuild.com/games" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://www.tinybuildinvestors.com/" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+
+
+  <tr>
+    <td>40</td>
+    <td>Netflix Games</td>
+    <td><a href="https://about.netflix.com/en/news/games" target="_blank" rel="noreferrer">来源 1</a></td>
+    <td><a href="https://www.netflix.com/tudum/articles/netflix-games" target="_blank" rel="noreferrer">来源 2</a></td>
+    <td><a href="https://jobs.netflix.com/teams/games" target="_blank" rel="noreferrer">来源 3</a></td>
+  </tr>
+</tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      本工作包基于公开资料生成，不包含个人邮箱和非公开联系人。下一步建议用 Sensor Tower/data.ai/AppMagic 核验美国市场发行商排名，用 PitchBook/Crunchbase/LinkedIn Sales Navigator 补联系人和交易记录。
+    </footer>
+  </div>
+  <script>
+    const rows = Array.from(document.querySelectorAll("#companyRows tr"));
+    const visibleCount = document.getElementById("visibleCount");
+    const search = document.getElementById("search");
+    const tierFilter = document.getElementById("tierFilter");
+    const typeFilter = document.getElementById("typeFilter");
+    const dealFilter = document.getElementById("dealFilter");
+
+    function updateRows() {
+      const q = search.value.trim().toLowerCase();
+      const tier = tierFilter.value;
+      const type = typeFilter.value;
+      const deal = dealFilter.value;
+      let count = 0;
+      rows.forEach((row) => {
+        const haystack = row.dataset.search || "";
+        const show = (!q || haystack.includes(q))
+          && (!tier || row.dataset.tier === tier)
+          && (!type || haystack.includes(type.toLowerCase()))
+          && (!deal || haystack.includes(deal.toLowerCase()));
+        row.style.display = show ? "" : "none";
+        if (show) count += 1;
+      });
+      visibleCount.textContent = count;
+    }
+    [search, tierFilter, typeFilter, dealFilter].forEach((el) => el.addEventListener("input", updateRows));
+    document.querySelectorAll("pre .copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const code = button.parentElement.querySelector("code").innerText;
+        await navigator.clipboard.writeText(code);
+        const old = button.textContent;
+        button.textContent = "已复制";
+        setTimeout(() => { button.textContent = old; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>
