@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上地学区小红书在读家长口碑补充报告</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f3ef;
+      --paper: #fffdf9;
+      --ink: #24211d;
+      --muted: #72695f;
+      --line: #e5ddd1;
+      --accent: #245b5b;
+      --accent-2: #a85e32;
+      --soft: #edf4f2;
+      --high: #116149;
+      --medium: #8b5a00;
+      --low: #9a2f2f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.68 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+      gap: 28px;
+      width: min(1480px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+    aside {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.9);
+    }
+    aside h2 { margin: 0 0 12px; font-size: 15px; }
+    .toc a {
+      display: block;
+      padding: 7px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .toc a:hover { background: var(--soft); color: var(--accent); }
+    .toc-sub { margin-left: 10px; font-size: 14px; color: var(--muted) !important; }
+    main {
+      min-width: 0;
+      padding: 36px clamp(18px, 4vw, 56px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 18px 50px rgba(61, 48, 32, 0.08);
+    }
+    .hero {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+    }
+    .eyebrow { margin: 0 0 8px; color: var(--accent-2); font-size: 13px; font-weight: 700; }
+    h1 { margin: 0; font-size: clamp(30px, 4vw, 48px); line-height: 1.16; }
+    .meta { margin-top: 12px; color: var(--muted); font-size: 14px; }
+    h2 { margin: 38px 0 14px; padding-top: 8px; color: var(--accent); font-size: 24px; line-height: 1.3; }
+    h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.35; }
+    p { margin: 10px 0 14px; }
+    ul { padding-left: 1.2em; }
+    li { margin: 4px 0; }
+    code { padding: 2px 5px; border-radius: 5px; background: #f1ece4; font-size: 0.92em; }
+    .school-card {
+      margin: 18px 0 22px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf1;
+    }
+    .school-card:nth-of-type(even) { background: #f7fbfa; }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 14px 0 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+    table { width: 100%; min-width: 920px; border-collapse: collapse; font-size: 14px; line-height: 1.55; }
+    th, td { vertical-align: top; padding: 12px 13px; border-bottom: 1px solid var(--line); text-align: left; }
+    th { position: sticky; top: 0; z-index: 1; background: #f0e8dc; color: #302820; font-size: 13px; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td:nth-child(1) { width: 36%; }
+    td:nth-child(2) { width: 34%; }
+    td:nth-child(3) { width: 16%; }
+    td:nth-child(4) { width: 14%; }
+    .confidence { display: inline-block; padding: 3px 8px; border-radius: 999px; font-weight: 700; }
+    .confidence-high { background: #e3f4ed; color: var(--high); }
+    .confidence-medium { background: #fff1cf; color: var(--medium); }
+    .confidence-low { background: #fae3e1; color: var(--low); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: white;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .button:hover { border-color: var(--accent); color: var(--accent); }
+    @media (max-width: 980px) {
+      .layout { display: block; width: min(100% - 24px, 860px); }
+      aside { position: static; margin-bottom: 16px; max-height: none; }
+      main { padding: 24px 16px; }
+      .school-card { padding: 16px; }
+      table { min-width: 820px; }
+    }
+    @media print {
+      body { background: white; }
+      .layout { display: block; width: 100%; padding: 0; }
+      aside, .actions { display: none; }
+      main { border: 0; box-shadow: none; padding: 0; }
+      .school-card { break-inside: avoid; background: white; }
+      a { color: black; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <h2>目录</h2>
+      <nav class="toc"><a class="toc-main" href="#采集与判定口径">采集与判定口径</a>
+<a class="toc-main" href="#总体结论">总体结论</a>
+<a class="toc-main" href="#小学-小学部补充证据">小学/小学部补充证据</a>
+<a class="toc-sub" href="#1-海淀区上地实验小学上地校区">1. 海淀区上地实验小学上地校区</a>
+<a class="toc-sub" href="#2-海淀区上地实验小学树村校区-西校区">2. 海淀区上地实验小学树村校区/西校区</a>
+<a class="toc-sub" href="#3-北京市上地实验学校小学部-101-小学部">3. 北京市上地实验学校小学部/101 小学部</a>
+<a class="toc-sub" href="#4-北京大学附属小学">4. 北京大学附属小学</a>
+<a class="toc-sub" href="#5-清华大学附属小学">5. 清华大学附属小学</a>
+<a class="toc-sub" href="#6-清华大学附属中学上地小学-清华附中上地小学">6. 清华大学附属中学上地小学/清华附中上地小学</a>
+<a class="toc-sub" href="#7-北大附中实验学校-小学部">7. 北大附中实验学校（小学部）</a>
+<a class="toc-sub" href="#8-清华大学附属实验学校-小学部">8. 清华大学附属实验学校（小学部）</a>
+<a class="toc-main" href="#可并入总报告的关键修正">可并入总报告的关键修正</a>
+<a class="toc-main" href="#未纳入或降权的内容">未纳入或降权的内容</a></nav>
+    </aside>
+    <main>
+      <div class="hero">
+        <p class="eyebrow">小红书补充调研 HTML 版</p>
+        <h1>上地学区小红书在读家长口碑补充报告</h1>
+        <div class="meta">由 Markdown 增补报告生成：2026-06-12 16:13 · 93 条小红书候选去重 · 聚焦在读家长/评论证据</div>
+        <div class="actions">
+          <a class="button" href="xhs_parent_addendum.md">查看 Markdown 原文</a>
+          <a class="button" href="xhs_parent_search_results.json">查看第二轮候选 JSON</a>
+          <a class="button" href="xhs_parent_queries.txt">查看第二轮关键词</a>
+          <a class="button" href="report.html">打开上一版知乎报告</a>
+        </div>
+      </div>
+      <p>生成日期：2026-06-12 用途：补充上一版知乎报告中“孩子在该小学就读的家长”证据不足的问题。 采集范围：围绕附图中的上地学区小学/小学部，在小红书检索“在读家长、真实体验、作业、家长会、树村、本部、清上”等关键词。</p>
+<h2 id="采集与判定口径">采集与判定口径</h2>
+<ul><li>第一轮关键词：<code>output/zhihu_shangdi/xhs_queries.txt</code>，去重 67 条候选，详情抓取 24 条。</li><li>第二轮父母证据关键词：<code>output/zhihu_shangdi/xhs_parent_queries.txt</code>，去重 93 条候选，详情抓取 26 条。</li><li>详情归档目录：<code>output/zhihu_shangdi/xhs_details/</code>、<code>output/zhihu_shangdi/xhs_parent_details/</code>。</li><li>高置信：发帖者或评论者明确自称孩子在该校、当前年级、参加该校新生/家长会，且内容谈到班级、作业、课程、食堂、社团等具体体验。</li><li>中置信：访谈号转述家长、评论者疑似在读家长但身份未展开、或同一信息被多条评论互相印证。</li><li>低置信：房产/升学号、招生信息、身份不明的单条强观点、只谈派位/买房不谈学校生活。</li></ul>
+<h2 id="总体结论">总体结论</h2>
+<p>小红书比知乎更容易找到“家长语气”的碎片证据，尤其是上地实验学校小学部、上地实验小学树村校区、清华附小。它的短板也很明显：很多信息在评论区，身份无法完全核验；大量内容来自房产/升学/探校号；北大附中实验学校小学部、清华大学附属实验学校小学部仍没有抓到足够可靠的在读家长口碑。</p>
+<p>就口碑画像看：上地实验学校小学部的确定性是“小升初焦虑低、教学偏紧、但师资年轻/流动性有争议”；上地实验小学本部和树村校区的家长反馈都显示“不像传闻那么卷”，但班级/老师差异很大；清华附小的家长会笔记集中强调素质教育、体育、社团和子弟校属性；北大附小也偏“校内快乐、校外仍卷”，但直接家长证据比清华附小少；清华附中上地小学更多证据来自访谈和升学通路，教学日常的一手证据仍偏少。</p>
+<h2 id="小学-小学部补充证据">小学/小学部补充证据</h2>
+<section class="school-card" id="1-海淀区上地实验小学上地校区">
+<h3>1. 海淀区上地实验小学上地校区</h3>
+<p>综合判断：小红书新增了更接近在读家长的证据。低年级反馈偏“校内作业少、语数课时多、英语校内强度有限但老师要求不低”；同时有访谈号称采访到两个孩子都在上地实验小学的家长，说明校外学习投入可能不小。口碑不是单一“卷”或“不卷”，更像是“学校不极端卷，家庭端很卷”。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>一年级课程表显示语文、数学课时多；评论中作者回复“没作业”，并说英语课时不多但老师要求较高。</td><td>一颗宝妈，《上地实验小学 一年级课程表》，笔记 ID <a href="https://www.xiaohongshu.com/explore/6954a846000000001f00aeaf" target="_blank" rel="noopener noreferrer">6954a846000000001f00aeaf</a>。</td><td>高概率是。作者展示一年级课程表，评论里提到自家孩子接送。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>同一作者发布一年级新生入学清单，并在评论中回答“卷不卷”时说低年级目前不卷。</td><td>一颗宝妈，《上地实验小学一年级新生入学必备清单》，笔记 ID <a href="https://www.xiaohongshu.com/explore/6953466e000000001e02b079" target="_blank" rel="noopener noreferrer">6953466e000000001e02b079</a>。</td><td>高概率是。语境是自家孩子第一学期即将结束。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>访谈号称采访到一位上地实验小学家长：两个孩子都在该校，老大已毕业，老二 2023 年入学、当时二年级。评论区有人质疑访谈真实性，也有一年级家长表示想了解更多。</td><td>北京叮当，《上地实验小学怎么样？典型海淀上地家长访谈》，笔记 ID <a href="https://www.xiaohongshu.com/explore/67220234000000001b02e98c" target="_blank" rel="noopener noreferrer">67220234000000001b02e98c</a>。</td><td>不是直接发帖家长，是访谈号转述；但描述了被访家长身份。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>评论区多名匿名用户给出相反体验：有人说本部“一点不卷”，也有人说五年级学校管得不多、主要靠家长自己安排；另有人认为英语校内不够，需要校外补。</td><td>果酱工厂，《上地实验小学怎么样》，笔记 ID <a href="https://www.xiaohongshu.com/explore/69476f21000000001f00f514" target="_blank" rel="noopener noreferrer">69476f21000000001f00f514</a>。</td><td>评论者中部分像家长，但多数未明确身份。</td><td><span class="confidence confidence-medium">中</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="2-海淀区上地实验小学树村校区-西校区">
+<h3>2. 海淀区上地实验小学树村校区/西校区</h3>
+<p>综合判断：树村校区在小红书上比知乎更容易找到具体体验。核心分歧是“班级/老师差异很大”：有人说无日常作业、活动多，也有人说二年级已开始语数英体育全套任务。生源结构仍是争议点，但师资轮岗、硬件较好被多个咨询号反复提到。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>评论者自称树村二年级在读，称不同班作业差异大；其班从一年级起有语文预复习、数学复习、周卷、英语指读和体育任务。</td><td>果酱工厂，《上地实验小学怎么样》，笔记 ID <a href="https://www.xiaohongshu.com/explore/69476f21000000001f00f514" target="_blank" rel="noopener noreferrer">69476f21000000001f00f514</a>。</td><td>高概率是当前在读家庭或学生；评论写“我们班”。</td><td><span class="confidence confidence-medium">中高</span></td></tr><tr><td>另一位评论者自称二年级在读，称没有日常作业，老师会在校内完成同步练习；课后辅导偏兴趣班，低年级有体操、舞蹈，三年级有游泳。</td><td>猪猪roli，树村校区体验求问帖，笔记 ID <a href="https://www.xiaohongshu.com/explore/67e7f3af000000001c03fea8" target="_blank" rel="noopener noreferrer">67e7f3af000000001c03fea8</a>。</td><td>高概率是当前在读家庭/学生。</td><td><span class="confidence confidence-medium">中高</span></td></tr><tr><td>评论中一位自称六年级小学生的人反馈食堂体验下降，并认为学校“不算特别好”。</td><td>猪猪roli，树村校区体验求问帖，笔记 ID <a href="https://www.xiaohongshu.com/explore/67e7f3af000000001c03fea8" target="_blank" rel="noopener noreferrer">67e7f3af000000001c03fea8</a>。</td><td>不是家长，是学生自述。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>咨询号称树村校区硬件充足，专业教室多，与其他校区有师资轮岗；同时承认过去生源有调剂和回迁因素，新房业主入学后生源结构在变化。</td><td>小红薯5C75DA5B，《揭秘上地实验小学树村校区：硬件顶配、师资硬》，笔记 ID <a href="https://www.xiaohongshu.com/explore/697751da0000000009039df7" target="_blank" rel="noopener noreferrer">697751da0000000009039df7</a>。</td><td>否，咨询/整理号。</td><td><span class="confidence confidence-low">中偏低</span></td></tr><tr><td>关于本部与树村差异，评论区主流说法是差异主要在生源，老师差别不大；也有人说“课间不能出楼”是旧信息。</td><td>猪猪roli，关于本部/树村差别求问帖，笔记 ID <a href="https://www.xiaohongshu.com/explore/67e7af9d000000001c00d742" target="_blank" rel="noopener noreferrer">67e7af9d000000001c00d742</a>。</td><td>评论者身份不完全明确。</td><td><span class="confidence confidence-medium">中</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="3-北京市上地实验学校小学部-101-小学部">
+<h3>3. 北京市上地实验学校小学部/101 小学部</h3>
+<p>综合判断：这是小红书补强最明显的一所。既有明确“双娃家长”的高置信正面体验，也有“孩子三年级/第一届”评论给出负面或保留意见。可总结为：直升优势和家长圈层吸引力强，学校抓得较紧；但新建小学部的师资稳定性、教师年龄结构和教学成熟度存在争议。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>发帖者明确说老大 2022 年摇中、老二 2025 年也摇中，是双娃同校家长；她评价学校小班、老师抓教学严、作业适中、社团丰富，家长圈较卷。</td><td>上地二娃妈，《二娃 2025 上地实验学校小学部又被摇中了！》，笔记 ID <a href="https://www.xiaohongshu.com/explore/6848e4e70000000012001817" target="_blank" rel="noopener noreferrer">6848e4e70000000012001817</a>。</td><td>是，明确孩子在该校。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>同一发帖者在评论中补充：一二年级受“乐学乐考”影响还好，三年级开始感觉强度上来；老师认真负责；午餐餐标约 18 元。</td><td>上地二娃妈，《二娃 2025 上地实验学校小学部又被摇中了！》，笔记 ID <a href="https://www.xiaohongshu.com/explore/6848e4e70000000012001817" target="_blank" rel="noopener noreferrer">6848e4e70000000012001817</a>。</td><td>是，作者本人回复。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>另一篇“真实就读感受”求问帖下，有评论者称孩子已三年级，反映任课老师更换频率高、年轻老师多，选择该校主要是为直升。也有评论称教学和硬件一般。</td><td>俊妞妞，《上地实验学校小学部真实就读感受》，笔记 ID <a href="https://www.xiaohongshu.com/explore/66437b77000000001e03a39e" target="_blank" rel="noopener noreferrer">66437b77000000001e03a39e</a>。</td><td>评论者疑似在读家长，发帖者是提问者。</td><td><span class="confidence confidence-medium">中高</span></td></tr><tr><td>同一帖下有第一届家长/知情者称第一届老师大部分从三小调来。该信息可解释早期师资来源，但不代表当前全部师资。</td><td>俊妞妞，《上地实验学校小学部真实就读感受》，笔记 ID <a href="https://www.xiaohongshu.com/explore/66437b77000000001e03a39e" target="_blank" rel="noopener noreferrer">66437b77000000001e03a39e</a>。</td><td>评论者身份未完整展开。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>咨询号区分上地实验小学和上地实验学校小学部：小学部摇号、九年一贯、学位占用九年；并称据家长反馈小学部整体抓得更紧，课间和午休管理偏严。</td><td>上地树村社区专家，《上地实验小学和上实小学部，有着本质不同！》，笔记 ID <a href="https://www.xiaohongshu.com/explore/69c27f66000000001a026d94" target="_blank" rel="noopener noreferrer">69c27f66000000001a026d94</a>。</td><td>否，咨询号转述“家长反馈”。</td><td><span class="confidence confidence-medium">中</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="4-北京大学附属小学">
+<h3>4. 北京大学附属小学</h3>
+<p>综合判断：小红书能补到一些评论区家长证据，但作者层面的长文较少。整体口碑偏“校内快乐、硬件好、社团丰富、课内作业少”，但也有提醒：海淀校外竞争无法避免，幼小衔接基础太弱会在一年级初期吃力。注意排除外地“北大附小”或民办北附小学内容。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>评论者称学校硬件好，有自有食堂和游泳池。</td><td>Emma包，《有北大附小的家长朋友吗？》，笔记 ID <a href="https://www.xiaohongshu.com/explore/67bd8691000000000903aae0" target="_blank" rel="noopener noreferrer">67bd8691000000000903aae0</a>。</td><td>评论者身份不明，但像熟悉校内情况者。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>评论者提醒拼音要提前学，英语课内简单但老师要求不低，至少要有一定阅读基础。</td><td>Emma包，《有北大附小的家长朋友吗？》，笔记 ID <a href="https://www.xiaohongshu.com/explore/67bd8691000000000903aae0" target="_blank" rel="noopener noreferrer">67bd8691000000000903aae0</a>。</td><td>身份不明，但内容具体。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>评论者说北大附小主打快乐教育，二年级孩子通常晚上八九点睡；另一位评论者提醒高年级后未必一直轻松。</td><td>Emma包，《有北大附小的家长朋友吗？》，笔记 ID <a href="https://www.xiaohongshu.com/explore/67bd8691000000000903aae0" target="_blank" rel="noopener noreferrer">67bd8691000000000903aae0</a>。</td><td>评论者疑似在读家长，但未明示。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>一条转述/讨论帖下，评论者明确说自家一年级孩子要在京剧和象棋社之间选择，孩子很期待有社团活动的上学日；同帖还提到课内作业少但校外仍会卷。</td><td>kwajolie，《北大二代，北大附小在读娃家长对学校的评价》，笔记 ID <a href="https://www.xiaohongshu.com/explore/6808fdbd000000001202c478" target="_blank" rel="noopener noreferrer">6808fdbd000000001202c478</a>。</td><td>关键评论者明确“我娃一年级”，作者本人不是在读家长。</td><td><span class="confidence confidence-medium">中高</span></td></tr><tr><td>朋友孩子刚入学三周后，语文老师因基础弱联系家长；该帖提醒一年级基础准备和学习意识仍重要。</td><td>水深十二英尺，北大附小一年级基础讨论帖，笔记 ID <a href="https://www.xiaohongshu.com/explore/68d545e0000000000e03115d" target="_blank" rel="noopener noreferrer">68d545e0000000000e03115d</a>。</td><td>不是本人孩子，是朋友孩子。</td><td><span class="confidence confidence-low">中偏低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="5-清华大学附属小学">
+<h3>5. 清华大学附属小学</h3>
+<p>综合判断：小红书上清华附小的家长会笔记比较多，且作者身份线索强。正面口碑集中在素质教育、体育、社团、家校共育、低年级双清苑校区硬件/餐食；但也有单条匿名评论给出三年级作业和课间管理的强烈负面反馈。整体应看作“理念和资源强，但不同年级/班级体验可能分化”。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>新生家长会作者记录了全天家校共育会：学校强调“儿童站立学校正中央”、体育、1+X 课程、社团丰富；孩子当日在临时班级上课。</td><td>paulable，《清华附小新生家长会》，笔记 ID <a href="https://www.xiaohongshu.com/explore/669246ee000000002501472f" target="_blank" rel="noopener noreferrer">669246ee000000002501472f</a>。</td><td>是。作者为新生家长，评论中说自己是博后解决子女入学。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>同一作者在评论中补充：校服日常使用频率高；教辅资料由学校发；海淀本部 1-3 年级在双清苑校区。</td><td>paulable，《清华附小新生家长会》，笔记 ID <a href="https://www.xiaohongshu.com/explore/669246ee000000002501472f" target="_blank" rel="noopener noreferrer">669246ee000000002501472f</a>。</td><td>是，作者本人回复。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>另一位第一次家长会作者称清华附小“不怎么卷”，偏素质教育，很重视体育；也提到 1+X 课程。</td><td>不爱甜食的包包，《清华附小第一次家长会》，笔记 ID <a href="https://www.xiaohongshu.com/explore/687229c5000000002201eefc" target="_blank" rel="noopener noreferrer">687229c5000000002201eefc</a>。</td><td>高概率是新生/低年级家长。</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>同一清华附小新生家长会帖下，有匿名评论强烈批评三年级作业多、中午写作业、课间不能去操场。该评论与两位家长会作者的正面体验相冲突，可能反映年级/班级差异，也可能是个体体验。</td><td>paulable，《清华附小新生家长会》，笔记 ID <a href="https://www.xiaohongshu.com/explore/669246ee000000002501472f" target="_blank" rel="noopener noreferrer">669246ee000000002501472f</a>。</td><td>评论者身份未核验。</td><td><span class="confidence confidence-low">中偏低</span></td></tr><tr><td>访谈号称采访清华大学老师，孩子在清华附小和清华附中；评论区有人质疑被访者是否真附小家长。</td><td>北京叮当，《清华附小家长访谈，名人子弟众多压力如何？》，笔记 ID <a href="https://www.xiaohongshu.com/explore/69009bab000000000700ca64" target="_blank" rel="noopener noreferrer">69009bab000000000700ca64</a>。</td><td>访谈号转述，且评论区有身份争议。</td><td><span class="confidence confidence-low">中偏低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="6-清华大学附属中学上地小学-清华附中上地小学">
+<h3>6. 清华大学附属中学上地小学/清华附中上地小学</h3>
+<p>综合判断：小红书补到的不是典型“日常作业长文”，更多是家长访谈、升学去向和接送路线。当前证据支持“升学通路被看好、上地南片区热度上升、清上小学关注度提高”；但课堂教学、作业、班级管理的一手家长证据仍偏薄。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>访谈号称邀请了几位清华附上地在读/毕业家长：包括在读小学家长、小学六年读完后去清上初中的家长、五年级转学后直升清上的家长、非京籍家长。</td><td>北京叮当，《2025中考盲盒家长做客清华附上地家长访谈》，笔记 ID <a href="https://www.xiaohongshu.com/explore/692816d6000000001e012616" target="_blank" rel="noopener noreferrer">692816d6000000001e012616</a>。</td><td>不是直接发帖家长，是访谈号转述；但被访者身份描述具体。</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>同一帖评论中，有疑似校友说老师挺好；另有评论提到小学操场小，运动可能借北体资源；也有人认为当前生源变好。</td><td>北京叮当，《2025中考盲盒家长做客清华附上地家长访谈》，笔记 ID <a href="https://www.xiaohongshu.com/explore/692816d6000000001e012616" target="_blank" rel="noopener noreferrer">692816d6000000001e012616</a>。</td><td>评论者多为校友/围观者，非明确家长。</td><td><span class="confidence confidence-low">中偏低</span></td></tr><tr><td>一篇说清上小学“被低估”的帖子下，有评论者明确说“我家娃在三年级”，认为老师负责、学校挺卷；该评论反驳了“村小底子、管理不好”的说法。</td><td>住在海淀的望京小姐姐，《居然不知道：上地还有一所被低估的小学》，笔记 ID <a href="https://www.xiaohongshu.com/explore/68747c12000000001d00c5d7" target="_blank" rel="noopener noreferrer">68747c12000000001d00c5d7</a>。</td><td>是，评论者明确自家孩子三年级。</td><td><span class="confidence confidence-medium">中高</span></td></tr><tr><td>有求问非京籍/工居入学的帖子下，评论者建议清华附中上地小学，称校风正、管理严、作业适中、抓基础；另一评论称去年非京籍二派一志愿去清上。</td><td>Pilipili，非京籍上地学区求问帖，笔记 ID <a href="https://www.xiaohongshu.com/explore/69cc697e000000002103aa27" target="_blank" rel="noopener noreferrer">69cc697e000000002103aa27</a>。</td><td>评论者身份不明，不是可核验在读家长。</td><td><span class="confidence confidence-low">中偏低</span></td></tr><tr><td>咨询号整理其划片、班级规模、非京籍友好度和初中去向；评论里有人说班里有工居孩子。</td><td>静待花开，《清华大学附属中学上地小学非京籍友好么》，笔记 ID <a href="https://www.xiaohongshu.com/explore/66dfe092000000000c01bfcb" target="_blank" rel="noopener noreferrer">66dfe092000000000c01bfcb</a>。</td><td>否，咨询号；评论身份不完整。</td><td><span class="confidence confidence-low">中偏低</span></td></tr><tr><td>接送路线帖提供清华附中上地小学/中学从上地到北体大方向的步行路线，偏生活信息，不是教学口碑。</td><td>上地树村社区专家，《娃在清上小学和中学，早晚接送路线揭秘！》，笔记 ID <a href="https://www.xiaohongshu.com/explore/686f90eb0000000012021033" target="_blank" rel="noopener noreferrer">686f90eb0000000012021033</a>。</td><td>否，社区/房产咨询号。</td><td><span class="confidence confidence-low">低到中</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="7-北大附中实验学校-小学部">
+<h3>7. 北大附中实验学校（小学部）</h3>
+<p>综合判断：这一项在小红书仍然没有拿到可确认的上地片区在读家长口碑。精确检索“北大附中实验学校 上地 小学部”“北大附中实验学校 北京 海淀 小学部 家长”等，结果大量混入北大附小、北大附中石景山、新北赋、海淀其他民办校或泛招生帖。为避免误判，本次不把这些混淆内容写入口碑结论。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>小红书精确搜索没有稳定命中“北大附中实验学校（小学部）”的在读家长长文；命中结果主要偏北大附小、北大附中石景山、新北赋或泛民办校介绍。</td><td>本轮搜索词：<code>北大附中实验学校 上地 小学部</code>、<code>北大附中实验学校 北京 海淀 小学部 家长</code>、<code>北大附中实验学校 小学部 真实体验</code>。</td><td>否。</td><td><span class="confidence confidence-high">高：这是对“未找到可靠证据”的结论</span></td></tr><tr><td>有民办校盘点/择校号内容，但未能确认对应附图里的北大附中实验学校小学部，也无在读家长一手体验。</td><td>佑佑好房-金色麦田，《海淀民办校怎么选？这5所家长一定要知道》，笔记 ID <a href="https://www.xiaohongshu.com/explore/67b45c08000000002a00299a" target="_blank" rel="noopener noreferrer">67b45c08000000002a00299a</a>。</td><td>否，咨询号。</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="8-清华大学附属实验学校-小学部">
+<h3>8. 清华大学附属实验学校（小学部）</h3>
+<p>综合判断：小红书检索同样容易混入清华附小、清华附小清河分校、清华附中朝阳学校、清华附属中学永丰学校等相近名称。没有抓到能明确对应附图“清华大学附属实验学校小学部”的高置信在读家长体验。上一版知乎报告也应继续标注该校证据不足。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>小红书出处</th><th>是否来自孩子在校家长</th><th>置信度</th></tr></thead><tbody><tr><td>检索“清华大学附属实验学校 小学部 家长/作业”后，结果多混入清华附小、清华附小清河分校、清华附中朝阳、永丰等，不宜直接用于本校口碑。</td><td>第二轮小红书搜索结果：<code>xhs_parent_search_results.json</code>。</td><td>否。</td><td><span class="confidence confidence-high">高：这是对“未找到可靠证据”的结论</span></td></tr><tr><td>部分“清华附实验”内容集中在初高中、1+3、创新班等，与小学部日常体验关系弱。</td><td>小落丫头，《26届选清华附实验的可能要谨慎》，笔记 ID <a href="https://www.xiaohongshu.com/explore/6a100ccb000000003503a3a4" target="_blank" rel="noopener noreferrer">6a100ccb000000003503a3a4</a>。</td><td>作者疑似家长，但讨论重点不是小学部。</td><td><span class="confidence confidence-low">低到中</span></td></tr></tbody></table></div>
+</section>
+<h2 id="可并入总报告的关键修正">可并入总报告的关键修正</h2>
+<ol><li>上地实验学校小学部：把置信度从“缺少一手家长”上调。小红书有明确双娃在读家长，但要同时写入师资稳定性争议。</li><li>上地实验小学树村校区：比知乎更有一手体验，不能只按“回迁/调剂”标签评价；作业和活动强烈依赖班级。</li><li>上地实验小学本部：低年级家长证据显示校内作业少，但校外学习投入仍可能高。</li><li>清华附小：新增两条新生/家长会高置信来源，正面口碑更扎实；同时保留三年级作业负面评论为个案风险。</li><li>北大附小：新增的是评论级证据，不如清华附小扎实；但“课内快乐、社团丰富、校外仍卷”的画像可以写得更明确。</li><li>清华附中上地小学：新增“家长访谈”和一个三年级家长评论，仍需要更多直接家长长文才能高置信评价教学日常。</li><li>北大附中实验学校小学部、清华大学附属实验学校小学部：小红书仍未解决证据不足问题，应在总报告里继续标注“需线下家长访谈/学校开放日补证”。</li></ol>
+<h2 id="未纳入或降权的内容">未纳入或降权的内容</h2>
+<ul><li>“幼升小结果已出，清华附小上岸”等笔记两次详情抓取失败，只保留为候选，不作为报告证据。</li><li>“北大附小入学第一天”“北大附面试分享”等疑似外地/海口学校内容，已排除。</li><li>“海淀最具性价比民办校”“新北赋/石景山/永丰/朝阳”等同名或相近学校内容，已排除。</li><li>房产中介、学区咨询号内容只用于政策/通路背景，不用于高置信口碑结论。</li></ul>
+    </main>
+  </div>
+</body>
+</html>

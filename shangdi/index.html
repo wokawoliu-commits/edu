@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上地学区口碑调研</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f3ef;
+      --paper: #fffdf9;
+      --ink: #24211d;
+      --muted: #71695f;
+      --line: #e5ddd1;
+      --accent: #245b5b;
+      --accent-2: #a85e32;
+      --soft: #edf4f2;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    main {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+    header {
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+    .summary {
+      max-width: 760px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    section {
+      margin-top: 28px;
+    }
+    h2 {
+      margin: 0 0 14px;
+      color: var(--accent);
+      font-size: 22px;
+    }
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .report {
+      min-height: 180px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 14px 38px rgba(61, 48, 32, 0.08);
+    }
+    .report h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+    .report p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: white;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+    }
+    .button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .button.primary:hover {
+      color: white;
+      filter: brightness(1.05);
+    }
+    .files {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .files a {
+      display: block;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.78);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .files a:hover {
+      background: var(--soft);
+      color: var(--accent);
+    }
+    .note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 24px, 680px);
+        padding-top: 32px;
+      }
+      .report-grid,
+      .files {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">上地学区 · 小学与初中口碑调研</p>
+      <h1>上地学区口碑调研报告</h1>
+      <p class="summary">基于知乎与小红书检索结果整理，重点标注信息来源、是否来自孩子在校家长、以及每条信息的置信度。</p>
+    </header>
+
+    <section aria-labelledby="reports-title">
+      <h2 id="reports-title">报告入口</h2>
+      <div class="report-grid">
+        <article class="report">
+          <h3>知乎主报告</h3>
+          <p>按附图学校名单整理的基础报告，含小学、初中口碑、出处链接与置信度。</p>
+          <div class="actions">
+            <a class="button primary" href="report.html">打开 HTML</a>
+            <a class="button" href="report.md">Markdown</a>
+            <a class="button" href="shangdi_zhihu_results.xlsx">检索 Excel</a>
+          </div>
+        </article>
+        <article class="report">
+          <h3>小红书家长补充</h3>
+          <p>聚焦在读家长、家长会、作业、课程、食堂、社团等更接近一手体验的信息。</p>
+          <div class="actions">
+            <a class="button primary" href="xhs_parent_addendum.html">打开 HTML</a>
+            <a class="button" href="xhs_parent_addendum.md">Markdown</a>
+            <a class="button" href="xhs_parent_search_results.json">候选 JSON</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="files-title">
+      <h2 id="files-title">数据与关键词</h2>
+      <ul class="files">
+        <li><a href="queries.txt">知乎关键词</a></li>
+        <li><a href="xhs_queries.txt">小红书第一轮关键词</a></li>
+        <li><a href="xhs_parent_queries.txt">小红书父母证据关键词</a></li>
+        <li><a href="xhs_search_results.json">小红书第一轮候选</a></li>
+        <li><a href="xhs_detail_summary.json">小红书第一轮详情摘要</a></li>
+        <li><a href="xhs_parent_detail_summary.json">小红书父母证据详情摘要</a></li>
+      </ul>
+      <p class="note">当前目录为静态文件目录，可直接作为站点根目录部署。</p>
+    </section>
+  </main>
+</body>
+</html>

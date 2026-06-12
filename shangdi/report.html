@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上地学区小学与初中知乎口碑调研</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f3ee;
+      --paper: #fffdf9;
+      --ink: #24211d;
+      --muted: #736b60;
+      --line: #e6ded2;
+      --accent: #245b5b;
+      --accent-2: #a85e32;
+      --soft: #edf4f2;
+      --high: #116149;
+      --medium: #8b5a00;
+      --low: #9a2f2f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.68 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+      gap: 28px;
+      width: min(1480px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+    aside {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.86);
+    }
+    aside h2 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+    .toc a {
+      display: block;
+      padding: 7px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .toc a:hover { background: var(--soft); color: var(--accent); }
+    .toc-sub { margin-left: 10px; font-size: 14px; color: var(--muted) !important; }
+    main {
+      min-width: 0;
+      padding: 36px clamp(18px, 4vw, 56px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 18px 50px rgba(61, 48, 32, 0.08);
+    }
+    .hero {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+    .meta {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    h2 {
+      margin: 38px 0 14px;
+      padding-top: 8px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    p { margin: 10px 0 14px; }
+    ul { padding-left: 1.2em; }
+    li { margin: 4px 0; }
+    code {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: #f1ece4;
+      font-size: 0.92em;
+    }
+    .school-card {
+      margin: 18px 0 22px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf1;
+    }
+    .school-card:nth-of-type(even) { background: #f7fbfa; }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 14px 0 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+    table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    th, td {
+      vertical-align: top;
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f0e8dc;
+      color: #302820;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: 0; }
+    td:nth-child(1) { width: 34%; }
+    td:nth-child(2) { width: 34%; }
+    td:nth-child(3) { width: 18%; }
+    td:nth-child(4) { width: 14%; }
+    .confidence {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      white-space: normal;
+    }
+    .confidence-high { background: #e3f4ed; color: var(--high); }
+    .confidence-medium { background: #fff1cf; color: var(--medium); }
+    .confidence-low { background: #fae3e1; color: var(--low); }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: white;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .button:hover { border-color: var(--accent); color: var(--accent); }
+    @media (max-width: 980px) {
+      .layout { display: block; width: min(100% - 24px, 860px); }
+      aside { position: static; margin-bottom: 16px; max-height: none; }
+      main { padding: 24px 16px; }
+      .school-card { padding: 16px; }
+      table { min-width: 780px; }
+    }
+    @media print {
+      body { background: white; }
+      .layout { display: block; width: 100%; padding: 0; }
+      aside, .actions { display: none; }
+      main { border: 0; box-shadow: none; padding: 0; }
+      .school-card { break-inside: avoid; background: white; }
+      a { color: black; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <h2>目录</h2>
+      <nav class="toc"><a class="toc-main" href="#采集说明">采集说明</a>
+<a class="toc-main" href="#置信度口径">置信度口径</a>
+<a class="toc-main" href="#小学-小学部">小学/小学部</a>
+<a class="toc-sub" href="#1-海淀区上地实验小学上地校区">1. 海淀区上地实验小学上地校区</a>
+<a class="toc-sub" href="#2-海淀区上地实验小学树村校区-西校区">2. 海淀区上地实验小学树村校区/西校区</a>
+<a class="toc-sub" href="#3-北京大学附属小学">3. 北京大学附属小学</a>
+<a class="toc-sub" href="#4-清华大学附属小学">4. 清华大学附属小学</a>
+<a class="toc-sub" href="#5-清华大学附属中学上地小学-清华附中上地小学">5. 清华大学附属中学上地小学/清华附中上地小学</a>
+<a class="toc-sub" href="#6-北大附中实验学校-小学部">6. 北大附中实验学校（小学部）</a>
+<a class="toc-sub" href="#7-清华大学附属实验学校-小学部-十二年一贯制">7. 清华大学附属实验学校（小学部、十二年一贯制）</a>
+<a class="toc-sub" href="#8-北京市上地实验学校-小学部-九年一贯制">8. 北京市上地实验学校（小学部、九年一贯制）</a>
+<a class="toc-main" href="#初中-派位中学">初中/派位中学</a>
+<a class="toc-sub" href="#上地实验学校-上地101">上地实验学校/上地101</a>
+<a class="toc-sub" href="#清华附中上地学校">清华附中上地学校</a>
+<a class="toc-sub" href="#人大附中西山学校">人大附中西山学校</a>
+<a class="toc-sub" href="#中关村中学">中关村中学</a>
+<a class="toc-sub" href="#一零一中学">一零一中学</a>
+<a class="toc-main" href="#简短排序建议">简短排序建议</a></nav>
+    </aside>
+    <main>
+      <div class="hero">
+        <p class="eyebrow">知乎口碑调研 HTML 版</p>
+        <h1>上地学区小学与初中知乎口碑调研</h1>
+        <div class="meta">由 Markdown 报告生成：2026-06-12 16:13 · 523 条知乎回答去重采集 · 77 组关键词</div>
+        <div class="actions">
+          <a class="button" href="report.md">查看 Markdown 原文</a>
+          <a class="button" href="shangdi_zhihu_results.xlsx">打开检索结果 Excel</a>
+          <a class="button" href="queries.txt">查看关键词</a>
+          <a class="button" href="xhs_parent_addendum.html">打开小红书补充报告</a>
+        </div>
+      </div>
+      <p>生成日期：2026-06-12 调研范围：按用户截图中的上地片区小学、小学部/一贯制校及对应派位初中，在知乎站内检索。</p>
+<h2 id="采集说明">采集说明</h2>
+<ul><li>使用关键词文件：<code>output/zhihu_shangdi/queries.txt</code></li><li>共检索 77 组知乎关键词，去重得到 523 条回答，结果表：<code>output/zhihu_shangdi/shangdi_zhihu_results.xlsx</code></li><li>正文归档目录：<code>output/zhihu_shangdi/markdown/</code></li><li>重要限制：知乎上学区信息大量来自房产/升学咨询号；“在读家长”直接证言并不多。下面每条都标注来源身份和置信度。</li></ul>
+<h2 id="置信度口径">置信度口径</h2>
+<ul><li>高：明确来自学生/毕业生/孩子在该校就读或刚毕业的家长，且内容直接谈该校。</li><li>中：来自升学/房产咨询号，信息和多条来源相互印证，或来自校友但年代较久。</li><li>低：单条主观强烈、年代久、身份不明、或只转述传闻/截图。</li></ul>
+<h2 id="小学-小学部">小学/小学部</h2>
+<section class="school-card" id="1-海淀区上地实验小学上地校区">
+<h3>1. 海淀区上地实验小学上地校区</h3>
+<p>综合判断：知乎口碑整体强，核心优势不是单看小学课堂，而是“上地学区小升初下限高”。主流学区号把它称为传统牛小/热门校；但也有毕业生给出非常负面的教师师德、硬件和食堂体验。家长一手证言少。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>被多篇学区号评价为海淀头部小学，生源、师资、家长认可度高，学区房热度持续。</td><td>云上观房，《海淀小学学区如何选择？》2025-07-22：<a href="https://www.zhihu.com/question/471792811/answer/1930913952092631106" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号，称接触家长</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>有学区号认为“单论小学约海淀 TOP15；如加上小升初，可排第一”，卖点是初中派位无坑、生源强。</td><td>我叫小博，《海淀性价比高的学区房有哪些推荐》2023-10-04：<a href="https://www.zhihu.com/question/371218471/answer/3236588452" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>2021 年学区房回答认为本校教学质量“很赞”，派位学校整体不错。</td><td>郝正闯，《中关村一小和上地实验小学选哪个》2021-05-20：<a href="https://www.zhihu.com/question/22403800/answer/1895889694" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，学区房作者</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>负面亲历：一名“本人小学毕业于上地实验小学、初中毕业于上地实验学校”的答主批评教师水准/师德、食堂和操场等。</td><td>快乐，《海淀区上地实验小学，和上地实验学校小学部，哪个好？》2022-07-08：<a href="https://www.zhihu.com/question/421411843/answer/2563807038" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>不是家长，是校友亲历</td><td><span class="confidence confidence-low">中偏低：单人强烈负面，且非当前在读</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="2-海淀区上地实验小学树村校区-西校区">
+<h3>2. 海淀区上地实验小学树村校区/西校区</h3>
+<p>综合判断：口碑弱于上地校区，主要争议是生源结构和“调剂/回迁”印象；但多个来源称师资与本校差别不大、初中派位相同。没有找到明确“孩子在树村校区就读家长”的高质量回答。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>云上观房称树村是上地实验西校区，师资和本校“没差别”，但生源受质疑，口碑和主校区有差距；新盘进入后生源在改善。</td><td>云上观房，2025-07-22：<a href="https://www.zhihu.com/question/471792811/answer/1930913952092631106" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>三人行称树村校区“比较特殊”，自己划片以回迁为主；2025 年一志愿树村都收了，本部一志愿摇上较少，大部分去了清华附中上地小学。</td><td>三人行，《上地实验小学（树村）学校怎么样》2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>我叫小博称树村硬件好，生源主要是回迁，属于教师轮岗受益校；但在同一回答里对调剂校评价明显带主观贬义。</td><td>我叫小博，2023-10-04：<a href="https://www.zhihu.com/question/371218471/answer/3236588452" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-low">中偏低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="3-北京大学附属小学">
+<h3>3. 北京大学附属小学</h3>
+<p>综合判断：强校/子弟校属性明确，校友对师资和校园评价高；但这类信息主要来自校友，不是上地普通购房家庭的入学口碑。普通家庭进入门槛高。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>学区号称北大附小是子弟校、无学区房，北京大学教职工子女可报名。</td><td>三人行，2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>北大附小 2011-2016 级校友建议选北大附小，理由是北大职工子弟升学路径、省去小升初烦恼，且师资和校园在小学里属一流。</td><td>S.Kou，《西城裕中小学，海淀北大附小都能上》2023-03-14：<a href="https://www.zhihu.com/question/352627062/answer/2935058123" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>校友，不是家长</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>同一校友在另一个回答里称北大附小校园环境和师资明显强，并提到硬件投入。</td><td>S.Kou，《北大附小和五一小学如何选择》2023-03-14：<a href="https://www.zhihu.com/question/402533856/answer/2935059595" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>校友，不是家长</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>有回答称“北大老师的孩子”可以进附小/附中，但回答极短、无展开。</td><td>斯米诺冰火、夏夏，2017/2018：<a href="https://www.zhihu.com/question/47349749/answer/163436872" target="_blank" rel="noopener noreferrer">回答1</a>、<a href="https://www.zhihu.com/question/47349749/answer/390119036" target="_blank" rel="noopener noreferrer">回答2</a></td><td>身份不明</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="4-清华大学附属小学">
+<h3>4. 清华大学附属小学</h3>
+<p>综合判断：知乎上找到的最强证据是前清华附小家长的正面评价，明确说孩子刚上中学，对价值观、独立人格、学习习惯、体育锻炼等满意。它同样是子弟校，普通购房家庭不可简单类比。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>前清华附小家长/前学生称“能上清华附小就不用想别的”，对价值观、独立人格、学习习惯、体育锻炼、审美和生活态度满意；孩子也喜欢。</td><td>houzh，《孩子在海淀还是东城上学好》2025-01-07：<a href="https://www.zhihu.com/question/457934304/answer/73740117031" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>是，孩子刚上中学的前家长，同时本人校友</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>学区号称招生对象为符合清华要求的教职工二代及事业编教职工三代子女。</td><td>三人行，2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>另有一个关于清华附小及校长的负面回答，但身份不明、内容很短，不能作为学校整体口碑依据。</td><td>chuntian，《如何看待清华附小及其校长窦桂梅？》2020-05-26：<a href="https://www.zhihu.com/question/385128167/answer/1247678688" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>身份不明</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="5-清华大学附属中学上地小学-清华附中上地小学">
+<h3>5. 清华大学附属中学上地小学/清华附中上地小学</h3>
+<p>综合判断：2017 年清华附中承办原清河五小后，升学通路是它的主要卖点。旧口碑里有“原清河五小/中等水平/入学宽松”的印象；较新的学区号认为 101 石油分校退出后，派位下限改善，关注度上升。未找到明确在读家长长文。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>木椿山称该校以前是清河五小，算是上地分校附属小学；上地老师孩子有的在这里就读；归清华附中本部管理，而清华附小隶属清华大学。</td><td>木椿山，《清华附中上地小学和清华附小什么区别？》2020-05-30：<a href="https://www.zhihu.com/question/341867841/answer/1255667522" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>身份不明，不是家长</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>云上观房称该校前几年关注度不高，原因之一是过去存在 101 石油分校风险；今年 101 石油在上地停招后，顾虑减少；清上二派进清华附上地学校概率高。</td><td>云上观房，2025-07-22：<a href="https://www.zhihu.com/question/471792811/answer/1930913952092631106" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号，称据家长反馈</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>三人行称其 2024 年招 4 个班约 180 人，注重科技和体育、足球特色，教学质量“海淀中等水平”，入学要求不严格。</td><td>三人行，2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-low">中偏低</span></td></tr><tr><td>我叫小博在 2023 年回答中称它是调剂校之一，并用了明显贬义词。</td><td>我叫小博，2023-10-04：<a href="https://www.zhihu.com/question/371218471/answer/3236588452" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-low">低：强主观且与后续通路改善信息冲突</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="6-北大附中实验学校-小学部">
+<h3>6. 北大附中实验学校（小学部）</h3>
+<p>综合判断：知乎站内没有找到可靠的上地片区在读家长口碑。检索结果大量混入“北大附属实验学校”丰台/外地学校，已剔除。可用信息主要是学区号简介：民办、全区招生、寄宿/学前至高中一体化等，口碑置信度低。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>学区号列为民办校、全区招生，称小学部为集学前、小学、初中、高中一体的现代化全日制寄宿学校。</td><td>三人行，2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-low">低到中：只有简介，非口碑</span></td></tr><tr><td>另一个学区号也重复类似简介和地址。</td><td>三人行，《海淀买哪个区域学区房比较稳妥？》2024/2025 相关回答：<a href="https://www.zhihu.com/question/370342034/answer/6770667337" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-low">低到中</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="7-清华大学附属实验学校-小学部-十二年一贯制">
+<h3>7. 清华大学附属实验学校（小学部、十二年一贯制）</h3>
+<p>综合判断：知乎站内小学部直接口碑稀缺。学区号把它描述为清华附本校一体化教学/师资共享，国内/国际两套体系，学费高；但没有找到明确在读家长评价小学部。高中/高考加工能力讨论不能直接外推到小学。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>学区号称清华附实验与清华附本校一体化教学、师资共享；小学部分国内体系和国际体系，学费较高，全区招生。</td><td>三人行，2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-low">中偏低：简介较清楚，但非家长口碑</span></td></tr><tr><td>有回答对其 2022 高考加工能力提出传闻式质疑，但作者明确说“非官方信息，不知道真假”。</td><td>Maggie，《如何评价清华大学附属实验学校高考成绩？》2022-07-13：<a href="https://www.zhihu.com/question/438698966/answer/2572028050" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，传闻</td><td><span class="confidence confidence-low">低，不用于小学口碑</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="8-北京市上地实验学校-小学部-九年一贯制">
+<h3>8. 北京市上地实验学校（小学部、九年一贯制）</h3>
+<p>综合判断：热度来自“摇号进入、九年一贯、直升上地实验学校/上地101”。它不是上地实验小学，也没有对口学区房。直接在读家长口碑较少；设施/课程介绍来自学区号，初中部学生口碑较强，可间接提高对小学部出口的信心。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>学区号称该小学部在清河、上地学区招生，电脑派位，九年一贯，六年后直升上地实验学校。</td><td>云上观房，2025-07-22：<a href="https://www.zhihu.com/question/471792811/answer/1930913952092631106" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>三人行提醒该小学部不是上地实验小学，没有学区房，靠摇号进入；并称上地/清河均可摇号。</td><td>三人行，2025-09-10：<a href="https://www.zhihu.com/question/463560141/answer/1949176955887911774" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，房产/升学号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>上地实验小学/上地实验学校校友对小学部并无亲历，只转述初中老师说法并表达对校园容量的担忧。</td><td>快乐，2022-07-08：<a href="https://www.zhihu.com/question/421411843/answer/2563807038" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>不是家长；初中校友转述</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<h2 id="初中-派位中学">初中/派位中学</h2>
+<section class="school-card" id="上地实验学校-上地101">
+<h3>上地实验学校/上地101</h3>
+<p>综合判断：知乎学生/毕业生证据较多，口碑最稳的一档。关键词：老师负责、抓得紧、活动多、体育强、集体氛围好；缺点是规则严、食堂一般。相比小学部，初中部口碑证据更强。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>在校学生称学习抓得紧、老师讲得好、学习氛围好，体育按中考满分标准练，活动多。</td><td>伊尹，《在北京上地实验学校就读体验》2015-09-07：<a href="https://www.zhihu.com/question/30842443/answer/62719222" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>2020 届毕业生称老师负责、普通班不被明显歧视，课余活动凭实力，学校重视学生身心健康；缺点是规则严、午餐一般。</td><td>金州老炮，2023-11-26：<a href="https://www.zhihu.com/question/30842443/answer/3302891319" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>毕业生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>2019 届毕业生称学校活动多、老师有责任心，数学老师会面批作业；食堂 2019 年后改造。</td><td>董董，2020-04-26：<a href="https://www.zhihu.com/question/30842443/answer/1181762881" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>毕业生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>曾就读上地实验学校实验班的答主评价老师负责、老教师多、有经验；缺点是食堂不佳。</td><td>HeadHunterz丶，2020-02-13：<a href="https://www.zhihu.com/question/269029911/answer/1014474353" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生亲历</td><td><span class="confidence confidence-high">高</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="清华附中上地学校">
+<h3>清华附中上地学校</h3>
+<p>综合判断：直接口碑也偏强。家长和学生都提到“小而精、老师关注、体育抓得紧、初中氛围快乐”。这是上地片区中非常值得重视的初中出口。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>一名家长称孩子刚从清上毕业，非常喜欢清上；体育抓得紧，怀念昂扬快乐的初中时光；认为中考结果超预期。</td><td>哇卡丝，《清华附中上地学校怎么样？》2024-04-11：<a href="https://www.zhihu.com/question/423238058/answer/3461902925" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>是，孩子刚毕业家长</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>学生/毕业生称学校小而精，每个人都被老师关注，老师包容、精力充沛，师生像朋友；体育课频率高。</td><td>yuuj，2022-10-27：<a href="https://www.zhihu.com/question/423238058/answer/2733249331" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生/毕业生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>另有简短回答称“海淀区好学校”。</td><td>闫楠，2020-09-29：<a href="https://www.zhihu.com/question/423238058/answer/1499733535" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>身份不明</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="人大附中西山学校">
+<h3>人大附中西山学校</h3>
+<p>综合判断：学生亲历呈现“包容、尊重、活动丰富、老师愿意谈心”的正面口碑，但也存在针对个别教师/高中阶段管理和成绩宣传的强烈负面。整体置信度中等，口碑稳定性弱于上地101和清上。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>学生称同学素质高、老师讲课清晰、会谈心、课外活动丰富。</td><td>清晨一支烟，2017-08-12：<a href="https://www.zhihu.com/question/36418039/answer/212908711" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生亲历</td><td><span class="confidence confidence-medium">中到高</span></td></tr><tr><td>校友称西山教育环境包容，老师不会因成绩不好否定学生，尊重个人空间和内心世界。</td><td>游小乐，2018-03-05：<a href="https://www.zhihu.com/question/36418039/answer/334174870" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>校友亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>另一名学生称老师耐心、活动和社团选择多，学校支持学生社团发展。</td><td>Curiosity，2019-07-05：<a href="https://www.zhihu.com/question/36418039/answer/738541567" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>负面长文批评某化学老师和学校处理，称宣传与实际成绩有差距；但主要指高中阶段/个别老师。</td><td>ererasdg，2022-08-28，更新至 2024-04-04：<a href="https://www.zhihu.com/question/544589327/answer/2649785256" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>毕业生亲历</td><td><span class="confidence confidence-medium">中：具体但个案性强</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="中关村中学">
+<h3>中关村中学</h3>
+<p>综合判断：口碑波动最大。正面是老师愿意帮助、区重点梯队里可考虑、有加工能力；负面集中在硬件/食堂/校规、教师差异、个别霸凌/精神健康控诉，以及近年“退步”讨论。作为上地派位下限，不能叫坑，但和上地101/清上相比吸引力弱。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>高中就读者称设施、午饭、纪律、作业有槽点，但老师尊重学生、愿意帮助；如果目标是区重点梯队可考虑，不建议放弃更好选择来。</td><td>寒雪覆城，2020-04-13，更新 2023-02-10：<a href="https://www.zhihu.com/question/59155384/answer/1150631067" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>2018 届毕业生对某教师和迟到处理有强烈负面体验。</td><td>无产阶级可乐战士，2020-03-04：<a href="https://www.zhihu.com/question/59155384/answer/1054188803" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>毕业生亲历</td><td><span class="confidence confidence-medium">中：个案强烈</span></td></tr><tr><td>初中三年就读者称校园不大、食堂贵且难吃、老师水平良莠不齐；实验班可考虑，普通班不推荐。也对体育老师负责给出正面补充。</td><td>何妨一下楼，2020-07-31：<a href="https://www.zhihu.com/question/59155384/answer/1374054483" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>学生亲历</td><td><span class="confidence confidence-high">高</span></td></tr><tr><td>2025 年新高一提问下有极端负面回答称遭遇霸凌/精神疾病，但内容极短，缺少细节。</td><td>月下的星空很闪亮，2025-08-30：<a href="https://www.zhihu.com/question/413911073/answer/1945014168739645430" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>自称亲历</td><td><span class="confidence confidence-low">低到中</span></td></tr><tr><td>2026 年“严重退步”问题下，有回答称生源变化导致成绩下降，但缺少数据。</td><td>漠然，2026-01-13：<a href="https://www.zhihu.com/question/1983635007785410694/answer/1994365289610101185" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>身份不明</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<section class="school-card" id="一零一中学">
+<h3>一零一中学</h3>
+<p>综合判断：在本次上地片区检索中，一零一更多以“六小强/派位新增/直升名额”出现，直接就读体验内容很少且简短。因此只能把它作为上地派位资源中的高声誉学校，不宜基于本次知乎结果展开细节口碑。</p>
+<div class="table-wrap"><table><thead><tr><th>信息点</th><th>出处</th><th>是否在读家长/亲历</th><th>置信度</th></tr></thead><tbody><tr><td>2024 年回答称上地学区部分小学派位增加 101，对清华附中上地小学属重要利好。</td><td>深度思考，《北京海淀区初中派位除了上地，还有哪个片区比较好？》2024-06-26：<a href="https://www.zhihu.com/question/624866444/answer/3543134191" target="_blank" rel="noopener noreferrer">知乎回答</a></td><td>否，升学信息号</td><td><span class="confidence confidence-medium">中</span></td></tr><tr><td>直接体验回答极短，仅表达强烈正面情绪。</td><td>NEC、moonquakes：<a href="https://www.zhihu.com/question/27971644/answer/1940830654230160631" target="_blank" rel="noopener noreferrer">回答1</a>、<a href="https://www.zhihu.com/question/276904345/answer/1489287960" target="_blank" rel="noopener noreferrer">回答2</a></td><td>疑似学生/校友，但内容太短</td><td><span class="confidence confidence-low">低</span></td></tr></tbody></table></div>
+</section>
+<h2 id="简短排序建议">简短排序建议</h2>
+<p>仅按知乎口碑证据强弱与上地片区实际讨论热度，不等于官方排名：</p>
+<ol><li>最稳的片区逻辑：上地实验小学上地校区/树村校区、上地实验学校小学部、清华附中上地小学，核心都在小升初出口。</li><li>小学口碑最强但非普通购房逻辑：清华附小、北大附小，子弟校属性明显。</li><li>初中口碑最稳：上地实验学校/上地101、清华附中上地学校。</li><li>初中可接受但波动更大：人大附中西山学校、中关村中学。</li><li>证据不足：北大附中实验学校小学部、清华大学附属实验学校小学部，知乎上缺少高质量在读家长评价。</li></ol>
+    </main>
+  </div>
+</body>
+</html>
